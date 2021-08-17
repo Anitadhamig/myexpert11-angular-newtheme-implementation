@@ -1,0 +1,637 @@
+	<section class="body-section-home">     
+		<div class="body-section-home-inner"> 
+			<app-left-side></app-left-side>
+			<div class="rightBox">
+				<div class="rightBox-inner db">		
+
+						<div class="flex-wth w-100"> 
+							
+							<header class="main_header main_header_2" id="header1">
+								<div class="mobile_nav">
+									<div class="" id="fixHead">
+
+										<!-- <app-header></app-header> -->
+										<div class="info-bar w-100 col-lg-12 col-md-12 cl-sm-12 col-12 p-0">
+										    <div class="infobarContent newcheck">
+										        <div class="infobarContentRow w-100 d-flex">   
+										        	<div class="js--match-header-title infobarContentLeft"> 
+														<button class="btn_icon color_white p-0" (click)="back_button()">
+															<i class="fas fa-arrow-left font-16"></i>
+														</button>
+														<a class="btn_icon home_icon theme-color mr-3 font-16" routerLink="/home"><i class="fas fa-home"></i></a>		
+														<span class="namematchest">{{matchdetails.team1name}} vs {{matchdetails.team2name}}</span>
+													</div>
+													<div> 
+													<span class="blinking"  *ngIf="matchdetails.playingstatus == '1'"></span>
+													</div>
+													
+										            <div class="infobarContentLeft text-center">
+										                <div class="timer d-flex justify-content-center align-items-center"><i class="far fa-clock" style="height: 16px; width: 16px; font-size: 16px;"></i><span class="timeRemaining"><countdown-timer [end]="matchdetails.time_start"></countdown-timer></span>												
+															<button class="btn_icon ml-auto mr-0 color_white p-0 imagewaallet" routerLink="/my-account" *ngIf="loginid!= ''">
+																<!-- <i class="fas fa-credit-card"></i> -->
+																<i class="fas fa-wallet"></i>
+															</button>
+														</div>
+										            </div>
+										        </div>
+										    </div>
+ 
+										</div>
+									</div>
+								</div>
+							</header>
+						<div class="margin_top100 w-100 mb-5">	
+
+						<div class="w-100 justify-content-between privateCon pl-3 pr-3 mt-5 pt-1 pb-1">
+							<div class="ftc_banner_img w-100" style="display: none;">
+								<a class="w-100 " href="#" data-toggle="modal" data-target="#privatecontestmodal">
+									<span class="w-100">Create or join a private contest</span>
+									<p class="marginZ w-100">And play with your friends.</p>
+								</a>
+							</div>
+							<div class="w-100 d-flex justify-content-between">
+								<a href="#" data-toggle="modal" data-target="#privatecontestmodal"><i class="fas fa-indent"></i>Create own Contest</a> 
+								<a href="#" data-toggle="modal" data-target="#joincodemodal"><i class="fas fa-trophy"></i> Enter Contest Code</a> 
+							</div>
+						</div>
+						<div class=" w-100 " *ngIf="getchallenges?.length>0">	
+							<div class="me_segment allsegmetsthink" >
+							    <a (click)="redirecttoallchallenge(matchdetails.matchkey)" class="me_allContestsLink align-items-center justify-content-space-between">
+							       <div class="row marginZ w-100">
+							       	 	<div class="col-lg-9 col-md-9 col-sm-9 col-9 pl-2">
+								            <div class="me_headerTitle">View All Contests</div>
+								            <div class="me_headerText">Choose from a variety of contests</div>
+								        </div>
+								        <div class="col-lg-3 col-md-3 col-sm-3 col-3 d-flex align-items-center justify-content-center pr-0">
+								            <div class="me_count text-center color_white">{{matchdetails.totalcontest}}</div>
+								            <div class="me_navigationIcon pl-3"><i class="fas fa-chevron-right"></i></div>
+								        </div>
+							       </div>
+							    </a>
+							</div>
+
+							<div  *ngFor="let allchallnge of getchallenges; let i = index">
+								<div class="me_segment  height_main height_main_new" *ngIf="allchallnge.contest?.length>0">
+								    <div class="segmentHeaderContainer_fd0be">
+								        <a class="row_404ce rowBorder_d41f9">
+								            <div class="row w-100">
+								            	<div class="rowImage_a49cb col-lg-2 col-md-2 col-sm-2 col-2 pr-0">
+									            	<img src="{{allchallnge.image}}" class="me_segmentImage">
+								            	</div>
+								                <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+								                    <div class="me_headerTitle">{{allchallnge.catname}}</div>
+								                    <div class="me_headerText">{{allchallnge.sub_title}}</div>
+								                </div>
+												
+												<a class="moreLinkflexRownew" (click)="redirecttoremainingchallenge(matchdetails.matchkey, allchallnge.catid)" *ngIf="allchallnge.contest?.length>4"> <span> {{allchallnge.contest?.length - 4}} Contests</span> &nbsp; <i class="fa fa-chevron-right"></i> 
+												 </a>
+								            </div>
+								        </a>
+								    </div>
+								    <a class="" *ngFor="let allcontest of allchallnge.contest; let i = index;">
+										<div class="contestdefine"  *ngIf="i <= 3">
+											<div class="w-100 me_mainWrapper">
+												<div class="me_contestSpecs">
+												
+													<div class="me_contestSpecWrapper me_contestSpecsLeft"  (click)="singlechallenge(allcontest.id);">
+														<div class="me_contestSpecsTitle">Total Winnings</div>
+														<div class="me_contestSpecsValue"><span><span class="d11-icon">₹</span><span class="me_currency_amount">{{allcontest.win_amount}}</span></span> 
+														</div>
+													</div>
+													<div class="me_contestSpecWrapper me_contestSpecscenter"> 
+														<div class="me_contestSpecsTitle">Winners</div>
+													   <!--  <div class="me_contestSpecsValue color-gray me_contestSpecsCenter" *ngIf="!allcontest.price_card && !allcontest.winning_percentage" >
+															<div>1</div>
+															<div ><i class="fas fa-chevron-down" style=" width: 24px; font-size: 15px;"></i>
+															</div>
+														 </div> -->
+														<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="allcontest.contest_type=='Amount'" >
+															<div (click)="totalwins(allcontest.id)">{{allcontest.totalwinners}}</div>
+															<div  (click)="totalwins(allcontest.id)"><i class="fas fa-chevron-down" style=" width: 24px; font-size: 15px;"></i>
+															</div>
+															
+
+													<div id="winnner-rank{{allcontest.id}}" class="closeactive" (click)="totalwinsclose(allcontest.id)">
+														<div class="em_bottom_sheet">
+															<div class="em_winnerBreakupWrapper">
+																<div class="em_headerContainer contehead d-flex justify-content-space-between ">
+																	<div class="color_white -w-100">Winning Breakup</div>
+																	<div class="em_tamp " (click)="totalwinsclose(allcontest.id)">Close</div> 
+																</div>
+																<div class="em_breakupContainer_center">
+																	<p>Prize Pool</p>
+																	<span><span class="d11-icon">₹</span>{{allcontest.win_amount}}</span>
+																</div>
+																<div class="em_breakupContainer">
+																	<div class="em_scroll">
+																		<div class="em_breakupWrapper">
+																			<div class="em_rankRowWrapper d-flex align-items-center" *ngFor="let pricecards of allcontest.price_card">
+																				<div class="em_rankRowTitle">Rank {{pricecards.start_position}}</div>
+																				<div class="em_rankRowValue"><span>
+																				<!-- <span class="d11-icon">₹</span> -->
+																				<span class="em_currency_amount">{{pricecards.price}}</span></span>
+																				</div>
+																			</div> 
+																		</div>
+																		<div class="em_infoTextWrapper text-left align-items-center justify-content-space-around">Note: The actual prize money may be different than the prize money mentioned above if there is a tie for any of the winning positions. Check FAQs for further details . As per government regulations, a tax of 31.2% will be deducted if an individual wins more than Rs.10,000</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+														</div>
+														<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="allcontest.contest_type=='Percentage'">
+															<div>{{allcontest.winning_percentage}}%</div> 
+														</div>
+													</div>
+													<div class="me_contestSpecWrapper me_contestSpecsRight"  (click)="singlechallenge(allcontest.id);">
+														<div class="me_contestSpecsTitle">Entry Fee</div>
+														<div class="me_contestSpecsValue"><span><span class="d11-icon">₹</span><span class="currency-amount">{{allcontest.entryfee}}</span></span>
+														</div>
+													</div>
+												</div>
+												<div class="me_contestsDetailsAndCta">
+													<div class="me_contestDetailAndCtaLeft"  (click)="singlechallenge(allcontest.id);">
+														<div class="me_contestProgressBar">
+															<div class="me_contestProgressInner" [ngStyle]="{width:allcontest.getjoinedpercentage}"></div>
+														</div>
+														<div class="me_contestTeamSection">
+															<div *ngIf="allcontest.contest_type=='Percentage'">{{allcontest.joinedusers}} Teams joined 
+															</div>
+															<div *ngIf="allcontest.contest_type=='Amount'">{{allcontest.maximum_user - allcontest.joinedusers}} Teams Left
+															<!-- <br> -->
+															<!-- <div class="notificcls"> -->
+																<!-- <span *ngIf="allcontest.multi_entry=='1'">M</span> -->
+																<!-- <span *ngIf="allcontest.confirmed_challenge=='1'">C</span> -->
+																<!-- <span *ngIf="allcontest.is_bonus=='1'">B</span> -->
+															<!-- </div> -->
+															</div>
+															<div *ngIf="allcontest.contest_type=='Percentage'"><span *ngIf="allcontest.joinedusers!=0">{{allcontest.joinedusers}}/</span>∞ Teams</div> 
+															<div *ngIf="allcontest.contest_type=='Amount'"><span *ngIf="allcontest.joinedusers!=0">{{allcontest.joinedusers}}/</span>{{allcontest.maximum_user}} Teams</div>
+														</div>
+													</div>
+													<div>
+														<!--<div>
+															<div class="js--contest-card-join-btn">
+																<button class="me_borderedButton" (click)="firstcheckprofle(allcontest.entryfee,allcontest.id);" *ngIf="allcontest.isselected == false && allcontest.joinedusers < allcontest.maximum_user">Join</button> 
+															</div> 
+															<div class="js--contest-card-join-btn">
+																<button class="me_borderedButton"  (click)="invitethischallenge(allcontest.id,allcontest.matchkey);" *ngIf="allcontest.isselected == true && allcontest.joinedusers < allcontest.maximum_user">Invite</button> 
+															</div> 
+														</div>-->
+														
+														
+														<div>
+															<div class="js--contest-card-join-btn" *ngIf="allcontest.maximum_user!=0">
+																<button class="me_borderedButton" (click)="firstcheckprofle(allcontest.entryfee,allcontest.id);" *ngIf="allcontest.isselected == false  && allcontest.joinedusers < allcontest.maximum_user">Join</button>
+																<button class="me_borderedButton"(click)="invitethischallenge(allcontest.id,allcontest.matchkey);" *ngIf="allcontest.isselected == true  && allcontest.joinedusers < allcontest.maximum_user">invite</button> 
+															</div> 
+															<div class="js--contest-card-join-btn" *ngIf="allcontest.maximum_user==0">
+																<button class="me_borderedButton" (click)="firstcheckprofle(allcontest.entryfee,allcontest.id);" *ngIf="allcontest.isselected == false">Join</button>
+																<button class="me_borderedButton"(click)="invitethischallenge(allcontest.id,allcontest.matchkey);" *ngIf="allcontest.isselected == true">invite</button> 
+															</div>
+														</div>
+													</div>
+												</div> 
+											</div> 
+											<div class="me_contestsDetailsAndCta_bootom">  
+												<div class="notificcls">
+													<span class="ml" *ngIf="allcontest.multi_entry=='1'">M</span>
+													<span class="cm" *ngIf="allcontest.confirmed_challenge=='1'">C</span>
+													<span class="bo" *ngIf="allcontest.is_bonus=='1'">B</span>
+												</div> 
+												<div class="">
+													<p class="parsdeck" *ngIf="allcontest.bonus_percentage != '0'">{{allcontest.bonus_percentage}}  Bonus</p> 
+												 </div>
+											</div>
+										</div>
+								    </a>
+								    <a class="" (click)="redirecttoremainingchallenge(matchdetails.matchkey, allchallnge.catid)" *ngIf="allchallnge.contest?.length>4">
+										<div class="viewmoreclass justify-content-between w-100 "><span> View {{allchallnge.contest?.length - 4}} more contests of this category</span></div>
+										<!---->
+								     </a>
+								</div>  
+							</div> 
+ 
+							<div class="me_segment"  >
+							    <a (click)="redirecttoallchallenge(matchdetails.matchkey)" class="me_allContestsLink align-items-center justify-content-space-between">
+							       <div class="row marginZ w-100 d-flex justify-content-between">
+							       	 	<div class=" w-100 text-center">
+								            <div class="me_headerTitle" style="font-weight: normal">Are you looking for more contests?</div>
+								            <div class="me_headerText  green-color "><span>View all Contests</span></div>
+								        </div>
+								        <!-- <div class=" d-flex align-items-center justify-content-center pr-0"> -->
+								            <!-- <div class="me_count text-center color_white">{{matchdetails.totalcontest}}</div> -->
+								            <!-- <div class="me_navigationIcon pl-3"><i class="fas fa-chevron-right"></i></div> -->
+								        <!-- </div> -->
+							       </div>
+							    </a> 
+							</div> 
+						</div>
+						</div>
+							<div class="me_teams_footer d-flex align-items-center justify-content-center align-content-center m-auto" *ngIf="jointeamlists?.length > '0'"> 
+								<a class="me_footer_btn width50 text-uppercase text-center" (click)="myteams()">My Team <br><span>{{jointeamlists?.length}}</span></a>
+								<a class="me_footer_btn width50 text-uppercase text-center"  routerLink="/my-contests">Joined Contests <br><span>{{allmychallenges?.length}}</span></a>
+							</div>
+							<div class="me_teams_footer d-flex align-items-center justify-content-center align-content-center m-auto autoteam"  *ngIf="jointeamlists?.length == '0'">
+								<a class="me_footer_btn width50 text-uppercase text-center" (click)="createteam()">Create Team</a> 
+							</div>
+							
+						</div> 
+					<app-footer></app-footer> 
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+ 
+
+
+<div id="confirmation" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog col-sm-4 modal-dialog-centered" style="background: transparent;">
+		      	<div class="modal-content moderceterMain moderceterMainconfirmation">
+
+       					 <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+			          	<div id="teamselector" class=" float-left w-100">
+						    <div class="row marginZ w-100">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-12 p-3">
+									<div class="w-100 heightteams">
+										<div class="ftc_team_2 w-100" *ngFor="let jointeamlists of jointeamlists"  [ngClass]="jointeamlists.isSelected==true ? 'nonevent' : ''">
+													<label for="teamse{{jointeamlists.teamid}}" class="checkbox-inline check-dom-dh2 marginZ w-100">
+											<div class="ftc_topSection2 d-flex align-items-center ">
+												<p class="checkTerm marginZ">
+														<input type="radio" id="teamse{{jointeamlists.teamid}}" [checked]="jointeamlists.isSelected==true" (click)="newteamsect(jointeamlists.teamid)"  name="teamselect" class="red">
+														<span class="schedule2">Team {{jointeamlists.teamnumber}} <span class="alraedy_section" *ngIf="jointeamlists.isSelected==true">(Already Joined)</span> 
+														</span>
+												</p>
+											</div>
+											<div>
+												<div class="ftc_teams_bottomsection2 d-flex align-items-center">
+													<div class="ftc_teams_roleentity2 d-flex text-left width50">
+														<span class="ftc_teams_roleentity_title2">Captain</span>
+														<span class="name_section">{{jointeamlists.captain}}</span>
+													</div>
+													<div class="ftc_teams_roleentity2 width50">
+														<div class="ftc_teams_roleentity_title2 team_vicec">Vice Captain</div>
+														<div class="name_section">{{jointeamlists.vicecaptain}}</div>
+													</div>
+												</div>
+											</div> 
+
+													</label>
+										</div>
+									</div>
+ 
+
+						        	<div class="row marginZ w-100 d-flex mt-3 justify-content-between"  >
+						        		<div class="flex-fill  challenge_cancel text-center" *ngIf="jointeamlists?.length<=9">
+											<button class="border_none cencelbtn btnsbmit   m-0" (click)="joinwithnewteam()">Create New Team</button> 
+										</div>
+										<div class="flex-fill  m-0 challenge_join text-center" (click)="joinconteam();">
+											<button class="border_none color_white btnsbmit">Join</button> 
+										</div>
+						        	</div>  
+
+						    	</div>
+						    </div>
+						</div>  
+	      			<div id="confirmwin_balance" class="modal-body modalbodyW pt-2 pr-3 pl-3 pb-4 display-none" *ngFor="let balance of balance">
+ 
+			        	<div class="row marginZ w-100 p-4">
+			        		<h3 class="text-uppercase w-100 m-auto text-center">Confirmation</h3>
+			        	</div> 
+
+			        	<div class="row marginZ w-100 d-flex pt-2 pb-1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="">Current Balance</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="">₹ {{balance.usertotalbalance}}</span>
+			        		</div>
+			        	</div>
+						<div class="row marginZ w-100 d-flex pt-2 pb-1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="">Total usable Balance</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="">₹ {{balance.usablebalance}}</span>
+			        		</div>
+			        	</div>
+
+			        	<div class="row marginZ w-100 d-flex pt-2 pb-1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="font-bold">Entry Fee</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="font-bold">₹ {{entryfee}}</span>
+			        		</div>
+			        	</div>
+			        <!-- 	<div class="row marginZ w-100 d-flex pt-2 pb-1 border-bottom1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="font-bold">Usable cash Bonus</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="font-bold">₹ {{balance.usablebalance}}</span>
+			        		</div>
+			        	</div> -->
+			        	<div class="row marginZ w-100 d-flex pt-2 pb-1 border-top1" >
+			        		<div class="flex-fill  ml-0 mr-auto color-green">
+			        			<span class="">To pay</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class=" color-green">₹ {{entryfee}}</span>
+			        		</div>
+			        	</div>
+  
+						<div class="row marginZ w-100 d-flex mt-3 mb-3"   > 
+							<div class="flex-fill m-auto challenge_join text-center" (click)="joinleaguematch(entryfee,balance.myusablebalance)">
+								<button class="border_none color_white btnsbmit">Join Contest</button> 
+							</div>
+			        	</div>  
+			        </div>
+		       	</div>
+		    </div>
+  		</div> 
+ 
+<div id="joincodemodal" class="modal fade my_team_view " role="dialog" >
+		    <div class="modal-dialog col-sm-4">
+		        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+		        <div id="my_team">
+
+		           <div class="w-100 margin-auto">
+		                <div class="w-100"> 
+		                    <div class="pt-3 pb-3 w-100 db center"> 
+		                    	<input id="challenge_invite" name="challenge_invite" placeholder="Enter your code here" [(ngModel)]="getinvitecode"   type="text" required class="inputininvite inputcss  w-100">
+		                       <div class="text-center">
+
+									<div class="loginForm w-100 d-inline-block text-center mt-4">
+										<button class="w-100 text-uppercase pt-2 pb-2" (click)="joinchallengebycode()">Join contest</button>
+									</div> 
+								</div>
+		                    
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+
+		<div id="privatecontestmodal" class="modal fade my_team_view " role="dialog" >
+		    <div class="modal-dialog col-sm-4 overflow-y-auto">
+		        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+		        <div id="my_team">
+
+		           <div class="w-100 margin-auto">
+		                <div class="w-100 mt-3">  
+							<div class="ftc_contestmain w-100">
+								<div class="row marginZ w-100 ftc_create_contest mb-4">
+									<form class="mb-0 w-100">
+										<div class="email_password log-sig w-100">
+											<input class="form-control w-100 d-inline-block d_flex_align" type="setchallengename" name="email" required="" [(ngModel)]="privatechallenge.setchallengename" >
+											<label class="" for="user_email m-0">Give Your Contest Name</label>
+											<p class="m-0">Give Your Contest a Cool Name (optional)</p>
+										</div>
+										<div class="email_password log-sig w-100">
+											<input class="form-control marginZ w-100 d-inline-block d_flex_align" type="number" name="setwiningamount" required="" [(ngModel)]="privatechallenge.setwiningamount" (keypress)="isNumber($event)" (keyup)="setentryfee($event)" >
+											<label class="" for="user_email">Total winning amount (Rs) </label>
+											<p class="m-0">min 0 & max 10,000</p>
+										</div>
+										<div class="email_password log-sig w-100">
+											<input class="form-control marginZ w-100 d-inline-block d_flex_align" type="number" name="setchallengesize" required="" [(ngModel)]="privatechallenge.setchallengesize" (keypress)="isNumber($event)" (keyup)="setentryfee($event)"  >
+											<label class="m-0" for="user_email">Contest size </label>
+											<p class="m-0">min 2 & max 100</p>
+										</div>
+										<div class="email_password log-sig w-100"><div class="row marginZ w-100">
+										<div class="checkTermmultiple marginZ">
+											<input type="checkbox" name="setchallengestats" class="hidden" id="multientry" [(ngModel)]="privatechallenge.setchallengestats"> 
+											<label for="multientry" class="checkbox-inline check-dom-dh marginZ font_13 color_darkblue"> 
+												Allow friends to join multiple teams 
+											</label>
+										</div>
+									</div>
+										</div>
+									</form>
+								</div>
+
+
+								<div class="row marginZ w-100 ftc_create_contest mb-4 text-center">
+									<h5 class="w-100 entry_team">Entry Fee per Team: <span class="team">{{privatechallenge.setentryfee}}</span></h5>
+									<p class="m-0 entry_s">Entry Fee is calculated based on total prize amount & contezt size</p>
+								</div>
+
+								<div class="loginForm w-100 d-inline-block text-center">
+									<button class="w-100 text-uppercase pt-2 pb-2" (click)="createchallenge()">Create contest</button>
+								</div>
+							</div> 
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+ 
+
+
+
+
+
+			<div class="modal fade in show" id="addmoney" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+				          	<div class=" float-left w-100">
+							    <!-- <div class="em_dialog_header color_darkblue font_14 text-uppercase letter_space font_w600">Add Cash</div>  -->
+							    <div class="em_dialog_body p-0"> 
+							    	<div class="w-100" *ngIf="alloffer?.length">  
+										
+										<div class="font_10 mb-3 d-block bonusimage bonuspartfirstimage">
+											<!-- <img src="assets/images/payment-bonus.jpg"> -->
+											<h5>Make 1st Time Deposit to Get <span>Instant Bonus</span></h5>
+											<p  *ngFor="let getallawards of getallawards">Deposit <i class="fa fa-inr"></i><span>{{getallawards.min_amt}}</span> Get <i class="fa fa-inr"></i><span>{{getallawards.bonus}}</span><p>  
+											
+											
+										</div>
+										<div class="w-100 dib font-12 text "><p class="m-0 em_inviteCodeTip">Enter Amount to Calculate the Welcome Bonus:</p></div>
+										<div class="add_cash_details d-flex align-items-center mb-3">
+											<div class="bonus_section" >
+												<div class="bonus_green d-flex align-items-center justify-content-center">
+													<span class="pl-1">
+
+
+														<span *ngIf="allofferbonusfind?.length>0">₹{{allofferbonusfind[0].bonus}}</span>
+
+
+													</span>
+													<span>Bouns</span>
+												</div>
+											</div>
+											<div class="add_money text-center">
+												<form class="m-0"> 
+													<input class="form-control marginZ w-100 d-inline-block d_flex_align" type="number" name="setchallengesize" required="" [(ngModel)]="allofferbonus.balance" (keypress)="isNumber($event)" (change)="AddAmount(allofferbonus.balance)" (keyup)="setbonus($event)"   placeholder="Enter Amount">
+												</form>
+											</div> 
+										</div>
+									</div>		 
+							    	<div class="w-100" *ngIf="!alloffer?.length"> 
+										<div class="font_10 mb-3 bonuspartsecondimage">
+											
+									        <div  *ngFor="let getallofr of getallofr; let i = index;" class="addcashnew">
+												<div class="w-100 getallofr" id="getofr{{i}}"  (click)="AddAmountnew(getallofr.amount,i);">
+													<div class="d-flex">
+														<img src="assets/images/gift-icon.png">
+														<span>Get <i class="fa fa-inr"></i>{{getallofr.bonus}} Bonus</span>
+														<img src="assets/images/gift-icon.png">
+													</div>
+													<div>
+														<p>Deposit <i class="fa fa-inr"></i>{{getallofr.amount}}</p>
+														<p>offer valid Til: {{getallofr.expire}}</p>
+													</div>
+												</div>
+									        </div> 
+											
+											
+										</div>
+									</div>
+							    	<div class="w-100" *ngFor="let balance of balance">
+								        <div class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative" >
+								           <span>Current Balance</span>
+								           <span><i class="fas fa-rupee-sign"></i> {{balance.usertotalbalance}}</span>
+								        </div>
+								        <div class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 mt-2 font_12 d-flex align-items-center position-relative">
+								           <span>Usable Balance</span>
+								           <span><i class="fas fa-rupee-sign"></i> {{balance.usablebalance}}</span>
+								        </div>
+							        </div>
+							        <div class="em_inviteCodeTip color_darkblue letter_space pl-0 font_w500 font_14 padding_tb10 ">Add Cash to your account</div>
+							        
+									<div class="w-100 db tc  addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Enter Amount to Add</p></div>
+									   <div class="w-100 db flex items-center b--white-70 position-relative">
+								            <i class="dib fas fa-rupee-sign font-12 position-fainr">
+								            </i>
+										    <input id="amountadd" (keypress)="isNumber($event)"  [(ngModel)]="user.balance"  class="background-transparent  font-12 font-bold height40 w-100  " value="30" maxlength="9" min="0" required>
+										</div>
+									</div>
+									<div class="w-100 db tc f6 addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Choose Amount to Add</p></div>
+									    <div class="w-100 db flex justify-between items-center mt-1">
+									        <button class="  mr-2 font-12 font-bold  background-transparent p-1" (click)="AddAmount('100');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 100
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmount('200');">
+									            + <i class="dib fas fa-rupee-sign ">
+									            </i> 200
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmount('500');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 500
+									        </button> 
+									    </div>
+									</div>
+
+
+							        <div class="ftc_add_cashSe align-items-center padding_top20 mt-4">
+									<div class="w-100 dib font-12 text "><p class="m-0 em_inviteCodeTip">Select A Payment Method</p></div>
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-2">
+										
+							        	<button class="background-white walletbtn" (click)="payumoneyadd('paytm');"><img src="assets/images/paytm.png" class="img-fluid"></button>
+							        	<button class="background-white walletbtn"(click)="payumoneyadd('razorpay');"><img src="assets/images/razorpay.jpg" class="img-fluid"></button>
+							        </div>
+ 
+							    </div>
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+		  	</div>
+
+
+
+<div class="modal fade" id="private_contest" style="">
+	<div class="modal-dialog em_model_dialog p-0">
+		<div class="modal-content em_dialog_content bg_colorWhite">
+		        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+			<!-- Modal body -->
+			<div class="modal-body private-contestback">
+				<div class=" float-left w-100">
+					<div class="">
+						<div class="w-100 text-center contest_img_1 pt-3 pb-4">
+							<img src="assets/images/private-contest-prize.png">
+						</div>
+						<div class="w-100 private_context_h text-center text-uppercase pb-4 white">private contest</div>
+						
+						<div class="money_addbtn create_joinBtn pt-5 pb-5 d-flex align-items-center justify-content-center">
+							<button class="text-uppercase" (click)="privatecontestmodal()">Create your own contest</button>
+							<button class="text-uppercase" (click)="joincodemodal()">Join with a code</button>
+						</div>
+					</div>
+				</div>    
+			</div>
+		</div>
+	</div>
+</div>
+
+  
+
+<div id="sharemodal" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+        <div id="my_team">
+
+           <div class="w-90 margin-auto">
+			    <div class="w-100">
+			        <p class="text-center font-14 font-bold w-100 tc p-2 borderbottomlightblack">Invite your friends to complete with them </p>
+			        <div class="pb-3 w-100 db center tc text-center"> 			    
+		            
+	        			<h3 class="font-17 tc mt-3 text-center ">Your  Invite Code Is : <span class="p-2 theme-background white font-bold">{{invitecode}}</span> </h3>
+ 
+	       			    <h4 class="text-center ">
+	       		    	<a  class="inviteviaemail font-14 font-bold dib mt-2  themecolor" data-target="#shareviaemailmodal" data-toggle="modal" data-dismiss="modal">Invite via Email</a>
+	       		    </h4>
+					</div> 
+		        </div>
+		    </div> 
+		</div>
+    </div>
+</div> 
+
+<div id="shareviaemailmodal" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog col-sm-4">
+        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+        <div id="my_team">
+
+           <div class="w-90 margin-auto">
+			    <div class="w-100">
+			        <p class=" font-14 font-bold w-100 tc p-2 borderbottomlightblack">Invite Friends Via Email </p>
+			        <div class="pb-3 w-100 db center"> 			    
+		            
+	        		<h3 class="font-17 tc mt-3">Your  Invite Code Is : <span class="p-2 theme-background white font-bold">{{invitecode}}</span> </h3>
+
+
+		          	<form  [formGroup]="rForm" (ngSubmit)="sendinvite(rForm.value)">
+		          		<div class="input-field form-group"> 
+							<input id="user_email" class="font-12 background-transparent w-100 dib   height40 inputininvite" placeholder="Enter email here" formControlName="email" [ngClass]="{'errorclass': !rForm.controls['email'].valid && rForm.controls['email'].touched}"  type="text" required>
+						</div>
+
+	                       <div class="text-center">
+								<button type="submit" class="joinleauge background-green" [disabled]="!rForm.valid" >Send Code</button>
+							</div> 
+		          	</form>
+					</div> 
+		        </div>
+		    </div> 
+		</div>
+    </div>
+</div> 

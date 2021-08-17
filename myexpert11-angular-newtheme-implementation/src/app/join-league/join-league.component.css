@@ -1,0 +1,23 @@
+.autoteam{   
+	background-color: #24ba38;
+    height: 45px;
+}
+.autoteam a{
+	border: 0px;
+    width: 150px !important;
+    background: #fff;
+    height: 35px;
+    border-radius: 4px;
+    color: #24ba38;
+	font-weight: 900;
+    line-height: 35px;
+}
+.main_header{
+	top: 0px;
+}
+
+.blinking {  
+    top: 17px; 
+    margin: auto;
+    right: 0px;
+} 

@@ -1,0 +1,81 @@
+	<section class="body-section-home">     
+		<div class="body-section-home-inner"> 
+			<app-left-side></app-left-side>
+			<div class="rightBox">
+				<div class="rightBox-inner db">		
+
+						<div class="flex-wth w-100"> 
+							
+							<header class="main_header main_header_2 pt-0" id="header1">
+								<div class="mobile_nav">
+									<div class="" id="fixHead">
+
+										<app-header></app-header>
+										<div class="info-bar w-100 col-lg-12 col-md-12 cl-sm-12 col-12 p-0">
+										    <div class="infobarContent">
+										        <div class="infobarContentRow w-100 d-flex" *ngFor="let matchdetails of matchdetails">
+
+										            <div class="js--match-header-title infobarContentLeft">{{matchdetails.team1name}} vs {{matchdetails.team2name}}</div>
+										            <div class="infobarContentLeft text-center">
+										                <div class="timer d-flex justify-content-center align-items-center"><i class="far fa-clock" style="height: 16px; width: 16px; font-size: 16px;"></i><span class="timeRemaining"><countdown-timer [end]="matchdetails.time_start"></countdown-timer></span></div>
+										            </div>  
+										        </div>
+										    </div>
+ 
+										</div>
+									</div>
+								</div>
+							</header> 
+
+							<div class="me_segment height_main pt-5 mt-5 mb-5" >
+								
+							    
+							</div>
+ 
+						</div>
+							<div class="me_teams_footer d-flex align-items-center justify-content-center align-content-center m-auto">
+								<a class="me_footer_btn width50 text-uppercase text-center" href="#">My Team 1</a>
+								<a class="me_footer_btn width50 text-uppercase text-center	" href="#">Joined Contests</a>
+							</div>
+						</div> 
+					<app-footer></app-footer> 
+
+
+
+					<div id="winnner-rank" class="em_bottom_sheet">
+					    <div class="em_winnerBreakupWrapper">
+					        <div class="em_headerContainer d-flex justify-content-space-between ">
+					            <div>Winning Breakup</div>
+					            <div class="em_totalWinnings d-flex ">
+					                <div class="em_totalWinningsTitle">TOTAL WINNINGS</div>
+					                <div><span><span class="d11-icon">₹</span><span class="em_currency_amount">10,00,000</span></span>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="em_breakupContainer">
+					            <div class="em_scroll">
+					                <div class="em_breakupWrapper">
+					                    <div class="em_rankRowWrapper d-flex align-items-center">
+					                        <div class="em_rankRowTitle">Rank 1</div>
+					                        <div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">1,00,000</span></span>
+					                        </div>
+					                    </div>
+					                    <div class="em_rankRowWrapper d-flex align-items-center">
+					                        <div class="em_rankRowTitle">Rank 1</div>
+					                        <div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">1,00,000</span></span>
+					                        </div>
+					                    </div>
+					                    <div class="em_rankRowWrapper d-flex align-items-center">
+					                        <div class="em_rankRowTitle">Rank 1</div>
+					                        <div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">1,00,000</span></span>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="em_infoTextWrapper text-left align-items-center justify-content-space-around">Note: The actual prize money may be different than the prize money mentioned above if there is a tie for any of the winning positions. Check FAQs for further details . As per government regulations, a tax of 31.2% will be deducted if an individual wins more than Rs.10,000</div>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+				</div>
+			</div> 
+	</section>

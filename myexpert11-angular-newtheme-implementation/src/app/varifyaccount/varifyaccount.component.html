@@ -1,0 +1,490 @@
+
+	<section class="body-section-home">     
+		<div class="body-section-home-inner">
+			
+				<app-left-side></app-left-side>
+				<div class="rightBox">
+					<div class="rightBox-inner db">			 			
+						<div class="flex-wth">
+						
+						<app-header></app-header>
+
+				 			<div class="d-flex flex-column col-sm-12  mt-5 paddingZ">  
+								<ul class="nav nav-tabs createteamtabs accovarif">
+								  <li><a data-toggle="tab"  href="#accountvarify"  class="active">Mobile & Email</a></li>
+								  <li><a data-toggle="tab"  href="#panvarify">Pan Card</a></li> 
+								  <li><a data-toggle="tab"  href="#bankvarify">Bank</a></li> 
+								</ul>
+
+								<div class="tab-content col-sm-12">
+									<div id="accountvarify" class="tab-pane in active"> 
+										<!-- first step when send for otp-->
+										<div class="col-xs-12 outerBox outerbox-mob email-tabWidthSec" *ngIf="checkdata.email_verify =='0' " id="emailvarify">
+											<div class="col-xs-12 verify-mobemailSec">
+												<h3><i class="fas fa-envelope" aria-hidden="true"></i> Verify your Email</h3>
+												
+												<div class="siguForm c-instruct email-boxSec">
+													<div class="input-field">
+														<input id="challenge_invite" [(ngModel)]="email" name="challenge_invite" type="text" required>
+														
+														<p style="color:red;margin: 0px;" id="emailm"></p>
+														<h6 class="otp-sec">We will send you a 4 digit OTP for verification</h6>
+													</div>
+												</div>
+												<div class="col-xs-12 otpSend-link" style="padding: 0px;">
+													<a  (click)="emailvarifys()">Send OTP</a>
+												</div>
+											</div>
+										</div>
+										<!-- firts step after otp-->
+										<div class="col-xs-12 outerBox outerbox-mob email-tabWidthSec pull-left" style="display:none;" id="emailotpvarify">
+											<div class="col-xs-12 verify-mobemailSec">
+												<h3><i class="fas fa-envelope" aria-hidden="true"></i> Verify your Email</h3>
+												<div class="email-boxSec">
+													<p class="alertclass position-relative black-color">Check Your Mail to verify your email address. If you don't find your email address then please check your spam folder.</p>
+												</div>
+												<div class="siguForm c-instruct email-boxSec">
+													<div class="input-field">
+														<input id="challenge_invite" [(ngModel)]="emailotp" name="challenge_invite" type="text" required>
+														<label for="challenge_invite" class="">OTP</label>
+														<p style="color:red;margin: 0px;" id="emailm"></p>
+														<h6 class="otp-sec">Enter your otp for verification</h6>
+													</div>
+												</div>
+												<div class="col-xs-12 otpSend-link" style="padding: 0px;">
+													<a  (click)="emailvarifysconfirm()">Verify Email</a>
+													
+												<!-- 	<a class="btn btnx  darkerBlueBtn" type="button" style="margin: 0px 0 15px;" (click)="resendotpemail()">Resend OTP</a> -->
+												</div>
+											</div>
+										</div>
+										<!-- first step after verification-->
+										<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" id="succssemailvarify" *ngIf="checkdata.email_verify =='1'">
+											<div class="col-xs-12 verify-mobemailSec verify_mobemail sent_verificationSec">
+												<h3><i class="fas fa-envelope" aria-hidden="true"></i> Verify your Email</h3>
+												<h5>✔ Your Email address Verified </h5>
+												<h5>Email: {{userdetails.email}} </h5>
+												
+											</div>
+										</div>
+										<!-- second step without doing anything-->
+										<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.email_verify =='0' && checkdata.mobile_verify =='0'">
+											<div class="col-xs-12 verify-mobemailSec verify_mobemail">
+												<h3><i class="fas fa-mobile-alt" aria-hidden="true"></i> Verify your Mobile Number</h3>
+												<h5>To verify your Mobile number please complete the steps mentioned below:</h5>
+												<ul>
+													<li>Verify your email address.</li>
+												</ul>
+											</div>
+										</div>
+										<!-- second step for sending otp-->
+										<div class="col-xs-12 outerBox outerbox-mob mob-tabWidthSec" *ngIf="checkdata.email_verify =='1' && checkdata.mobile_verify =='0'" id="mobileenter">
+											<div class="col-xs-12 verify-mobemailSec ">
+												<h3><i class="fas fa-mobile-alt mobile-icon" aria-hidden="true"></i> Verify your mobile</h3>
+												
+												<div class="siguForm c-instruct email-boxSec">
+													<div class="input-field">
+														<input id="challenge_invite" [(ngModel)]="MobileNumber" maxlength="10" (keypress)="onlyNumbers($event)" name="challenge_invite" type="text" required>
+														<label for="challenge_invite" class="">Mobile number</label>
+														<p style="color:red;margin: 0px;" id="mobilm"></p>
+														<h6 class="otp-sec">We will send you a 4 digit OTP for verification</h6>
+													</div>
+												</div>
+												<div class="col-xs-12 otpSend-link" style="padding: 0px;">
+													<a  (click)="mobilevarify()">Send OTP</a>
+												</div>
+											</div>
+										</div>
+										<!--second step after otp sent-->
+										<div class="col-xs-12 outerBox outerbox-mob email-tabWidthSec pull-left" style="display:none;" id="otpenter" *ngIf="checkdata.mobile_verify =='0'">
+											<div class="col-xs-12 verify-mobemailSec">
+												<h3><i class="fas fa-mobile-alt" aria-hidden="true"></i> Verify your Mobile number</h3>
+												<div class="email-boxSec">
+													<p class="alertclass position-relative color-black m-0">Check Your Mobile for Otp</p>
+												</div>
+												<div class="siguForm c-instruct email-boxSec">
+													<div class="input-field">
+														<input id="challenge_invite" [(ngModel)]="otp" name="challenge_invite" type="text" required>
+														<label for="challenge_invite" class="">OTP</label>
+														<p style="color:red;margin: 0px;" id="emailm"></p>
+														<h6 class="otp-sec">Enter your otp for verification</h6>
+													</div>
+												</div>
+												<div class="col-xs-12 otpSend-link" style="padding: 0px;">
+													<a  (click)="mobilevarifysconfirm()">Verify Mobile Number</a>
+													<a class="btn btnx  darkerBlueBtn" type="button" style="margin: 0px 0 15px;" (click)="resendotpmobile()" *ngIf="mresend">Resend OTP</a>
+												</div>
+											</div>
+										</div>
+										<!-- second step after verification-->
+										<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" id="succssmobilevarify" *ngIf="checkdata.mobile_verify =='1'">
+											<div class="col-xs-12 verify-mobemailSec verify_mobemail sent_verificationSec">
+												<h3><i class="fas fa-mobile-alt" aria-hidden="true"></i> Verify Your Mobile</h3>
+												<h5>✔ Your Mobile Number Is Verified</h5>
+												<h5>Mobile no. {{userdetails.mobile}}</h5>
+												
+											</div>
+										</div>
+									</div>
+								  <div id="panvarify" class="tab-pane">
+									   <!-- if pan card reject-->
+										<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.pan_verify =='2'">	
+											<div *ngIf="pancarddetails" class="col-md-12 col-sm-12 col-xs-12 email-varify maindiv1" style="padding:10px;">
+											<p class="text-center" style="color:red;font-size:15px;"> Your PAN Card Request has been rejected </p>
+											<h5 style="color: #333"> Name on pan card:- <span style="text-transform: uppercase;">{{pancarddetails.panname}}</span> </h5>
+											<h5 style="color: #333;text-transform: uppercase;"> PAN Card Number:- {{pancarddetails.pannumber}} </h5>
+											<h5 style="color: #333"> Date Of Birth:- {{pancarddetails.pandob}} </h5>
+											
+											<a href="{{pancarddetails.image}}" target="_blank" *ngIf="pancarddetails.image!=''"><img src="{{pancarddetails.image}}" *ngIf="pancarddetails.imagetype!='pdf'" style="max-width:200px;">
+											<img src="/assets/images/pdf-icon.jpg" *ngIf="pancarddetails.imagetype=='pdf'" style="max-width:200px;width:100px;"></a>
+											<p class="text-center" style="color: red;font-weight: 600"><strong> Reason:-  </strong>{{checkdata.pan_comment}} </p>
+										</div>
+									   </div> 
+									   <!-- if send or verified-->
+									   <div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.pan_verify =='0'">
+											<div class="col-xs-12 verify-mobemailSec verify_mobemail sent_verificationSec">
+												<h3><i class="fas fa-credit-card-alt" aria-hidden="true"></i> Verify your PAN Details</h3>
+												<h5>Your PAN Card details are sent for verification</h5>
+												
+											</div>
+										</div>
+										<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.pan_verify =='1'">
+											<div class="col-xs-12 verify-mobemailSec verify_mobemail sent_verificationSec">
+												<h3><i class="fas fa-credit-card-alt" aria-hidden="true"></i> Verify your PAN Details</h3>
+												<h5>✔ Your PAN Card details Verified</h5>
+											</div>
+										</div>
+									   <div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="(checkdata.pan_verify!='-1') && (checkdata.pan_verify!='2')">	
+											
+											<div *ngIf="pancarddetails" class="col-md-12 col-sm-12 col-xs-12 email-varify maindiv1" style="padding:10px;">
+											<h5 style="color: #333"> Name on pan card:- <span style="text-transform: uppercase;">{{pancarddetails.panname}}</span> </h5>
+											<h5 style="color: #333"> PAN Card Number:- {{pancarddetails.pannumber}} </h5>
+											<h5 style="color: #333"> Date Of Birth:- {{pancarddetails.pandob}} </h5>
+											<a href="{{pancarddetails.image}}" target="_blank" *ngIf="pancarddetails.image!=''"><img src="{{pancarddetails.image}}" *ngIf="pancarddetails.imagetype!='pdf'" style="max-width:200px;">
+											<img src="/assets/images/pdf-icon.jpg" *ngIf="pancarddetails.imagetype=='pdf'" style="max-width:200px;width:100px;"></a>
+										</div>
+									   </div> 
+										<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.email_verify =='1' && checkdata.mobile_verify =='1' && checkdata.pan_verify !='1' && checkdata.pan_verify !='0'">
+											<div class="col-xs-12 verify-mobemailSec" style="padding:10px;" *ngIf="checkdata.pan_verify !='0'">
+												<h3><i class="fas fa-credit-card-alt" aria-hidden="true"></i> Verify your PAN Details</h3>
+												<div class="form-group "> 
+													<div class="fileuploadD mt-3">
+														<label class="" for="uploadpan">
+															Upload Pan file
+														</label>
+														<input type="file" id="uploadpan" accept="image/x-png,image/gif,image/jpeg,application/pdf" hidden (change)="PreviewImagepan($event)" >
+														<span>Image size upto 4mb*</span>
+													</div> 
+												</div>
+												<div class="form-group">
+												   <label for="UserName">Full Name as on Your PAN Card & Bank Account</label>
+												   <input class="form-control" id="Text1"  (ngModelChange)="checkAlphaOnly($event)" [(ngModel)]="panname" maxlength="100" name="UserName" placeholder="Full Name as on Your PAN Card & Bank Account" type="text" style="text-transform: uppercase;" [ngClass]="{'errorclass' : (validpanname == false)}">
+												   <p *ngIf="!validpanname" class="error_on_form">Please enter your valid name</p>
+											  </div>
+											  <div class="form-group">
+												  <label for="TeamName">PAN Card Number</label>
+												  <input class="form-control" id="TeamName" maxlength="10" (ngModelChange)="checkNoSpecial($event)"  placeholder="PAN Card Number" [(ngModel)]="pannumber" value="" type="text" style="text-transform: uppercase;" [ngClass]="{'errorclass' : (validpannumber == false)}">
+												  <p *ngIf="!validpannumber" class="error_on_form">Please enter valid pan card number</p>
+												  <p style="color:red;" id="pancardm">{{panerror}}</p>
+											  </div>
+											 <div class="top-margin">
+												<div class="col-xs-4 padding5">
+													<div class="form-group">
+														 <label for="DayOfBirth">DOB</label>
+														<select class="form-control col-xsm-3" [(ngModel)]="DayOfBirth"  id="Sel_SelectCountry" name="DayOfBirth" placeholder="-- Select Status --"><option value="">DOB</option>
+															<option value="01">1</option>
+															<option value="02">2</option>
+															<option value="03">3</option>
+															<option value="04">4</option>
+															<option value="05">5</option>
+															<option value="06">6</option>
+															<option value="07">7</option>
+															<option value="08">8</option>
+															<option value="09">9</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="27">27</option>
+															<option value="28">28</option>
+															<option value="29">29</option>
+															<option value="30">30</option>
+															<option value="31">31</option>
+														</select>
+														<span class="field-validation-valid" data-valmsg-for="DayOfBirth" data-valmsg-replace="true"></span>	
+													</div>
+												</div>
+												<div class="col-xs-4 padding5">
+													<div class="form-group">
+														 <label for="MonthOfBirth">Month</label>
+														<select class="form-control  col-xsm-3" id="Sel_SelectCountry1" [(ngModel)]="MonthOfBirth" name="MonthOfBirth" placeholder="-- Select Status --" ><option value="">Month</option>
+														<option value="1">Jan</option>
+														<option value="2">Feb</option>
+														<option value="3">Mar</option>
+														<option value="4">Apr</option>
+														<option value="5">May</option>
+														<option value="6">June</option>
+														<option value="7">July</option>
+														<option value="8">Aug</option>
+														<option value="9">Sep</option>
+														<option value="10">Oct</option>
+														<option value="11">Nov</option>
+														<option value="12">Dec</option>
+													</select>
+													<span class="field-validation-valid"  data-valmsg-for="MonthOfBirth" data-valmsg-replace="true"></span>	
+													</div>
+												</div>
+												<div class="col-xs-4 padding5">
+													<div class="form-group">
+													   <label for="YearOfBirth">Year</label>
+														<select class="form-control col-xsm-3" [(ngModel)]="YearOfBirth" id="Sel_SelectCountry2" name="YearOfBirth" placeholder="-- Select Status --"><option value="">Year</option>
+															<option value="2000">2000</option>
+															<option value="1999">1999</option>
+															<option value="1998">1998</option>
+															<option value="1997">1997</option>
+															<option value="1996">1996</option>
+															<option value="1995">1995</option>
+															<option value="1994">1994</option>
+															<option value="1993">1993</option>
+															<option value="1992">1992</option>
+															<option value="1991">1991</option>
+															<option value="1990">1990</option>
+															<option value="1989">1989</option>
+															<option value="1988">1988</option>
+															<option value="1987">1987</option>
+															<option value="1986">1986</option>
+															<option value="1985">1985</option>
+															<option value="1984">1984</option>
+															<option value="1983">1983</option>
+															<option value="1982">1982</option>
+															<option value="1981">1981</option>
+															<option value="1980">1980</option>
+															<option value="1979">1979</option>
+															<option value="1978">1978</option>
+															<option value="1977">1977</option>
+															<option value="1976">1976</option>
+															<option value="1975">1975</option>
+															<option value="1974">1974</option>
+															<option value="1973">1973</option>
+															<option value="1972">1972</option>
+															<option value="1971">1971</option>
+															<option value="1970">1970</option>
+															<option value="1969">1969</option>
+															<option value="1968">1968</option>
+															<option value="1967">1967</option>
+															<option value="1966">1966</option>
+															<option value="1965">1965</option>
+															<option value="1964">1964</option>
+															<option value="1963">1963</option>
+															<option value="1962">1962</option>
+															<option value="1961">1961</option>
+															<option value="1960">1960</option>
+															<option value="1959">1959</option>
+															<option value="1958">1958</option>
+														</select>
+														<span class="field-validation-valid" data-valmsg-for="YearOfBirth" data-valmsg-replace="true"></span>	
+													</div>
+												</div>
+											</div> 
+											<div class="col-xs-12" style="padding: 0px;">
+												<a (click)="submit_pan_details()" class="submit-button text-center white mt-4">Submit for verification</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.email_verify =='0' || checkdata.mobile_verify =='0'">
+										<div class="col-xs-12 verify-mobemailSec verify_mobemail">
+											<h3><i class="fas fa-credit-card-alt" aria-hidden="true"></i> Verify your PAN Details</h3>
+											<h5>To update your PAN card details please complete the steps mentioned below:</h5>
+											<ul>
+												<li>Verify your Email address</li>
+
+												<li>Verify your mobile number.</li>
+											</ul>
+										</div>
+									</div>
+										
+										<!--------verifaction-PAN------>
+									
+									</div>
+								  <div id="bankvarify" class="tab-pane"> 
+									
+ 
+									<div *ngIf="checkdata.email_verify =='1' && checkdata.mobile_verify =='1' && checkdata.pan_verify!='-1'">
+									<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" style="padding: 10px;" *ngIf="checkdata.bank_verify !='1' && checkdata.bank_verify!='0'">
+										<div class="col-xs-12 verify-mobemailSec ">
+											<h3><i class="fas fa-university" aria-hidden="true"></i> Verify your BANK Details</h3>
+											     
+												<div class="form-group mt-3"> 
+													<div class="fileuploadD">
+														<label class="" for="uploadbank">
+															Upload Images
+														</label>
+														<input type="file"  id="uploadbank" accept="image/x-png,image/gif,image/jpeg,application/pdf" hidden (change)="PreviewImagebank($event)" >
+														<span>Image size upto 4mb*</span>
+													</div> 
+												</div>
+											<div class="form-group">
+												 <label for="CustBankAccountNo">Account Number</label>
+												  <input class="form-control" [(ngModel)]="accno" id="AccountNumber" name="CustBankAccountNo" placeholder="Account Number" value="" type="text" (change)="checkForNumbers(accno)" [ngClass]="{'errorclass' : (validaccno == false)}">
+												  <p *ngIf="!validaccno" class="error_on_form">Please enter your valid account number.</p>
+												  <p style="color:red;" id="bankaccountm"></p>
+										  </div>
+										   <div class="form-group">
+											  <label for="CustBankAccountConfrmNo">Confirm Account Number</label>
+												<input class="form-control" [(ngModel)]="caccno"  id="CAccountNumber" name="CustBankAccountConfrmNo"   placeholder="Confirm Account Number" value="" type="text" (change)="checkForNumbers1(caccno)" [ngClass]="{'errorclass' : (validecnaccno == false)}">
+												  
+												  <p *ngIf="!validecnaccno" class="error_on_form">Please enter your valid account number.</p>
+										  </div>
+										 <div>   <span id="confirmMessage" class="confirmMessage"></span></div>
+										 <div class="form-group">
+											 <label for="CustBankIfscCode">IFSC Code</label>
+											  <input class="form-control uppercase" [(ngModel)]="ifsc"  id="IfscCode" maxlength="11" minlength="10" name="CustBankIfscCode"  placeholder="IFSC Code" value="" type="text" style="text-transform: uppercase;" (change)="checkForIfscCode(ifsc)" [ngClass]="{'errorclass' : (validifsccode == false)}">
+												<p *ngIf="!validifsccode" class="error_on_form">Please enter your valid IFSC code.</p>
+												<p style="color:red;" id="bankifscm"></p>
+									   </div>
+										<div class="form-group">
+											 <label for="CustBankName">Bank Name</label>
+											 <input class="form-control"  [(ngModel)]="bankname" id="BankName" name="CustBankName" placeholder="Bank Name" value="" type="text" style="text-transform: uppercase;" (change)="checkForBankName(bankname)" [ngClass]="{'errorclass' : (validbankname == false)}">
+											 <p *ngIf="!validbankname" class="error_on_form">Please enter valid bank name.</p>
+										</div>
+										<div class="form-group">
+											 <label for="CustBankBranch">Bank Branch Name</label>
+											<input class="form-control uppercase"  [(ngModel)]="bankbranch" id="BankBranch" minlength="3" name="CustBankBranch"  placeholder="Please Enter Bank Branch Name &amp; State" value="" type="text" style="text-transform: uppercase;" (change)="checkForBankBranch(bankbranch)" [ngClass]="{'errorclass' : (validbankbranch == false)}">
+											 <p *ngIf="!validbankbranch" class="error_on_form">Please enter valid bank branch name.</p>
+										</div>
+										 <div class="row top-margin">
+											<div class="col-sm-4">
+												<div class="form-group">
+												  <label for="CustStateIDPKFK">State (as per The Bank Detail)</label>
+														<select class="form-control col-xsm-3" [(ngModel)]="state" id="Sel_SelectCountry" name="CustStateIDPKFK"  placeholder="-- Select Status --"><option value="">Select State</option>
+															<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+															<option value="Andhra Pradesh">Andhra Pradesh</option>
+															<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+															<option value="Assam">Assam</option>
+															<option value="Bihar">Bihar</option>
+															<option value="Chandigarh">Chandigarh</option>
+															<option value="Chhattisgarh">Chhattisgarh</option>
+															<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+															<option value="Daman and Diu">Daman and Diu</option>
+															<option value="Delhi">Delhi</option>
+															<option value="Goa">Goa</option>
+															<option value="Gujarat">Gujarat</option>
+															<option value="Haryana">Haryana</option>
+															<option value="Himachal Pradesh">Himachal Pradesh</option>
+															<option value="Jammu & Kashmir">Jammu & Kashmir</option>
+															<option value="Jharkhand">Jharkhand</option>
+															<option value="Karnataka">Karnataka</option>
+															<option value="Kerala">Kerala</option>
+															<option value="Lakshadweep">Lakshadweep</option>
+															<option value="Madhya Pradesh">Madhya Pradesh</option>
+															<option value="Maharashtra">Maharashtra</option>
+															<option value="Manipur">Manipur</option>
+															<option value="Meghalaya">Meghalaya</option>
+															<option value="Mizoram">Mizoram</option>
+															<option value="Nagaland">Nagaland</option>
+															<option value="Orissa">Orissa</option>
+															<option value="Pondicherry">Pondicherry</option>
+															<option value="Punjab">Punjab</option>
+															<option value="Rajasthan">Rajasthan</option>
+															<option value="Sikkim">Sikkim</option>
+															<option value="Tamil Nadu">Tamil Nadu</option>
+															<option value="Telangana">Telangana</option>
+															<option value="Tripura">Tripura</option>
+															<option value="Uttar Pradesh">Uttar Pradesh</option>
+															<option value="Uttaranchal">Uttaranchal</option>
+															<option value="West Bengal">West Bengal</option>
+														</select>					
+													 </div>
+												</div>
+											  </div>                 
+											<div class="col-xs-12 information-pan">
+												<p>* All fields are mandatory</p>
+											</div>
+											<div class="col-xs-12 " style="padding: 0px;">
+												<a (click)="submit_bank_details()" class="submit-button text-center white mt-4">Submit for verification</a>
+											</div>
+										</div>
+									</div>
+									<!--after send-->
+									<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.bank_verify =='0'">
+										<div class="col-xs-12 verify-mobemailSec verify_mobemail sent_verificationSec">
+											<h3><i class="fas fa-university" aria-hidden="true"></i> Verify your BANK Details</h3>
+											<h5>Your Bank details are sent for verification</h5>
+											
+										</div>
+									</div>
+									<!-- after verified-->
+									<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.bank_verify =='1'">
+										<div class="col-xs-12 verify-mobemailSec verify_mobemail sent_verificationSec">
+											<h3><i class="fas fa-university" aria-hidden="true"></i> Verify your BANK Details</h3>
+											<h5>✔ Your Bank details verified</h5>
+										</div>
+									</div>
+									<!--details of bank-->
+									<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="(checkdata.bank_verify!='-1') && (checkdata.bank_verify!='2')">
+										<div *ngIf="bankdetails" class="col-md-12 col-sm-12 col-xs-12 email-varify maindiv1" style="padding:10px;">
+											<h5 style="color: #333"> Bank account Number:- {{bankdetails.accno}} </h5>
+											<h5 style="color: #333"> IFSC Number:- {{bankdetails.ifsc}} </h5>
+											<h5 style="color: #333"> Bank Name:- <span style="text-transform: uppercase;"> {{bankdetails.bankname}} </span></h5>
+											<h5 style="color: #333"> Bank Branch:- <span style="text-transform: uppercase;"> {{bankdetails.bankbranch}} </span> </h5>
+											<h5 style="color: #333"> State:-  <span style="text-transform: uppercase;"> {{bankdetails.state}} </span></h5>
+											<a href="{{bankdetails.image}}" target="_blank" *ngIf="bankdetails.image!=''"><img src="{{bankdetails.image}}" style="max-width:200px;" *ngIf="bankdetails.imagetype!='pdf'">
+											<img src="/assets/images/pdf-icon.jpg" *ngIf="pancarddetails.imagetype=='pdf'"  style="max-width:200px;width:100px;"></a>
+											
+										</div>
+									</div>
+									<!-- after rejection-->
+									<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.bank_verify =='2'">
+										<p class="text-center" style="color:red;font-size:15px;"> Your Bank Verification Request has been rejected </p>
+										<h5 style="color: #333"> Bank account Number:- {{bankdetails.accno}} </h5>
+										<h5 style="color: #333"> IFSC Number:- {{bankdetails.ifsc}} </h5>
+										<h5 style="color: #333"> Bank Name:- <span style="text-transform: uppercase;"> {{bankdetails.bankname}} </span></h5>
+										<h5 style="color: #333"> Bank Branch:- <span style="text-transform: uppercase;"> {{bankdetails.bankbranch}} </span> </h5>
+										<h5 style="color: #333"> State:-  <span style="text-transform: uppercase;"> {{bankdetails.state}} </span></h5>
+										<a href="{{bankdetails.image}}" target="_blank" *ngIf="bankdetails.image!=''">
+											<img src="{{bankdetails.image}}" style="max-width:200px;" *ngIf="bankdetails.imagetype!='pdf'">
+											<img src="/assets/images/pdf-icon.jpg" *ngIf="bankdetails.imagetype=='pdf'"  style="max-width:200px;width:100px;">
+										</a>
+										<p class="text-center" style="color: red;font-weight: 600;"><strong> Reason:-  </strong>{{checkdata.bank_comment}} </p>
+									</div>
+
+									</div>
+									<div class="col-xs-12 outerBox outerbox-mob pan-cardMainSec" *ngIf="checkdata.email_verify =='0' || checkdata.mobile_verify =='0' || checkdata.pan_verify=='-1'">
+										<div class="col-xs-12 verify-mobemailSec verify_mobemail">
+											<h3><i class="fas fa-university" aria-hidden="true"></i> Verify your BANK Details</h3>
+											<h5>To update your bank card details please complete the steps mentioned below:</h5>
+											<ul>
+
+												<li>Verify your Email id.</li>
+												<li>Verify your mobile number.</li>
+												<li>Verify your PAN card.</li>
+											</ul>
+										</div>
+									</div>
+									
+									
+									<!--------verifaction-bank------>
+								  </div>  
+								</div>					  
+							</div>
+							<app-footer></app-footer>
+							
+						</div>
+						</div>
+						</div>
+					</div>
+				</section>
+ 

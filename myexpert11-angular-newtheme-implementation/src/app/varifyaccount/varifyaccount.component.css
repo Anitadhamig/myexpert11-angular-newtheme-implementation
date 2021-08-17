@@ -1,0 +1,37 @@
+.personaldetails{
+	font-size: 12px;
+text-transform: uppercase;
+color: white;font-weight: bold;
+}
+p{
+	font-size: 12px;
+	color:white;
+
+}
+.mtop{
+	margin-top:20px;
+}
+.mtp15{
+	margin-top:10px;
+}
+.fontbold{
+	font-weight: bold;
+}
+.error_on_form{
+	color: red;
+}
+.errorclass{
+	border-bottom: 1px solid red;
+}
+.form-group select{
+	font-size: 12px;
+}
+.sucmsg{
+	color:#19A974 !important;
+	font-weight: bold;text-align: center;margin-top:10px;
+}
+.errormsg{
+	color:red !important;font-weight: bold;text-align: center;margin-top:10px;
+}
+
+

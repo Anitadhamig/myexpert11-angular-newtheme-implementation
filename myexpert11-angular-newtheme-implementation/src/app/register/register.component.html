@@ -1,0 +1,158 @@
+
+	<section class="body-section-home">     
+		<div class="body-section-home-inner position-relative">
+			 
+			<app-left-side></app-left-side>
+			<div class="rightBox">
+				<div class="w-100 d-flex">
+					<div class="rightBox-inner" style="display: block;">						
+						<div class="flex-wth w-100 pt-4 pb-4">
+							<div class="row logo_section">
+								<a><img class="img-fluid fantasy_logo" src="/assets/images/logo-me11.png"></a>
+								<div class="new_section_onregiter">
+									<div class="img_sec">
+										<img src="assets/images/vector-megaphone.png">
+									</div>
+									<div class="con_part">
+										<h5><i class="fa fa-inr"></i>51 just a step away</h5> 
+										<p>Register free to get bonus</p>
+									</div>
+								</div>
+							</div>
+							<div class="login_form_design"> 
+								<div class="login_formM">
+									<form  [formGroup]="rForm" (ngSubmit)="register(rForm.value)">
+										<div class="email_password log-sig">									  
+											<input formControlName="email"   id="email_id" name="email_id" type="text" required class="forms_field-input"  />
+											<label for="user_email">Email/Mobile no. </label>
+											<span><i class="fas fa-user" aria-hidden="true"></i></span>
+											<div class="br_line"></div>
+									 
+										</div>
+										<div class="email_password log-sig">
+											<input  formControlName="password" id="password" name="password" type="password" required class="forms_field-input" />
+											<label class="" for="password">Password </label>
+											<p class="eyebtn"><i class="fa fa-eye"></i></p>
+											<span><i class="fa fa-key" aria-hidden="true"></i></span>
+											<div class="br_line"></div>
+										 </div>
+										<div class="email_password log-sig">
+											<input  formControlName="cpassword"  id="cpassword" name="cpassword" type="password" required class="forms_field-input" />
+											<label class="" for="cpassword">Confirm Password </label>
+											<p class="eyebtn"><i class="fa fa-eye"></i></p>
+											<span><i class="fa fa-key" aria-hidden="true"></i></span>
+											<div class="br_line"></div>
+									 	</div>
+									 
+										<div class="reg-agree height40">
+											<p>
+												<input name="checkbox"   id="code-in-box" class="filled-in hide"  type="checkbox">
+												<label for="code-in-box" (click)="refercodeSec();">								
+													Do you have any referal Code?
+												</label>
+										 	</p>
+										</div>
+										<div  id="refercodeSec" class="email_password log-sig hidden">	
+											<input formControlName="refercode"   id="refercode" name="refercode" type="text" required class="forms_field-input"  />
+											<label for="refercode">Referral Code </label>
+											<span><i class="fa fa-edit" aria-hidden="true"></i></span>
+											<div class="br_line"></div>
+									 
+										</div>
+										<div class="loginForm">
+											<button type="submit" (Click)="register(rForm.value)" >Register FREE</button>
+										</div> 
+
+										<div >
+											<p class="termandcondition text-center w-100">  
+												By registering, I agree to MyExpert11's <a  routerLink="/terms-conditions">terms & conditions</a> 
+										 	</p>
+										</div>
+									</form>
+								</div>
+
+								<div>
+									<div class="or_innerSec"><span>or</span></div>
+								</div>
+									<p class="m-0 font_12 text-center">REGISTER WITH</p>
+
+								<div class="google_fbMain signup_th">
+									<ul class="list-inline">
+										<li class="list-inline-item fb_section facebook_section">
+											<button class="facebook" (click)="signInWithFB();"><img src="/assets/images/facebook.png"><span>facebook</span></button>
+										</li>
+										<li class="list-inline-item fb_section ggl_section">
+											<button class="google" (click)="signInWithGoogle();"><img src="/assets/images/google.png"><span>google</span></button>
+										</li>
+									</ul>
+								</div>		
+								<div class="footer-ref">
+									 <div class="ref-acc">
+										<p>Have a referral code?</p>
+										<a (click)="referralcode();" class="theme-color">Click here</a>
+									</div> 
+									 <div class="ref-acc text-right">
+										<p>Already registered?</p>
+										<a  routerLink="/login" class="theme-color">Login Now</a> 
+									</div>  
+								</div>							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ 	</section>
+	<div  class="modal fade" id="regitrationotp" role="dialog"> 
+		<div  class="modal-dialog modaldialog">
+			<div  id="createTeamPopUp">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				<h3  class="popupTitle">OTP</h3>
+
+				<div  class="col-md-12 col-sm-12 col-xs-12 popupInner login_formM">
+					<p  class="newtext text-center"> We have sent OTP.</p>
+					<form  class="select_login_form_sec login_form_design" [formGroup]="verifyform" (ngSubmit)="registerverify(verifyform.value)">						
+						<div class="email_password log-sig">
+							<input  formControlName="otp" id="otp" name="otp" type="text" required class="forms_field-input" />
+							<label class="" for="otp">otp </label>
+							<p class="eyebtn"><i class="fa fa-edit"></i></p>
+							<span><i class="fa fa-edit" aria-hidden="true"></i></span>
+							<div class="br_line"></div>
+						</div>
+
+						<button  type="submit" (Click)="registerverify(verifyform.value)" >
+							Register
+						</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div  class="modal fade" id="referralcodefb" role="dialog"> 
+		<div  class="modal-dialog modaldialog">
+			<div  id="createTeamPopUp">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				<h3  class="popupTitle">Referral Code</h3>
+
+				<div  class="col-md-12 col-sm-12 col-xs-12 popupInner login_formM"> 
+					<form  class="select_login_form_sec login_form_design"  [formGroup]="codeForm" (ngSubmit)="codevarify(codeForm.value)">					
+						<div class="email_password log-sig">
+							<input   type="text" formControlName="refercodeadsocial" id="refercodeadsocial" name="refercodeadsocial"   required class="forms_field-input" />
+							<label class="" for="refercodeadsocial">Referral Code</label>
+							<p class="eyebtn"><i class="fa fa-edit"></i></p>
+							<span><i class="fa fa-edit" aria-hidden="true"></i></span>
+							<div class="br_line"></div>
+						</div>
+
+						<button  (Click)="codevarify(codeForm.value)">
+							Continue
+						</button> 
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>

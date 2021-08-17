@@ -1,0 +1,171 @@
+.main_cont_row { 
+	box-shadow: 5px 2px 12px -3px rgba(0, 0, 0, 0.5);
+    margin: 15px;
+    background: #e7e1d5;
+    width: calc(100% - 30px);
+    border-radius: 4px; 
+}
+
+.me_borderedButton { 
+    display: block;
+    align-items: center; 
+    border: 1px solid #4882ff; 
+    background: #4882ff; 
+    text-align: center; 
+}
+.me_contestDetailAndCtaLeft {
+    width: calc(100% - 30px);
+	margin-bottom: 10px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.me_contestTeamSection,.me_contestProgressBar{
+	width: 100%;
+}
+
+
+
+
+
+.main_header{
+	top: 0px;
+}
+.topscorecard { 
+    top: 60px;
+}
+.tabs-sec-me.contest_main.active{
+	margin-top: 160px;
+}
+
+td{
+	font-size: 12px;
+text-align: center;
+}
+
+.leaderboard__players-container {
+	padding: 10px 10px 0px;
+} 
+.leaderboard__players-container:nth-child(2n+1) .leaderboard__players {
+	background: #e8e8e8;
+}
+.leaderboard__players.active{
+	background: #e6e0d5 !important;
+}
+.leaderboard__players {
+    align-items: center;
+    display: flex;
+    padding: 10px;
+	box-shadow: 1px 2px 6px 0px rgba(0, 0, 0, 0.5)
+}
+.leaderboard__players__image {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+.leaderboard__players__user-information {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left: 20px;
+}
+.leaderboard__players__user-information__points {
+    font-size: 12px;
+    padding-top: 4px;
+    display: flex;
+}
+.leaderboard__players__user-information__points {
+    font-size: 12px;
+    padding-top: 4px;
+    display: flex;
+}
+.leaderboard__players__rank-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+.leaderboard__players__rank {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.currency-amount {
+    margin-left: 4px;
+}
+.leaderboard__players__winner-message {
+    color: #f59a23;
+    display: flex;
+    padding: 0px 0px 8px 66px;
+    font-size: 12px;
+}
+.leaderboard__players__winner-message__icon {
+    height: 12px;
+    margin: 0 4px;
+}
+.leaderboard__players__user-information__points__label {
+    color: #9b9b9b;
+    padding-left: 4px;
+}
+.theme-color1{
+	color: #4267b9;
+}
+.leaderboard__players__rank-container.active, .leaderboard__players__user-information__points.active, .leaderboard__players__user-information__points.active .leaderboard__players__user-information__points__label{
+	color: #24ba38;
+	font-weight: 700;
+}
+.leaderboard__players__rank-container.active i{
+	color: #ff5722 
+}
+.closeviewteam { 
+    z-index: 99999;
+}
+
+
+.player_img table{
+	position: absolute;
+	top: 0px;
+	left: 50px;
+	background: #fff;
+	z-index: 1; 
+	display: none;
+}
+.player_img{
+	cursor: pointer;
+}
+.player_img:hover table{ 
+	display: block;
+}
+.player_img table thead{	
+	padding: 0px;
+}
+.player_img table thead tr{	
+	padding: 0px;
+}
+.player_img table thead tr th{
+	padding: 2px 5px;
+    font-size: 9px;
+    text-align: left;
+    background: #034694 !important;
+    color: #ffff;
+	border-right: 1px solid #ccc;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.player_img table tbody{
+	padding: 0px;	
+}
+.player_img table tbody tr{
+}
+.player_img table tbody tr td{
+	padding: 0px 5px;	
+	font-size: 9px; 
+	text-align: left;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+} 
+
+
+#playerCentre{
+	margin-left: -8%;
+	justify-content: center;
+}

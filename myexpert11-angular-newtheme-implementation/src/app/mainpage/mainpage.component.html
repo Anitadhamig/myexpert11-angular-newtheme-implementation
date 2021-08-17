@@ -1,0 +1,533 @@
+<div id="toplogo" class="background-container">
+	<div class="Topheader back_black">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-dark rounded">
+				<a  class="navbar-brand white tracked-mega" href="">
+					<!-- <h4>Fantasy Cricket</h4> -->
+					<img src="/assets/images/logo-common.png" class="img-fluid">
+				</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					  </button>
+
+				<ul class="navbar-nav ml-auto  " id="main_menu">
+					<li class="nav-item">
+						<a class="nav-link howtoplay" href="#howtoplay">HOW TO PLAY</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" routerLink="/about-us">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link"  routerLink="/faq">faq</a>
+					</li>
+					
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div id="login_modal" class="modal fade overflow-hidden" role="dialog">
+		<div class="login_modalInner"></div>
+			<div class="modal-dialog modaldialog">
+				<div class="modal-header">
+					<section class="user">
+					  <div class="user_options-container">
+							<button type="button" class="close" data-dismiss="modal" #closeBtn>&times;</button>
+						<div class="user_options-text">
+						  <div class="user_options-unregistered">
+							<h2 class="user_unregistered-title">Don't have an account?</h2>
+							<p class="user_unregistered-text">Have a Referral Code?  
+								Get <span class="color-red font-bold">Rs.50</span> Cash Bonus!<br>
+								Play more, enjoy Champion Rewards</p>
+							<button class="user_unregistered-signup" id="signup-button">Register</button>
+						  </div>
+
+						  <div class="user_options-registered">
+							<h2 class="user_registered-title">Have an account?</h2>
+							<p class="user_registered-text">PLAY FANTASY CRICKET.  WIN CASH DAILY!<br> <span class="color-red font-bold">Let's Play</span></p>
+							<button class="user_registered-login" id="login-button">Log in</button>
+						  </div>
+						</div>
+						<div class="user_options-forms" id="user_options-forms">
+							  <div class="user_forms-login">
+								<h2 class="forms_title">Log in</h2>
+								<form class="forms_form"  [formGroup]="lForm" (ngSubmit)="login(lForm.value)">
+								  <fieldset class="forms_fieldset select_login_form_sec">
+									<div class="forms_form social-icons forms_field form_sec">
+										<ul>
+											<li>
+												<p>
+													<a (click)="signInWithFB()">
+														<span class="fa fa-facebook facebook-before"></span>
+														<span class="facebook" id="fbcontent"><span> Facebook</span></span>
+													</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a (click)="signInWithGoogle()">
+														<span class="fa fa-google-plus google-before"></span>
+														<span class="google" id="googleconetnt"><span> Google</span></span>
+													</a>
+												</p>
+											</li>
+										</ul>   
+										<p class="divider-login"><span>OR</span></p>
+									</div>
+									<div class="forms_field form_sec">
+									  <input formControlName="email" [ngClass]="{'errorclass': !lForm.controls['email'].valid && lForm.controls['email'].touched}" id="email_id" name="email_id" type="text" required class="forms_field-input"  />
+									  <label >Email </label>
+									  <p class="alert" *ngIf="!lForm.controls['email'].valid && lForm.controls['email'].touched" class="errortext">Please Enter Your Valid Email Address</p>
+									</div>
+									<div class="forms_field form_sec">
+									  <input   formControlName="password" [ngClass]="{'errorclass': !lForm.controls['password'].valid && lForm.controls['password'].touched}" id="password" name="password" type="password" required class="forms_field-input" />
+									  <label   class="" for="Password">password </label>
+									  <p class="alert" *ngIf="!lForm.controls['password'].valid && lForm.controls['password'].touched" class="errortext">Please Enter Your Password</p>
+									</div>
+								  </fieldset>
+								  <div class="forms_buttons form_sec">
+									<button  data-target="#forgotPassword" data-toggle="modal" type="button" class="forms_buttons-forgot">Forgot password?</button>
+									<input type="submit" value="Log In"  [disabled]="!lForm.valid" (Click)="login(lForm.value)" class="forms_buttons-action">
+									<span class="forMObileonly">Don't have an account? <a   (click)="openregister()">Register</a></span>
+								  </div> 
+
+
+								</form>
+							  </div>
+							  <div class="user_forms-signup">
+								<h2 class="forms_title">Register</h2>
+								<!-- message for email sent-->
+									<p class="succs" *ngIf="mailsent"> Activation email has been sent to your registered email address. Please check your mail. In case if you didn't get mail then please check your spam folder. </p>
+								<!-- verify mobile form-->
+								<form class="forms_form"  [formGroup]="verifyform" (ngSubmit)="verifymobile(verifyform.value)" *ngIf="otpsent">
+									<fieldset class="forms_fieldset select_login_form_sec">
+										<div class="forms_form social-icons forms_field form_sec">
+											<ul>
+												<li>
+													<p>
+														<a (click)="signInWithFB()">
+															<span class="fa fa-facebook facebook-before"></span>
+															<span class="facebook" id="fbcontent"><span> Facebook</span></span>
+														</a>
+													</p>
+												</li>
+												<li>
+													<p>
+														<a (click)="signInWithGoogle()">
+															<span class="fa fa-google-plus google-before"></span>
+															<span class="google" id="googleconetnt"><span> Google</span></span>
+														</a>
+													</p>
+												</li>
+											</ul>   
+											<p class="divider-login"><span>OR</span></p>
+										</div>
+										<p class="succs"> OTP has been sent to {{getmobile}}. Enter Otp and verify your mobile number to register your account here. </p>
+										<div class="forms_field form_sec">
+										  <input formControlName="otp" [ngClass]="{'errorclass': !verifyform.controls['otp'].valid && verifyform.controls['otp'].touched}"  type="text" class="forms_field-input" required/>
+											<p class="alert" *ngIf="!verifyform.controls['otp'].valid && verifyform.controls['otp'].touched" class="errortext">Please Enter Your OTP here</p>
+										  <label   class="">OTP </label>
+										  <div class="w-100 db floatleft pt-3" > 
+											<input type="checkbox" name="coupon" id="filled-in-box" class="hidden">
+											<label for="filled-in-box"  class="white font-bold font-12">You have any referral code?</label>
+
+											<input type="text" formControlName="refercode" id="accesscouponcode" class="background-transparent white font-12 font-bold pl-1 height40  w-100 b--white-70" placeholder="please enter referral code">
+										</div>
+										</div>
+										<div class="forms_buttons martZ">
+											<input type="submit" value="Submit" [disabled]="!verifyform.valid" class="forms_buttons-action">
+										</div>
+									</fieldset>
+								</form>
+								<!-- register form-->
+								<form class="forms_form"  [formGroup]="rForm" (ngSubmit)="register(rForm.value)" *ngIf="!otpsent">
+								  <fieldset class="forms_fieldset select_login_form_sec">
+									<div class="forms_form social-icons forms_field form_sec">
+										<ul>
+											<li>
+												<p>
+													<a (click)="signInWithFB()">
+														<span class="fa fa-facebook facebook-before"></span>
+														<span class="facebook" id="fbcontent"><span> Facebook</span></span>
+													</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a (click)="signInWithGoogle()">
+														<span class="fa fa-google-plus google-before"></span>
+														<span class="google" id="googleconetnt"><span> Google</span></span>
+													</a>
+												</p>
+											</li>
+										</ul>   
+										<p class="divider-login"><span>OR</span></p>
+									</div>
+									<div class="forms_field form_sec">
+									  <input formControlName="name" [ngClass]="{'errorclass': !rForm.controls['name'].valid && rForm.controls['name'].touched}"  type="text" class="forms_field-input" required/>
+									<p class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched" class="errortext">Please Enter Your Valid Name</p>
+									  <label   class="">Full Name </label>
+									</div>
+									<div class="forms_field form_sec">
+									  <input id="resister_mail" formControlName="email" [ngClass]="{'errorclass': !rForm.controls['email'].valid && rForm.controls['email'].touched}"  type="text" class="forms_field-input" required />
+									<p class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched" class="errortext">Please Enter Your Valid Email Address</p>
+										<label >Email </label>
+									</div>
+									<div class="forms_field form_sec">
+									  <input formControlName="number" maxlength="10" [ngClass]="{'errorclass': !rForm.controls['number'].valid && rForm.controls['number'].touched}"  type="text" class="forms_field-input" required />
+										<p class="alert" *ngIf="!rForm.controls['number'].valid && rForm.controls['number'].touched" class="errortext">Please Enter Valid Phone Number</p>
+									  <label>Phone number </label>
+									</div>
+									<div class="forms_field form_sec marginZ">
+									  <input formControlName="password" [ngClass]="{'errorclass': !rForm.controls['password'].valid && rForm.controls['password'].touched}"  type="password" class="forms_field-input" required />
+										<p class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched" class="errortext">Please Enter password</p>
+									  <label >Password </label>
+									</div>
+									
+								 </fieldset>
+								  <div class="forms_buttons martZ">
+									<input type="submit" value="Sign up" [disabled]="!rForm.valid" class="forms_buttons-action">
+									<span class="forMObileonly">Have an account? <a (click)="openlogin()">Login</a></span>
+								  </div>
+								</form>
+							  </div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+            <div class="loginSec"> 
+                <div id="slider">  
+					<img src="/assets/images/ipl-teams.png" class="img-fluid"> 
+                </div> 
+				<div class="sliderTextAnimate">
+                   <h2>PLAY <span>FANTASY GAMES</span> LIKE A PRO <br>AND WIN <span>REAL CASH PRIZES</span></h2>
+                   <h3>Now cricket becomes more exciting!</h3>
+                   <p><small> Select the best players<br> 
+                    Control their bowling &amp; batting orders <br>Use
+                    <span> live </span> match scores to beat other users &amp; win Cash!</small></p>
+                   <ul class="liginREgi">
+                        <li>
+                            <a id="login_btn" data-toggle="modal" data-target="#login_modal">Log In</a>
+                        </li>
+                        <li>
+                            <a id="register_btn" data-toggle="modal" data-target="#login_modal">Register</a>
+                        </li>
+                    </ul>
+                    <div class="forms_form social-icons width320px">
+                     <p class="divider-login"><span>OR</span></p>
+                        <ul>
+                            <li>
+                                <p>
+                                    <a (click)="signInWithFB()">
+                                        <span class="fa fa-facebook facebook-before"></span>
+                                        <span class="facebook" id="fbcontent"><span> Facebook</span></span>
+                                    </a>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a (click)="signInWithGoogle()">
+                                        <span class="fa fa-google-plus google-before"></span>
+                                        <span class="google" id="googleconetnt"><span> Google</span></span>
+                                    </a>
+                                </p>
+                            </li>
+                        </ul>   
+                    </div>
+                </div>
+			</div>
+        </div>
+	</div>
+<section>
+	<div id="howtoplay" class="services-overlay" >
+		<div class="container"> 
+			<div class="create_team">
+				<div class="first_line"> Create Your Team</div>
+				<div class="highlight_word">HOW TO PLAY</div>
+			</div>
+			<div class="row">
+					<div class="col-md-4 col-lg-4 col-sm-4 choose__sport text-center">
+						<div class="inline-block"><div class="sprite cricketstamp">1</div></div>
+						<div class="option_heading">
+							Select a Match
+							<div class="option_description">
+								Select an upcoming match of your choice
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-4 col-lg-4 col-sm-4 choose_game text-center">
+						<div class="sprite choose_game inline-block">2</div>
+						<div class="option_heading">
+							Create your FanPlay365 Team
+							<div class="option_description">
+								Use your sports knowledge to create a fantasy team using 50 credits
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-lg-4 col-sm-4 pick_team text-center">
+						<div class="sprite people inline-block">3</div>
+						<div class="option_heading">
+							Join Free & Cash Contests
+							<div class="option_description">
+								Participate in Cash or Practice Contests and go for glory!
+							</div>
+						</div>
+					</div>
+
+				<!-- 	<div class="col-md-3 col-lg-3 col-sm-3 get_trophy text-center">
+						<div class="sprite trophy inline-block">4</div>
+						<div class="option_heading">
+							CLAIM THE GLORY
+							<div class="option_description">
+								Watch your chosen players score points and win cash prizes
+							</div>
+						</div>
+					</div> -->
+				</div>
+		</div>
+	</div> 
+</section>
+<section class="background-grayT">
+	<div id="champs" class="services-overlay" >
+		<div class="container"> 
+			<div class="create_team">
+				<div class="first_line"> Our</div>
+				<div class="highlight_word">CHAMPIONS</div>
+			</div>
+			<div class="col-sm-12 champsDiv paddXsZ" *ngFor="let ourtopwinners of ourtopwinners; let first=index;"> 
+				<div class="col-sm-6" *ngIf="first%2==0" >
+				</div>
+				<div class="col-sm-6 line-plateform paddXsZ">
+					<div class="plateform-box" [ngClass]="(first%2==0)?'floatleft':'floatright text-right'">
+						<div class="plateform_inner">
+							<div class="comSec">
+							<h6 class=" " style="text-transform: capitalize;">{{ourtopwinners.username}}</h6>
+							<h5 class="font-16">Winning Price Rs. {{ourtopwinners.amount}} /- </h5>
+							<p class="font-11 font-bold marginZ color-red">Team name:- {{ourtopwinners.userteamname}}</p>
+							</div><!-- 
+							<div class="imgSec">
+								<img src="/assets/images/user2.png">
+							</div>  -->
+							<i class="fa fa-caret-right iconleft" *ngIf="first%2!=0"></i>
+							<i class="fa fa-caret-left iconright" *ngIf="first%2==0"></i>
+						</div>
+
+					</div>
+				</div> 
+			</div>
+			
+		</div>
+	</div> 
+</section>
+<section id="portfolio">
+        <div class="container">
+            <div class="row">
+
+                <!--Blog start-->
+                <div class="col-md-12">
+                    <div class="text-center">
+
+                        <div class="testmo">
+                            <h2>FROM FANS TO FANTASY PLAYERS, THEY ALL LOVE FANTASY</h2>
+                        </div>
+                    </div>
+                    <div class="white-bx clearfix">
+                        <div class="col-md-4 col-lg-4 col-sm-4 floatleft" *ngFor="let testimonial of testimonial">
+                            <div class="comment_boxSecMain">
+                                <div class="imgSecTion">
+                                    <img class="img-responsive" src="{{testimonial.image}}">
+                                </div>
+                                    <div class="author_name">
+                                        <h4>{{testimonial.name}}</h4> 
+                                    </div>
+                                <div class="author_cmntSec">
+                                    <p class="tc">{{testimonial.message}}</p>
+                                </div>
+                            </div>
+                        </div>
+               
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        </section>
+
+
+<footer class="footerDiv">
+    <div class="container-fluid paddXsZ">
+        <div class="container">
+            <div class="col-md-12 col-xs-12 col-sm-12 paddingZ">
+                <div class="logo-container FoterLoGCon">
+                    <a class="footer-logo howtoplay" href="#toplogo">
+                        <img src="/assets/images/logo.png" class="img-fluid" alt="">                        
+                        <span class="loBotttomFtr white db pt-2">Play Fantasy Cricket league and Win Cash Daily!</span>
+                    </a>
+                </div>
+                <div class="footer_content">
+                	<p class="white font-14 font-bold pb-3">Now enjoy the best FanPlay365 experience on your mobile device with Social Media</p> 
+ 
+                    <ul class="footer_links social">
+                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a> </li>
+                        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a> </li>
+                        <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a> </li>
+                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a> </li>
+                        <li><a href="https://www.youtube.com/channel/" target="_blank"><i class="fa fa-youtube"></i></a> </li>
+                    </ul>
+                    <ul class="footer_links open_ftr"> 
+                        <li>
+                            <a routerLink="/about-us">About Us</a> 
+                        </li>
+                        <li>
+                            <a class="howtoplay" href="#howtoplay">How to Play</a> 
+                        </li>
+                        <li>
+                            <a routerLink="/terms-conditions"> Terms & Conditions</a> 
+                        </li>
+                        <li>
+                            <a routerLink="/faq">FAQS</a> 
+                        </li> 
+                        <li>
+                            <a routerLink="/privacy-policy"> Privacy Policy</a> 
+                        </li> 
+                    </ul>
+                </div>
+                <div class="SideThnkW">
+                    <h2 >Download Apps</h2>
+                    <p><a href="#"><i class="fa fa-apple"></i> iOS</a></p> 
+                    <p><a href="#"><i class="fa fa-android"></i> Android</a></p> 
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12 paddXsZ">
+                <div id="gkCopyrights">
+                    <div class="footer1">Copyright © 2018 Fantasy. All Rights Reserved.</div>
+                    <div class="footer2">
+                        <p class="text-right">Development & Maintained By
+                        <a href="http://www.imgglobalinfotech.com/" target="_blank"><img src="/assets/images/img.png" alt=""></a>
+                    </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<div  class="modal fade" id="forgotPassword" role="dialog" >
+    <div class="login_modalInner"></div>
+    <div class="modal-dialog modaldialog">
+		<div  id="createTeamPopUp">
+			<button  class="close btncloses" data-dismiss="modal" type="button" #closeBtn>×</button>
+			<h3  class="popupTitle">Forgot Password</h3>
+
+			<div  class="col-md-12 col-sm-12 col-xs-12 popupInner" >
+				<p  class="newtext"> Don't worry about your password. You can reset your password from here.</p>
+				<form class="select_login_form_sec" [formGroup]="forgetform" (ngSubmit)="forgotpassword(forgetform.value)">
+					<div  class="form_sec mb-3">
+						<label >Email Id</label>
+						<input  class="form-control"  formControlName="email" [ngClass]="{'errorclass': !forgetform.controls['email'].valid && forgetform.controls['email'].touched}"  type="text">
+					</div>
+
+					<button  type="submit" [disabled]="!forgetform.valid" type="submit">
+						Reset Password
+					</button>
+				</form>
+
+			</div>
+		</div>
+    </div>
+</div>
+<div  class="modal fade" id="firstverifymobile" role="dialog" >
+    <div class="login_modalInner"></div>
+    <div class="modal-dialog modaldialog">
+		<div  id="createTeamPopUp">
+			<button  class="close btncloses" data-dismiss="modal" type="button" #closeBtn>×</button>
+			<h3  class="popupTitle">Verify Your Mobile number</h3>
+
+			<div  class="col-md-12 col-sm-12 col-xs-12 popupInner" *ngIf="!otherotpsent" style="background: #000000;">
+				<p  class="newtext white"> You need to verify your mobile number first. Please provide your mobile number.</p>
+				<form class="select_login_form_sec" [formGroup]="verifynumberform" (ngSubmit)="verifynumber(verifynumberform.value)" >
+					<div  class="form_sec mb-3">
+						<label style="background: #000000;color: #fff" class="white">Mobile Number</label>
+						<input  class="background-transparent white font-12 font-bold pl-1 height40  w-100 b--white-70" maxlength="10"  formControlName="mobilenumber" [ngClass]="{'errorclass': !verifynumberform.controls['mobilenumber'].valid && verifynumberform.controls['mobilenumber'].touched}"  type="text" style="background: #000000;color: #fff">
+					</div>
+					<button  type="submit" [disabled]="!verifynumberform.valid" type="submit">
+						Send OTP
+					</button>
+				</form>
+			</div>
+			<div  class="col-md-12 col-sm-12 col-xs-12 popupInner" *ngIf="otherotpsent" style="background: #000000;">
+				<p  class="newtext white"> We have sent you an OTP on your registered mobile number. Verify your number by entering OTP here</p>
+				<form class="select_login_form_sec" [formGroup]="verifynumberotpform" (ngSubmit)="verifynumberbyotp(verifynumberotpform.value)" >
+					<div  class="form_sec">
+						<label style="background: #000000;color: #fff" class="white">OTP</label>
+						<input  class="background-transparent white font-12 font-bold pl-1 height40  w-100 b--white-70" maxlength="10"  formControlName="otp" [ngClass]="{'errorclass': !verifynumberotpform.controls['otp'].valid && verifynumberotpform.controls['otp'].touched}"  type="text" style="background: #000000;color: #fff">
+					</div>
+					<div class="w-100 db floatleft mb-3"> 
+						<input type="checkbox" name="coupon" id="filled-in-box" class="hidden">
+						<label for="filled-in-box"  class="white font-bold font-12">You have any referral code?</label>
+
+						<input type="text" formControlName="refercode" id="accesscouponcode" class="background-transparent white font-12 font-bold pl-1 height40  w-100 b--white-70" placeholder="please enter referral code">
+					</div>
+					<button  type="submit" [disabled]="!verifynumberotpform.valid" type="submit"  >
+						Verify
+					</button>
+				</form>
+			</div>
+		</div>
+    </div>
+</div>
+<div class="modal fade" id="entercodemodal" role="dialog">
+    <div class="modal-dialog modaldialog">   
+        <div id="createTeamPopUp"><button type="button" class="close btncloses" data-dismiss="modal" #closeBtn>×</button>
+           <h3 class="popupTitle">Enter Code here</h3>
+            
+            <div class="col-md-12 col-sm-12 col-xs-12 popupInner" style="background: #fff;">
+                <p class="newtext"> We have sent you a code on your registered mail. Please check your mail address. In cas of not receiving mails please check your spam/junk folders.       </p>
+                <form [formGroup]="entercodeform" (ngSubmit)="matchcode(entercodeform.value)">
+                <div class="form_sec mb-3">
+                    <label>Enter Code</label>
+                    <input class="form-control" formControlName="code" [ngClass]="{'errorclass':entercodeform.controls['code'].touched}"  type="text">
+                </div>
+                
+                <button  [disabled]="!entercodeform.valid" type="submit" >
+                    Submit
+                </button>
+            </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="resetpasswordmodal" role="dialog">   
+    <div class="modal-dialog modaldialog">
+        <div id="createTeamPopUp"><button type="button" class="close btncloses" data-dismiss="modal" #closeBtn>×</button>
+           <h3 class="popupTitle">Enter New password here</h3>
+            
+            <div class="col-md-12 col-sm-12 col-xs-12 popupInner" >
+                <p class="newtext"> Now you can reset your password by entering your new password here.  </p>
+                <form [formGroup]="resetform" (ngSubmit)="resetpassword(resetform.value)">
+                <div class="form_sec mb-3">
+                    <label>Password</label>
+                    <input class="form-control" formControlName="repassword" [ngClass]="{'errorclass':resetform.controls['repassword'].touched}" type="password">
+                </div>
+                <div class="form_sec  mb-3" >
+                    <label> Confirm Password</label>
+                    <input class="form-control" formControlName="reconfirmpassword" [ngClass]="{'errorclass':resetform.controls['reconfirmpassword'].touched}"  type="password">
+                </div>
+                
+                <button  type="submit"  [disabled]="!resetform.valid"  >
+                    Submit
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

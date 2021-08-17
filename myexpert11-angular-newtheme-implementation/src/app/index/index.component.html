@@ -1,0 +1,729 @@
+
+		<!-- <div class="container-fluid ft_header_main pl-5 pr-5 bg_white">
+			<div class="row marginZ">
+				<div class="col-lg-4 col-md-4 col-sm-4 ft_logo_sec col-6">
+					<a class="text-uppercase color_orange font_w600 font_20 d-inline-block" href="javascript:void(0);">
+						<img src="assets/images/logo-me11.png">
+					</a>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-8 ft_right_sec col-6">
+					<div class="float-right mobile_loginBtn">
+						<button class="login mr-2 font_w600"  routerLink="/login">Login</button>
+						<button class="register font_w600" routerLink="/register">Register & Play</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+ <!--// Header Start //-->
+ <header class="header fixed-top white-navbar" #header>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg p-0">
+			<a class="navbar-brand" href="index.html">
+				<img src="assets/images/logo-me11-header.png" alt="Logo" class="img-fluid logo-transparent">
+				<img src="assets/images/logo-me11-header.png" alt="Logo" class="img-fluid logo-normal">
+			</a>
+			<!--// .logo //-->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fixedNavbar" aria-controls="fixedNavbar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="togler-icon-inner">
+					<span class="line-1"></span>
+					<span class="line-2"></span>
+					<span class="line-3"></span>
+				</span>
+			</button>
+			<!-- <button class="login-btn-toggle login-btn-mobile"  routerLink="/login"><i class=" fa fa-sign-in-alt"></i></button>
+			<button class="signup-btn-toggle signup-btn-mobile" routerLink="/register"><i class="fas fa-user-plus"></i></button> -->
+			<!--// Mobile Toggle Btn //-->
+			<div class="collapse navbar-collapse main-menu justify-content-end" id="fixedNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" routerLink="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link menu-link" routerLink="/about-us" data-scroll-nav="2">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link menu-link" href="#features" data-scroll-nav="3">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link menu-link" routerLink="/point-system" data-scroll-nav="4">Fantasy Point System</a>
+					</li>
+					<!-- <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="blogDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Blog
+						</a>
+						<div class="dropdown-menu" aria-labelledby="blogDropdownMenu">
+							<a class="dropdown-item" href="blog.html">Blog Grid</a>
+							<a class="dropdown-item" href="blog-sidebar.html">Blog Sidebar</a>
+							<a class="dropdown-item" href="blog-single.html">Blog Single</a>
+						</div>
+					</li> -->
+					<li class="nav-item">
+						<a class="nav-link menu-link" routerLink="/contact-us" data-scroll-nav="5">Contact Us</a>
+					</li>
+					<!-- <li class="nav-item login-btn-resp">
+						<a routerLink="/login" class="login-btn-toggle nav-link">
+							<i class=" fa fa-sign-in-alt"></i>
+						</a>
+					</li>
+					<li class="nav-item signup-btn-resp">
+						<a routerLink="/register" class="signup-btn-toggle nav-link">
+							<i class="fas fa-user-plus"></i>
+						</a>
+					</li> -->
+				</ul>
+			</div>
+		</nav>
+		<!--// .navbar-nav //-->
+	</div>
+	<!--// .container //-->
+</header>
+<!--// Header End  //-->
+
+<!--// Banner Section Start //-->
+<section id="home" class="hero-section" data-scroll-index="0">
+	<div class="container">
+		<div class="row align-items-center h-100">
+			<div class="col-lg-7 col-md-10 col-sm-12">
+				<h1 class="hero-section-title wow fadeInUp" data-wow-delay="0.2s">
+					LIVE FANTASY SPORTS<br>
+					Play Fantasy Cricket.
+					Win Cash Daily!
+				</h1>
+				<p class="hero-section-subtitle wow fadeInUp" data-wow-delay="0.3s">
+					Download Android App And Signup Now To Get ₹ 51 Instant FREE CASH BONUS!
+				</p>
+				<a (click)="downloadlink()" class="default-btn sec1-download" data-wow-delay="0.4s" id="downloadBtn"><i><img src="assets/images/android-icon.svg" width="30" alt="Download Android App"></i> Download App </a>
+				<!-- <a href="https://www.youtube.com/watch?v=_2LLXnUdUIc" class="default-video-btn popup-youtube wow fadeInUp" data-wow-delay="0.5s"><i class="fa fa-play"></i></a> -->
+			</div>
+			<!--// .col //-->
+			<div class="col-lg-5 hero-image text-right">
+				<img src="assets/images/home-mobile.png" alt="Hero image" class="img-fluid img-jump">
+				<!-- <div class="signup-form-wrap">
+					<div class="signup-form-header">
+						<h6 class="signup-title">Sign up to be notified of promotions</h6>
+					</div>
+					<div class="signup-form-inner">
+						<form action="index.html">
+							<div class="signup-form-group">
+								<input type="text" class="signup-form-control" name="signup_form_name" required placeholder="Your Name *">
+								<span class="mdi mdi-account-outline"></span>
+							</div>
+							<div class="signup-form-group">
+								<input type="email" class="signup-form-control" name="signup_form_email" required placeholder="Your Email *">
+								<span class="mdi mdi-email-open-outline"></span>
+							</div>
+							<div class="signup-form-group">
+								<input type="password" class="signup-form-control" name="signup_form_website" required placeholder="Password *">
+								<span class="mdi mdi-account-lock-outline"></span>
+							</div>
+							<div class="signup-form-group">
+								<input type="password" class="signup-form-control" name="signup_form_website" required placeholder="Password Repeat*">
+								<span class="mdi mdi-account-lock-outline"></span>
+							</div>
+							<div class="signup-form-group text-left">
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="customControlInline">
+									<label class="custom-control-label" for="customControlInline">
+										<span>I wish to receive news from Applyou.</span>
+									</label>
+								</div>
+							</div>
+							<div class="signup-form-group">
+								<button type="submit" class="signup-form-btn" name="signup_form_btn">Sign Up For Free</button>
+							</div>
+						</form>
+					</div>
+				</div> -->
+			</div>
+			<!--// .col //-->
+		</div>
+		<!--// .row //-->
+	</div>
+	<!--// .container //-->
+	<!--// .down-scroll //-->
+</section>
+<!--// Banner Section End  //-->
+
+
+<!--// About Section Start //-->
+<section class="about section-padding pb-minus-70" data-scroll-index="2" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-lg-6 about-col-left wow fadeInLeft text-left download-image">
+				<img src="assets/images/howtoplay_image.png" alt="How To Play" class="img-fluid img-jump">
+			</div>
+			<!--// .col //-->
+			<div class="col-md-7 col-lg-6 about-col-right wow fadeInUp">
+				<div class="about-inner">
+					<span class="section-badge">How To Play</span>
+					<h3>STEPS OF WINNINGS</h3>
+					<p>
+						Do you watch your favorite sports? If yes, then MyExpert11 is tailor-made for you. It is played by applying your sports abilities and understanding. All you need to do is to make your own team by selecting players which you feel may perform well in the very game you’re participating. And that’s it!
+The good thing is: you will have 100 credits for choosing players for Cricket. And if your selected players play well, you win well. Very well, indeed.
+					</p>
+				</div>
+				<div class="about-list">
+					<ul>
+						<li><i class="fa fa-check"></i>Select a Match, In the first step, you should select any upcoming match.</li>
+						<li><i class="fa fa-check"></i>Join a Contest,	Select the match based on your financial planning</li>
+						<li><i class="fa fa-check"></i>Enjoy the Match,	Now, sit back and watch your players perform for you.</li>
+						<li><i class="fa fa-check"></i>Hurray ,	Once, you have won, then you withdraw your amount through just one verification. Dead easy!!!</li>
+					</ul>
+				</div>
+				
+				<!-- <div class="not_mem">Not a MYEXPERT11 user? <a href="#home"> Sign up now</a> – It’s FREE!</div> -->
+				
+			</div>
+			<!--// .col //-->
+		</div>
+		<!--// .row //-->
+	</div>
+	<!--// .container //-->
+</section>
+<!--// About Section End //-->
+
+ <!--// Features Section Start //-->
+ <section id="features" class="features-section section-padding" data-scroll-index="3">
+	<div class="container">
+		<div class="features-row">
+			<div class="row justify-content-between">
+				<div class="col-md-6 col-lg-12">
+					<div class="features-inner">
+						<div class="section-heading">
+							<h2 class="section-title"> MYEXPERT11 Features </h2>
+						</div>
+						<ul class="features-list">
+							<li class="d-flex">
+								<div class="li_cont">
+								<i class="fas fa-gift"></i>
+								<div class="features-box">
+									<h6>Enjoy up to 100% WELCOME BONUS!</h6>
+									<span>At MyExpert11, we believe in rolling out the red carpet from the moment you join our site. That's why we are offering up to 100% bonus on your first deposit.
+										This special offer, which is available for your initial deposit only, is a beautiful thing. Here's why: The more cash you deposit, the more free bonus you get.
+										To take advantage of this great offer, simply make your first deposit and play.<br>
+										<a href="#home">Add Cash To Get Bonus</a>
+										</span>
+								</div>
+							</div>
+							</li>
+							<li class="d-flex">
+								<div class="li_cont">
+								<i class="fa fa-money"></i>
+								<div class="features-box">
+									<h6>Refer and Earn</h6>
+									<span>The more you refer, the bigger your bonus
+										Get your referral code & share with your friends and family.
+										On every new user that you bring who uses your referral code while signup, you get ₹ 51 and the new user also get ₹ 51 instantly FREE!* For further details, refer to our <a routerLink="/terms-conditions">T&Cs.</a> <br>
+										<a href="#home">Invite now</a>
+										</span>
+								</div>
+							</div>
+							</li>
+							<li class="d-flex">
+								<div class="li_cont">
+								<i class="fa fa-hand-peace-o"></i>
+								<div class="features-box">
+									<h6>Celebrate Your Rewards</h6>
+									<span>Want to get extra!
+										Opportunities to maximize your Bonus! <br>
+										<a href="#home">View details</a>
+										</span>
+								</div>
+								</div>
+							</li>
+							<li class="d-flex">
+								<div class="li_cont">
+								<i class="fa fa-handshake-o"></i>
+								<div class="features-box">
+									<h6>Become A Partner</h6>
+									<span>We’re now open to invite more members to join our fantasy family. <br>
+										We are affiliate program of the online fantasy platform. Maximize your profit with our promos, great affiliate features. Get amazing promo profit with lifetime revenue sharing program. Get high conversion rate with your traffic!
+To Know more about this amazing feature! <br>
+<a href="#home">Click here</a>
+										</span>
+								</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--// .row //-->
+		</div>
+		
+	</div>
+	<!--// .container //-->
+</section>
+<!--// Features Section Start //-->
+
+<!--// Download Section Start //-->
+<section class="download-wrap section-padding">
+	<div class="container">
+		<div class="row justify-content-between align-items-center">
+			<div class="col-lg-6 download-image wow fadeInLeft">
+				<img src="assets/images/appbanner-down.png" alt="Download App" class="img-fluid img-jump">
+			</div>
+			<!--// .col //-->
+			<div class="col-lg-6 col-md-12 col-sm-11 col-xs-12 wow fadeInUp" data-wow-delay="0.3s">
+				<div class="download-section-inner">
+					<h3>Download MYEXPERT11 APP For Exclusive Features!</h3>
+					<br>
+					<p>
+						Have a Referral Code? Download Android App And Signup<br>
+						 Now To Get<b>₹ 51 Instant FREE CASH BONUS!</b> <br>
+						Enjoy up to <b>100% WELCOME BONUS!</b><br>
+						 Refer and Earn -The more you refer, the bigger your bonus!
+					</p>
+					<!-- <div class="download-stars d-flex justify-content-start align-items-center">
+						<div class="download-ratings d-flex align-items-center">
+							<span>5.0</span>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<span class="download-rate-count counter">800</span>
+					</div> -->
+					<div class="download-buttons d-flex justify-content-start">
+						<a (click)="downloadlink()" class="download-btn">
+							<i><img src="assets/images/android-icon.svg" width="30" alt="Download App"></i>
+							<span>Download App</span>
+							<!-- <span>APP</span> -->
+						</a>
+						<!-- <a class="download-btn">
+							<i class="fab fa-app-store-ios"></i>
+							<span>Coming Soon</span>
+							<span>App Store</span>
+						</a> -->
+					</div>
+				</div>
+			</div>
+			<!--// .col //-->
+		</div>
+		<!--// .row //-->
+	</div>
+	<!--// .container //-->
+</section>
+<!--// Download Section End //-->
+
+
+ <!--// Footer Section Start //-->
+ <footer class="footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+				<div class="footer-widget col-lg-3 col-md-6 col-sm-6">
+					<div class="footer-box">
+						<h5 class="footer-title">About Us</h5>
+						<p>
+							<img src="assets/images/me11.png" alt="https://www.myexpert11.com/" width="220">
+						</p>
+						<div class="footer-social-links">
+							<a href="https://www.facebook.com/myexpert11" target="_blank"><i class="fab fa-facebook-square"></i></a>
+							<a href="https://twitter.com/MY_EXPERT11" target="_blank"><i class="fab fa-twitter-square"></i></a>
+							<a href="https://www.instagram.com/myexpert11/" target="_blank"><i class="fab fa-instagram"></i></a>
+							<a href="https://www.youtube.com/channel/UCoX2GBqtYCrW5gImSeMdS8A" target="_blank"><i class="fab fa-youtube"></i></a>
+						</div>
+					</div>
+				</div>
+				<!--// .col //-->
+				<div class="footer-widget col-lg-3 col-md-6 col-sm-6">
+					<div class="footer-box">
+						<h5 class="footer-title">Usefull Links</h5>
+						<ul class="footer-links">
+							<li>
+								<a (click)="downloadlink()">Download Android App</a>
+							</li>
+							<li>
+								<a routerLink="/about-us">About Us</a>
+							</li>
+							<li>
+								 <a routerLink="/become-a-partner">Became A Partner</a>
+								 <!-- <a href="/myexpert11-angular/src/app/become-a-partner/become-a-partner.component.html/">Became A Partner</a> 
+								   <a href="/become-a-partner/">Became A Partner</a>  
+								  <a href="/become-a-partner">Became A Partner</a>  --> 
+							</li>
+							<li>
+								<a routerLink="/careers">Careers</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--// .col //-->
+				<div class="footer-widget col-lg-3 col-md-6 col-sm-6">
+					<div class="footer-box">
+						<h5 class="footer-title">Other Links</h5>
+						<ul class="footer-links">
+							<li>
+								<a routerLink="/point-system">Fantasy Cricket</a>
+							</li>
+							<li>
+								<a routerLink="/terms-conditions">Terms & Conditions</a>
+							</li>
+							<li>
+								<a routerLink="/contact-us">Contact Us</a>
+							</li>
+							<li>
+								<a routerLink="/privacy-policy">Privacy Policy</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--// .col //-->
+				<div class="col-md-6 col-sm-6 footer-widget col-lg-3">
+					<div class="footer-box">
+						<h5 class="footer-title">Contact Info</h5>
+						<p>SPORTENA FANTASY PRIVATE LIMITED
+							FLAT NO-409, SAGAR RESIDENCY H.NO-762,
+							GHANSOLI, NAVI MUMBAI, MAHARASHTRA 400701</p>
+						<ul class="contact-info-footer">
+							<li><i class="far fa-envelope-open"></i>support@myexpert11.com</li>
+							<li><i class="fab fa-whatsapp"></i>+917247808394</li>
+						</ul>
+					</div>
+				</div>
+				<!--// .col //-->
+			</div>
+			<!-- .row -->
+		</div>
+		<!--// .container //-->
+	</div>
+	<!--// .footer-top //-->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<p>© 2021 MyExpert11.com, All rights reserved.</p>
+					<p class="discc"><strong>DISCLAIMER</strong>:	MyExpert11 is neither associated or affiliated nor claims any association or affiliation in any manner with any sports governing leagues or authorities, including (but not limited to) the BCCI, ICC, IPL, or any IPL Franchises unless specified otherwise. Residents of the states of Telangana, Assam and Odisha, and where otherwise prohibited by law are not eligible to enter MyExpert11's Contests.</p>
+				</div>
+			</div>
+			<!--// .row //-->   
+		</div>
+		<!--// .container //-->
+	</div>
+	<!--// .copyright //-->
+</footer>
+
+<!--// Footer Section Start //-->
+
+
+
+		<div class="container-fluid ft_banner_main pt-4 pb-4 d-none">
+			<div class="container pt-1 pb-1">
+				<div class="row marginZ padding_30top padding_60bottom position-relative">
+					<div class="col-lg-6 col-md-6 col-sm-6 text-center ft_banner_cnt paddingtb60 mt-4 home-container">
+						
+						<h5 class="w-100 font_34 font_w600 color_white"  >LIVE FANTASY SPORTS</h5> 
+						<h6 class="ft_pg__subtitle w-100 font_20 color_white m-0">Play Fantasy Cricket. <br>Win Cash Daily!</h6>
+						<p class="w-100 marginZ text-center app_play_store">
+							<span>Download Android App And Signup Now To Get ₹ 51 Instant FREE CASH BONUS!
+							</span>
+							<a  (click)="downloadlink()" ><img src="assets/images/play_store.png"class=" p-1"></a>
+						</p>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 pt-5 slider_section">
+
+						<div id="banner_sliders" class="carousel slide" data-ride="carousel"  data-interval="10000">
+						  <!-- The slideshow -->
+							<div class="carousel-inner innerH">
+							    <div class="carousel-item active">
+							      <a class="d-inline-block" href="javascript:void(0);">
+							      		<div class="row marginZ w-100 carousel_itemSection">
+								      		<img src="assets/images/home-slide1.png">
+								      	</div>
+							      	</a>
+							    </div>
+							    <div class="carousel-item">
+							      	<a class="d-inline-block" href="javascript:void(0);">
+							      		<div class="row marginZ w-100 carousel_itemSection">
+								      		<img src="assets/images/home-slide2.png">
+								      	</div>
+							      	</a>
+							    </div>
+							    <div class="carousel-item ">
+							      	<a class="d-inline-block" href="javascript:void(0);">
+							      		<div class="row marginZ w-100 carousel_itemSection">
+								      		<img src="assets/images/home-slide3.png">
+								      	</div>
+							      	</a>
+							    </div>
+							</div>
+						  
+						  <!-- Left and right controls -->
+						  	<a class="carousel-control-prev carousel_control" href="#banner_sliders" data-slide="prev">
+						    	<span class="fa fa-angle-left"></span>
+						  	</a>
+						  	<a class="carousel-control-next carousel_control" href="#banner_sliders" data-slide="next">
+						    	<span class="fa fa-angle-right"></span>
+						  	</a>
+						</div>
+
+					</div>
+						<div class="small_tagline">
+							<p class="mb-0 font_w600">T&C Apply</p>
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<!------how-to-play----->
+
+		<div class="container-fluid paddingtb60 ft_hw_play pl-0 pr-0 d-none">
+			<div class="container pl-0 pr-0">
+				<div class="row marginZ text-center how_to_play_content">
+					<h3 class="w-100 padding_15bottom font_w600 font_32 heading_mobile_section">How To Play</h3>
+
+					<p>
+						Do you watch your favorite sports? If yes, then MyExpert11 is tailor-made for you. It is played by applying your sports abilities and understanding.  All you need to do is to make your own team by selecting players which you feel may perform well in the very game you’re participating. And that’s it! 
+					</p>
+					<p class="mb-4">
+						The good thing is: you will have 100 credits for choosing players for Cricket. And if your selected players play well, you win well. Very well, indeed.
+					</p>
+				</div>
+
+
+				<div class="row marginZ">
+					<div class="col-lg-6 col-sm-6 col-md-5 d-flex align-items-center justify-content-center how_to_play_images_main">
+						<img src="assets/images/howtoplay_image.png">
+					</div>
+					<div class="col-lg-6 col-sm-6 col-md-7 hexList pl-5">
+
+						<div class="row marginZ steps_winning">
+							<h5 class="w-100 font_w600 pl-3 font_22">5 STEPS OF WINNINGS:-</h5>
+						</div>
+
+					    <div class="row flex-items-xs-middle middle_row">
+					        <div class="col-md-3 col-lg-3 col-sm-3 col-3">
+					            <div class="hexagon">
+					                <h4 class="howtoplayListNumber font_28 font_w600 color_white text-center">1</h4>
+					            </div>
+					        </div>
+					        <div class="col-md-9 col-lg-9 col-sm-9 col-9 five_steps_content">
+					        	<h5 class="font_w600 mb-0 w-100 ">Select a Match</h5>
+					            <p class="howtoplayList font_17 w-100">In the first step, you should select any upcoming match.</p>
+					        </div>
+					    </div>
+					    <div class="row flex-items-xs-middle middle_row">
+					        <div class="col-md-3 col-lg-3 col-sm-3 col-3">
+					            <div class="hexagon">
+					               	<h4 class="howtoplayListNumber font_28 font_w600 color_white text-center">2</h4>
+					            </div>
+					        </div>
+					        <div class="col-md-9 col-lg-9 col-sm-9 five_steps_content col-9">
+					        	<h5 class="font_w600 mb-0 w-100 mt-3 pt-1">Select Your MyExpert11 Team</h5>
+					            <p class="howtoplayList font_17 w-100">Pick players of your choice</p>
+					        </div>
+					    </div>
+					    <div class="row flex-items-xs-middle middle_row">
+					        <div class="col-md-3 col-lg-3 col-sm-3 col-3">
+					            <div class="hexagon">
+					                <h4 class="howtoplayListNumber font_28 font_w600 color_white text-center">3</h4>
+					            </div>
+					        </div>
+					        <div class="col-md-9 col-lg-9 col-sm-9 col-9 five_steps_content">
+					        	<h5 class="font_w600 mb-0 w-100 mt-2">Join a Contest</h5>
+					            <p class="howtoplayList font_17 w-100">Select the match based on your financial planning. </p>
+					        </div>
+					    </div>
+					    <div class="row flex-items-xs-middle middle_row">
+					        <div class="col-md-3 col-lg-3 col-sm-3 col-3">
+					            <div class="hexagon">
+					                <h4 class="howtoplayListNumber font_28 font_w600 color_white text-center">4</h4>
+					            </div>
+					        </div>
+					        <div class="col-md-9 col-lg-9 col-sm-9 col-9 five_steps_content">
+					        	<h5 class="font_w600 mb-0 w-100 mt-2">Enjoy the Match</h5>
+					            <p class="howtoplayList font_17 w-100">Now, sit back and watch your players perform for you. </p>
+					        </div>
+					    </div>
+
+					    <div class="row flex-items-xs-middle middle_row">
+					        <div class="col-md-3 col-lg-3 col-sm-3 col-3">
+					            <div class="hexagon">
+					                <h4 class="howtoplayListNumber font_28 font_w600 color_white text-center">5</h4>
+					            </div>
+					        </div>
+					        <div class="col-md-9 col-lg-9 col-sm-9 col-9 five_steps_content">
+					        	<h5 class="font_w600 mb-0 w-100 mt-2">Hurray </h5>
+					            <p class="howtoplayList font_17 w-100">Once, you have won, then you withdraw your amount through just one verification. Dead easy!!!</p>
+					        </div>
+					    </div>
+					</div>
+				</div>
+
+				<div class="row ml-0 mr-0 signup_user_section">
+					<p class="mb-0 text-center w-100">Not a MYEXPERT11 user? <a href="#home">Sign up now </a>– It’s FREE!  </p>
+				</div>
+			</div>
+		</div>
+
+		<!-------android-app-download-------->
+		<div class="container-fluid ft_android_app pl-0 pr-0 d-none padding_60top d-none">
+			<div class="container pl-0 pr-0">
+				<div class="row marginZ">
+					<div class="col-lg-6 col-md-6 col-sm-8 paddingZ">
+						<div class="app_info padding_60top">
+						    <h1 class="font_w600 font_26 heading_mobile_section">Download MYEXPERT11 App For Exclusive Features!</h1>
+						    <p class="font_18 mt-4 mb-2">
+						    	Have a Referral Code? Download Android App And Signup Now To Get ₹ 51 Instant FREE CASH BONUS! 
+						        <br>Enjoy Up to 100% WELCOME BONUS!
+						        <br> Refer and Earn -The more you refer, the bigger your bonus!
+						    </p>
+						     <p class="font_16 mt-2 mb-4">Celebrate Your Rewards - Opportunities to maximize your Bonus!</p>
+						    <ul class="list-inline">
+						        <li class="list-inline-item">
+						            <a (click)="downloadlink()"><img src="assets/images/play_store.png" ></a>
+						        </li>
+						    </ul>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-4 android_appImg text-right">
+						<img src="assets/images/play_store.png">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-------feature-------->
+
+
+
+
+
+		<div class="container-fluid ft_hw_play paddingtb60 d-none">
+			<div class="container">
+				<div class="row marginZ">
+					<h3 class="w-100 padding_30bottom font_w600 font_32 text-center heading_mobile_section feature_section">MYEXPERT11 Features</h3>
+				</div>
+				<div class="row marginZ testmonial_main">
+					<div id="feature_s" class="carousel slide" data-ride="carousel" data-interval="20000">
+
+					  <!-- Indicators -->
+					  	<ul class="carousel-indicators">
+					    	<li data-target="#feature_s" data-slide-to="0" class="active"></li>
+					    	<li data-target="#feature_s" data-slide-to="1"></li>
+					  	</ul>
+
+					  <!-- The slideshow -->
+					  	<div class="carousel-inner">
+
+					    	<div class="carousel-item active">
+					      		<div class="row marginZ w-100">
+					      			<div class="col-lg-6 col-sm-6 col-md-6 col-12">
+										<div class="row marginZ w-100 ft_test_inner">
+											<div class="test_content">
+												<h4>Enjoy up to 100% WELCOME BONUS!</h4>
+												<p class="font_w500 w-100">At MyExpert11, we believe in rolling out the red carpet from the moment you join our site. That's why we are offering up to 100% bonus on your first deposit. </p>
+												<p class="font_w500 w-100">
+													This special offer, which is available for your initial deposit only, is a beautiful thing. Here's why: The more cash you deposit, the more free bonus you get. 
+												</p>
+												<p class="font_w500 w-100">
+													To take advantage of this great offer, simply make your first deposit and play.
+												</p>
+												<a href="#home">Add Cash To Get Bonus</a> 
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-6 col-sm-6 col-md-6 col-12">
+										<div class="row marginZ w-100 ft_test_inner ft_test_inner2">
+											<div class="test_content">
+												<h4>Refer and Earn</h4>
+												<p class="font_w500 w-100">The more you refer, the bigger your bonus</p>
+												<p class="font_w500 w-100">Get your referral code & share with your friends and family.</p>	<p class="font_w500 w-100">
+													On every new user that you bring who uses your referral code while signup, you get ₹ 51 and the new user also get ₹ 51 instantly FREE!* For further details, refer to our <a  routerLink="/terms-conditions">T&Cs. </a>
+												</p>
+												<a href="#home">Invite Now</a>
+											</div>
+										</div>
+									</div>
+					      		</div>
+					    	</div>
+
+					    	<div class="carousel-item">
+					      		<div class="row marginZ w-100">
+					      			<div class="col-lg-6 col-sm-6 col-md-6 col-12">
+										<div class="row marginZ w-100 ft_test_inner">
+											<div class="test_content">
+												<h4>Celebrate Your Rewards</h4>
+												<p class="font_w500 w-100">Want to get extra!</p>
+												<p>Opportunities to maximize your Bonus!</p>
+												<a href="#home">View Details </a>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-6 col-sm-6 col-md-6 col-12">
+										<div class="row marginZ w-100 ft_test_inner ft_test_inner2">
+											<div class="test_content">
+												<h4>Become A Partner </h4>
+												<p class="font_w500">We’re now open to invite more members to join our fantasy family.</p>
+												<p class="font_w500">We are affiliate program of the online fantasy platform. Maximize your profit with our promos, great affiliate features. Get amazing promo profit with lifetime revenue sharing program. Get high conversion rate with your traffic!</p>
+												<p class="font_w500">To Know more about this amazing feature!</p>
+												<a href="#home">Click Here </a>
+											</div>
+										</div>
+									</div>
+					      		</div>
+					    	</div>
+					  	</div>
+
+					  	 <a class="carousel-control-prev left_right_featureSection" href="#feature_s" data-slide="prev">
+						    <span class="fa fa-angle-left"></span>
+						  </a>
+						  <a class="carousel-control-next left_right_featureSection" href="#feature_s" data-slide="next">
+						    <span class="fa fa-angle-right"></span>
+						  </a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		
+
+
+
+		<div class="social_share_follow_links d-none" *ngIf="false">
+			<span>Follow us on:-</span>
+			<ul class="list-inline mb-0">
+				<li class="list-inline-item">
+					<a class="fb" href="https://www.facebook.com/myexpert11" target="_blank">
+						<i class="fab fa-facebook"></i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="tw" href="https://twitter.com/MY_EXPERT11" target="_blank">
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="in" href="https://www.instagram.com/myexpert11/" target="_blank">
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+				<!-- <li class="list-inline-item"> -->
+					<!-- <a class="ggp" href="https://plus.google.com" target="_blank"> -->
+						<!-- <i class="fab fa-google-plus"></i> -->
+					<!-- </a> -->
+				<!-- </li> -->
+				<li class="list-inline-item">
+					<a class="sk" href="https://www.youtube.com/channel/UCoX2GBqtYCrW5gImSeMdS8A" target="_blank">
+						<i class="fab fa-youtube"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="w-100 fixed hide-md bottom-0 left-0 right-0 dn-ns bg-black-70 shadow-1 z-9999 ph3 pb3 pt1">
+			<!-- <p class="f5 tc mb2">Get <span class="f4 gold"><i claSS="fa fa-inr"></i>30</span> Joining Bonus!</p> -->
+			<p class="f5 tc mb2 font_16">Get <span class="green-color font-bold font-18"><i claSS="fa fa-inr shreicon"></i>51</span> Signup Bonus!</p>
+			<div class="w-100 d-flex justify-center items-center">
+			
+			<a class="tc w-100 pv2 lh-copy dim br2 f7 fw6 button-reset outline-0 bg-white dark-gray bw0" href="#home">REGISTER FREE</a>
+			
+				<p class="mt-2 mb-0 f7 ph3"></p>
+				
+				<a class="pointer tc w-100 pv2 lh-copy dim br2 f7 fw6 button-reset outline-0 bg-green white bw0" (click)="downloadlink()" >  DOWNLOAD APP </a></div>
+		</div>

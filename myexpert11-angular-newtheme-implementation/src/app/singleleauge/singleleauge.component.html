@@ -1,0 +1,780 @@
+<section class="body-section-home">
+    <div class="body-section-home-inner">
+
+        <app-left-side></app-left-side>
+        <div class="rightBox"> 
+                <div class="rightBox-inner bg_gray db">
+                    <div class="flex-wth w-100">
+
+                        <header class="main_header main_header_2" id="header1">
+                            <div class="mobile_nav">
+                                <div class="" id="fixHead">
+
+                                    <!-- <app-header></app-header> -->
+                                    <div class="info-bar w-100 col-lg-12 col-md-12 cl-sm-12 col-12 p-0">
+                                        <div class="infobarContent newcheck">
+                                            <div class="infobarContentRow w-100 d-flex" *ngFor="let matchdetails of matchdetails">
+                                                <div class="js--match-header-title infobarContentLeft ">
+														<button class="btn_icon color_white p-0" (click)="back_button()">
+															<i class="fas fa-arrow-left font-16"></i>
+														</button>
+														<a class="btn_icon home_icon theme-color mr-3 font-16" routerLink="/home"><i class="fas fa-home"></i></a>		
+														<span class="namematchest">{{matchdetails.team1name}} vs {{matchdetails.team2name}}</span>
+												</div>
+												
+                                                  <div class="scoreupdation"  *ngIf="matchdetails.matchstatus != 'notstarted'" (click)="completescore()">Score</div>  
+													
+                                                <div class="infobarContentLeft text-center d-flex">
+                                                    <div class="timer d-flex justify-content-center align-items-center" *ngIf="matchdetails.matchstatus=='notstarted'"><i class="far fa-clock" style="height: 16px; width: 16px; font-size: 16px;"></i><span class="timeRemaining"><countdown-timer [end]="matchdetails.time_start"></countdown-timer></span></div> 
+                                                    <div class="timer d-flex justify-content-center align-items-center theme-color" *ngIf="matchdetails.matchstatus=='started'">In Progress</div>
+													<div class="timer d-flex justify-content-center align-items-center theme-color" *ngIf="matchdetails.matchstatus=='IsReviewed' || matchdetails.matchstatus=='pending'">Under Review</div>
+                                                    <div class="timer d-flex justify-content-center align-items-center theme-color  text-capitalize" *ngIf="matchdetails.matchstatus=='completed' || matchdetails.matchstatus=='winnerdeclared'" >Result</div>
+																					
+															<button class="btn_icon ml-auto mr-0 color_white p-0 imagewaallet" routerLink="/my-account" *ngIf="loginid!= ''">
+																<!-- <i class="fas fa-credit-card"></i> -->
+																<i class="fas fa-wallet"></i>
+															</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="tabs-sec-me contest_main" [ngClass]="matchdetails[0].matchstatus!='notstarted' ? 'active' : ''">
+							<div class="w-100" *ngFor="let leaugesinfo of leaugesinfo">
+							
+								<div class="topscorecard" *ngIf="matchdetails[0].matchstatus!='notstarted'"> 
+									<div class="innertopscorecard">
+										<span class="font_12 mb-2"> SCORECARD</span>
+									</div>
+									<div class="innertopscorecard">
+										<div class="w-50">
+											<p class="font-bold">{{current_score.Team1}} &nbsp;&nbsp; {{current_score.Team1_Totalruns}}-{{current_score.Team1_Totalwickets}} <span>({{current_score.Team1_Totalovers}})</span></p>
+										</div>  
+										<div class="w-50">
+											<p class="font-bold">{{current_score.Team2}} &nbsp;&nbsp; {{current_score.Team2_Totalruns}}-{{current_score.Team2_Totalwickets}} <span>({{current_score.Team2_Totalovers}})</span></p>
+										</div> 
+									</div>
+									<div class="innertopscorecard">
+									<p class="font_12" *ngIf="current_score.Winning_Status != ''">{{current_score.Winning_Status}}</p>
+									</div>
+								</div>
+								<div class="tabs">
+									<div class="main_cont_row">
+										 <div class="top_mse">
+											<!--<div class="winning_amount font-17">
+												<span class="repess_sym font-bold">₹</span>
+												<span class="currency-amount font-bold">{{leaugesinfo.win_amount}}</span>
+											</div>
+											<div class="contest_card_team">
+												<div class="progressbar_wrapper">
+													<div *ngIf="leaugesinfo.contest_type=='Amount'|| leaugesinfo.contest_type==''">{{leaugesinfo.joinedusers}}/{{leaugesinfo.maximum_user}} Teams</div>
+													<div *ngIf="leaugesinfo.contest_type=='Percentage'"><span>{{leaugesinfo.joinedusers}}/</span>∞ Teams</div>
+													  
+													<div class="contest-card__progressbar">
+														<div class="contest_card_progressbar_complete" style="width: {{leaugesinfo.totalwinners}};"></div>
+														<div class="progress_conter"  *ngIf="(leaugesinfo.contest_type=='Amount'|| leaugesinfo.contest_type=='') && (leaugesinfo.price_card)" (click)="totalwins(leaugesinfo.id)" style="cursor:pointer;">
+															<span>{{leaugesinfo.totalwinners}} Winners</span>
+															<i class="fas fa-angle-down"></i>
+														</div>
+														<div class="progress_conter"  *ngIf="!leaugesinfo.price_card && leaugesinfo.catname==null">
+															<span>{{leaugesinfo.totalwinners}} Winners</span> 
+														</div>
+														<div class="progress_conter"  *ngIf="leaugesinfo.contest_type=='Percentage'">
+															<span>{{leaugesinfo.winning_percentage}}% Winners</span> 
+														</div>
+													</div>
+												</div>
+											</div>
+											<div id="winnner-rank{{leaugesinfo.id}}" class="closeactive" (click)="totalwinsclose(leaugesinfo.id)">
+												<div class="em_bottom_sheet">
+													<div class="em_winnerBreakupWrapper">
+													
+														<div class="em_headerContainer contehead d-flex justify-content-space-between ">
+															<div class="color_white -w-100">Winning Breakup</div>
+															<div class="em_tamp " (click)="totalwinsclose(leaugesinfo.id)">Close</div> 
+														</div>
+														<div class="em_breakupContainer_center">
+															<p>Prize Pool</p>
+															<span><span class="d11-icon">₹</span>{{leaugesinfo.win_amount}}</span>
+														</div>
+														<div class="em_breakupContainer">
+															<div class="em_scroll">
+																<div class="em_breakupWrapper">
+																	<div class="em_rankRowWrapper d-flex align-items-center" *ngFor="let pricecards of leaugesinfo.price_card">
+																		<div class="em_rankRowTitle">Rank {{pricecards.start_position}}</div>
+																		<div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">{{pricecards.price}}</span></span>
+																		</div>
+																	</div> 
+																</div>
+																<div class="em_infoTextWrapper text-left align-items-center justify-content-space-around">Note: The actual prize money may be different than the prize money mentioned above if there is a tie for any of the winning positions. Check FAQs for further details . As per government regulations, a tax of 31.2% will be deducted if an individual wins more than Rs.10,000</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>  -->
+											
+											<div class="winning_amount font-17 d-block">
+												<span class="repess_sym font-bold w-100 mb-1  d-block">Total Winnings</span>
+												<span class="repess_sym  font-bold">₹</span>
+												<span class="currency-amount  font-bold">{{leaugesinfo.win_amount}}</span>
+											</div>
+											<div class="winning_amount font-17 d-block">
+												<span class="repess_sym font-bold w-100 mb-1  d-block">Winners</span> 
+												  
+														<div class="progress_conter"  *ngIf="(leaugesinfo.contest_type=='Amount'|| leaugesinfo.contest_type=='') && (leaugesinfo.price_card)" (click)="totalwins(leaugesinfo.id)" style="cursor:pointer;">
+															<span>{{leaugesinfo.totalwinners}}</span>
+															<i class="fas fa-caret-down"></i>
+														</div>
+														<div class="progress_conter"  *ngIf="!leaugesinfo.price_card && leaugesinfo.catname==null">
+															<span>{{leaugesinfo.totalwinners}}</span> 
+														</div>
+														<div class="progress_conter"  *ngIf="leaugesinfo.contest_type=='Percentage'">
+															<span>{{leaugesinfo.winning_percentage}}%</span> 
+														</div> 
+												 
+											</div>
+											
+											<div id="winnner-rank{{leaugesinfo.id}}" class="closeactive" (click)="totalwinsclose(leaugesinfo.id)">
+												<div class="em_bottom_sheet">
+													<div class="em_winnerBreakupWrapper">
+													
+														<div class="em_headerContainer contehead d-flex justify-content-space-between ">
+															<div class="color_white -w-100">Winning Breakup</div>
+															<div class="em_tamp " (click)="totalwinsclose(leaugesinfo.id)">Close</div> 
+														</div>
+														<div class="em_breakupContainer_center">
+															<p>Prize Pool</p>
+															<span><span class="d11-icon">₹</span>{{leaugesinfo.win_amount}}</span>
+														</div>
+														<div class="em_breakupContainer">
+															<div class="em_scroll">
+																<div class="em_breakupWrapper">
+																	<div class="em_rankRowWrapper d-flex align-items-center" *ngFor="let pricecards of leaugesinfo.price_card">
+																		<div class="em_rankRowTitle">Rank {{pricecards.start_position}}</div>
+																		<div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">{{pricecards.price}}</span></span>
+																		</div>
+																	</div> 
+																</div>
+																<div class="em_infoTextWrapper text-left align-items-center justify-content-space-around">Note: The actual prize money may be different than the prize money mentioned above if there is a tie for any of the winning positions. Check FAQs for further details . As per government regulations, a tax of 31.2% will be deducted if an individual wins more than Rs.10,000</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="winning_amount font-17 d-block">
+												<span class="repess_sym font-bold w-100 mb-1  d-block">Entry Fee</span>
+												<span class="repess_sym  font-bold">₹</span>
+												<span class="currency-amount  font-bold">{{leaugesinfo.entryfee}}</span>
+											</div>
+											
+										</div>
+										
+													<div class="me_contestDetailAndCtaLeft">
+														<div class="me_contestProgressBar">
+														<div class="contest_card_progressbar_complete" [ngStyle]="{width:leaugesinfo.getjoinedpercentage}"></div>
+														</div>
+														<div class="me_contestTeamSection">
+															<div *ngIf="leaugesinfo.contest_type=='Percentage'">{{leaugesinfo.joinedusers}} Teams joined 
+															</div>
+															<div *ngIf="leaugesinfo.contest_type=='Amount'">{{leaugesinfo.maximum_user - leaugesinfo.joinedusers}} Teams Left 
+															</div>
+															<div *ngIf="leaugesinfo.contest_type=='Percentage'"><span *ngIf="leaugesinfo.joinedusers!=0">{{leaugesinfo.joinedusers}}/</span>∞ Teams</div> 
+															<div *ngIf="leaugesinfo.contest_type=='Amount'"><span *ngIf="leaugesinfo.joinedusers!=0">{{leaugesinfo.joinedusers}}/</span>{{leaugesinfo.maximum_user}} Teams</div>
+														</div>
+													</div>
+										
+											<div class="join_bbtns" *ngIf="matchdetails[0].matchstatus=='notstarted'">
+												<div> 
+													
+													
+													<div class="pr-3 pl-3">
+														<div class="js--contest-card-join-btn w-100  text-uppercase" *ngIf="leaugesinfo.maximum_user!=0">
+															<button class="me_borderedButton  w-100 text-uppercase" (click)="joincontest(leaugesinfo.entryfee,leaugesinfo.id);" *ngIf="leaugesinfo.isselected == false  && leaugesinfo.joinedusers < leaugesinfo.maximum_user">Join This Contest</button>
+															<button class="me_borderedButton  w-100 text-uppercase"(click)="invitethischallenge(leaugesinfo.id,leaugesinfo.matchkey);" *ngIf="leaugesinfo.isselected == true  && leaugesinfo.joinedusers < leaugesinfo.maximum_user">invite</button> 
+														</div> 
+														<div class="js--contest-card-join-btn  w-100 text-uppercase" *ngIf="leaugesinfo.maximum_user==0">
+															<button class="me_borderedButton w-100 text-uppercase" (click)="joincontest(leaugesinfo.entryfee,leaugesinfo.id);" *ngIf="leaugesinfo.isselected == false">Join This Contest</button>
+															<button class="me_borderedButton  w-100 text-uppercase"(click)="invitethischallenge(leaugesinfo.id,leaugesinfo.matchkey);" *ngIf="leaugesinfo.isselected == true">invite</button> 
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										<div class="blo_inner">
+											<!-- <div class="mini_heading">Total Winnings</div> -->
+											<div class="contest-card_sml">
+												<div class="card_calc" *ngFor="let pricecards of getchallenges.price_card">
+													<div class="mini_card_stl">
+														<span class="repess_sym clr_font1">₹</span>
+														<span class="currency-amount clr_font1">{{pricecards.price}}</span>
+													</div>
+													<div class="ft_card_ma">
+														<span class="">Rank {{pricecards.start_position}}</span>
+														<i class="fas fa-trophy clr_font1"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="main_contte"  *ngIf="matchdetails[0].matchstatus=='notstarted'">
+											<div class="contest_midi" *ngIf="leaugesinfo.confirmed_challenge==1">
+												<div class="cer_c c_cl">C</div>
+												<div>Winnings are confirmed even if this contest doesn't fill up</div>
+											</div>
+											<!--<div class="contest_midi" *ngIf="leaugesinfo.confirmed_challenge==0">
+												<div class="cer_c c_cl">U</div>
+												<div>Winnings are not confirmed even if this contest doesn't fill up</div>
+											</div>-->
+											<div class="contest_midi" *ngIf="leaugesinfo.multi_entry==1">
+												<div class="cer_c c_cm">M</div>
+												<div>You can join this contest with upto 10 teams</div>
+											</div>
+											<!--<div class="contest_midi" *ngIf="leaugesinfo.multi_entry==0">
+												<div class="cer_c c_cm">S</div>
+												<div>In this S contest, join with only one teams</div>
+											</div>-->
+											<div class="contest_midi" *ngIf="leaugesinfo.is_bonus==1">
+												<div class="cer_c c_cb">B</div>
+												<div>{{leaugesinfo.bonus_percentage}} Bonus allowed in this contest for {{leaugesinfo.multientry_limit}} team</div>
+											</div>
+											<!-- <p style="text-align:right;cursor:pointer;"> -->
+												<!-- <a href="#">Download Team</a> -->
+											<!-- </p> -->
+										</div>
+									</div>
+								</div>
+                            </div>
+                        </section>
+				
+                        <section class="board_tol" *ngFor="let leaugesinfo of leaugesinfo">
+                            <div class="w-100" *ngFor="let teams of leaugesinfo.myjointeams; let i = index;">
+								<div class="switchTeam_ecbc8" *ngIf="matchdetails[0].matchstatus=='notstarted'">
+									<div class="w-100 d-flex justify-conten-between" >
+										<div>
+										<span class="light">Joined with : </span><span>Team  T{{teams.teamnumber}} </span></div>
+										<button class="btn btn--bordered" (click)="showUndoBtn(i)">
+											<div class="align-center" >SWITCH TEAMS</div>
+										</button>
+										<div [attr.id]="'undoBtn'+i" *ngIf="showBtn===i" class="switchTeamwin">
+											<button type="button" class="closeviewteam" (click)="closeswitch();"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+											<div class="switchTeamwininnwer">
+												<select class="floatleft height30 font-12 width100 p-1 background-transparent" id="teamselectedid{{teams.teamid}}">
+													<option value="" *ngFor="let joinmembert of jointeamlists" [selected]="joinmembert.teamid==teams.teamid" value="{{joinmembert.teamid}}">Team {{joinmembert.teamnumber}} </option>
+												</select>
+												<button type="submit" class="background-green floatright" (click)="updateteam(teams.teamid,leaugesinfo.id,teams.jid)">Update Team</button>
+											</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+							 
+								<div class="row marginZ w-100 padding_top20 padding_bottom10 ftc_leader_board d-flex justify-space-between pl-2 pr-2 bg_colorwhite" *ngIf="matchdetails.matchstatus!='notstarted' && livescore?.length>0">
+									<span class="color_darkblue font_12 letter_space"  *ngIf="matchdetails[0].matchstatus=='notstarted'">View the selected players of all teams after deadline. NO. team changes post that.</span>
+									<span class="color_darkblue font_12 letter_space"  *ngIf="matchdetails[0].matchstatus!='notstarted'">View the selected players of all teams</span>
+									
+									<span *ngIf="livescore[0].pdfname!=''" ><a class="font_w600 color_darkblue font_16 specobutto" target="_blank" href="{{livescore[0].pdfname}}">Download Teams</a></span>
+								</div>
+                            <div class="bord_tb">
+                                <div class="ratings">
+                                    <div class="global_leadership">
+                                        <div class="global_team">Team</div>
+                                        <div class="global_team">Rank</div>
+                                    </div>
+                                    <div class="pb-3" *ngIf="matchdetails[0].matchstatus=='notstarted'">
+                                        <div class="" *ngFor="let joinedteam of leaugesinfo.jointeams" (click)="showteam(joinedteam.teamid,joinedteam.teamnumber,joinedteam.team,joinedteam.userid)" class="w-100 leaderboard__players-container js--leaderboard__players-container leaderboard__players-container__user-team">
+											<div class="leaderboard__players" [ngClass]="joinedteam.userid == loginid ? 'active' : ''"><img class="leaderboard__players__image" src="{{joinedteam.image}}">
+												<div class="leaderboard__players__user-information">
+													<div>{{joinedteam.team}} (T{{joinedteam.teamnumber}})</div>
+												</div>
+												<div class="leaderboard__players__rank-container">
+													<div class="leaderboard__players__rank">
+														<div>-</div>
+
+													</div>
+												</div>
+											</div>
+										</div> 
+                                    </div>
+                                    <div *ngIf="matchdetails[0].matchstatus=='started' || matchdetails[0].matchstatus=='IsReviewed' || matchdetails[0].matchstatus=='pending'">
+                                        <div class="" *ngFor="let livescore of livescore[0].jointeams" (click)="showteam(livescore.teamid,livescore.teamnumber,livescore.teamname,livescore.userid,livescore.points)" class=" w-100 leaderboard__players-container js--leaderboard__players-container leaderboard__players-container__user-team">
+											<div class="leaderboard__players"  [ngClass]="livescore.userid == loginid ? 'active' : ''"><img class="leaderboard__players__image" src="{{livescore.image}}">
+												<div class="leaderboard__players__user-information">
+													<div>{{livescore.teamname}} (T{{livescore.teamnumber}})</div>
+													<div class="leaderboard__players__user-information__points">
+														<div>{{livescore.points}}</div>
+														<div class="leaderboard__players__user-information__points__label">Points</div>
+													</div>
+												</div>
+												<div class="leaderboard__players__rank-container">
+													<div class="leaderboard__players__rank">
+														<div>
+															<div class="rate_toper ttp_rte d-flex" *ngIf="livescore.arrowname=='equal-arrow'">
+																{{livescore.getcurrentrank}}
+																<div><i class="fas fa-caret-left  theme-color1"></i><i class="fas fa-caret-right  theme-color1"></i></div>
+															</div>
+															<div class="rate_toper ttp_rte d-flex -color" *ngIf="livescore.arrowname=='up-arrow'">
+																{{livescore.getcurrentrank}}
+																<div> <i class="fas fa-caret-up  green-color"></i> </div>
+															</div>
+															<div class="rate_toper ttp_rte d-flex " *ngIf="livescore.arrowname=='down-arrow'">
+																{{livescore.getcurrentrank}}
+																<div> <i class="fas fa-caret-down  theme-color"></i> </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> 
+                                    </div>
+                                    <div *ngIf="matchdetails[0].matchstatus=='completed' || matchdetails[0].matchstatus=='winnerdeclared'">
+                                        <div class="" *ngFor="let donescore of livescore[0].jointeams" (click)="showteam(donescore.teamid,donescore.teamnumber,donescore.teamname,donescore.userid,donescore.points)" class="w-100 leaderboard__players-container js--leaderboard__players-container leaderboard__players-container__user-team">
+                                                    <div class="leaderboard__players" [ngClass]="donescore.userid == loginid ? 'active' : ''"><img class="leaderboard__players__image" src="{{donescore.image}}">
+                                                        <div class="leaderboard__players__user-information" >
+                                                            <div>{{donescore.teamname}} (T{{donescore.teamnumber}})</div>
+                                                            <div class="leaderboard__players__user-information__points" [ngClass]="donescore.getcurrentrank== '1' ? 'active' : ''">
+                                                                <div class="d-flex" > {{donescore.points}} 
+                                                                <div class="leaderboard__players__user-information__points__label">Points</div>
+																<div class="pl-3" *ngIf="donescore.getcurrentrank== '1'">
+																	<div>
+																	<p   class="theme-color m-0 font_12" >Champion of The Contest</p> 
+																	</div>
+																</div></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="leaderboard__players__rank-container"  [ngClass]="donescore.getcurrentrank== '1' ? 'active' : ''">
+                                                            <div class="leaderboard__players__rank">
+																
+                                                                <div class="d-flex"><i class="fas fa-trophy pr-3" *ngIf="donescore.getcurrentrank== '1'"></i>    #{{donescore.getcurrentrank}}</div>
+                                                                <div *ngIf="donescore.winingamount != ''"> 
+                                                                    <div><span><span class="d11-icon">₹</span><span class="currency-amount">{{donescore.winingamount}}</span></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--  <div class="leaderboard__players__winner-message"><img class="leaderboard__players__winner-message__icon" src="/public/imgs/split-winning-icon.svg">
+            <div>Winning split with 116 other teams</div>
+        </div> --> 
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div> 
+        </div>
+    </div>
+</section>
+
+<div id="sharemodal" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+        <div id="my_team">
+
+            <div class="w-90 margin-auto">
+                <div class="w-100">
+                    <p class="text-center font-14 font-bold w-100 tc p-2 borderbottomlightblack">Invite your friends to complete with them </p>
+                    <div class="pb-3 w-100 db center tc text-center">
+
+                        <h3 class="font-17 tc mt-3 text-center ">Your  Invite Code Is : <span class="p-2 theme-background white font-bold">{{invitecode}}</span> </h3>
+
+                        <h4 class="text-center ">
+	       		    	<a  class="inviteviaemail font-14 font-bold dib mt-2  themecolor" data-target="#shareviaemailmodal" data-toggle="modal" data-dismiss="modal">Invite via Email</a>
+	       		    </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="shareviaemailmodal" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog col-sm-4">
+        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+        <div id="my_team">
+
+            <div class="w-90 margin-auto">
+                <div class="w-100">
+                    <p class=" font-14 font-bold w-100 tc p-2 borderbottomlightblack">Invite Friends Via Email </p>
+                    <div class="pb-3 w-100 db center">
+
+                        <h3 class="font-17 tc mt-3">Your  Invite Code Is : <span class="p-2 theme-background white font-bold">{{invitecode}}</span> </h3>
+
+                        <form [formGroup]="rForm" (ngSubmit)="sendinvite(rForm.value)">
+                            <div class="input-field form-group">
+                                <input id="user_email" class="font-12 background-transparent w-100 dib   height40 inputininvite" placeholder="Enter email here" formControlName="email" [ngClass]="{'errorclass': !rForm.controls['email'].valid && rForm.controls['email'].touched}" type="text" required>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="joinleauge background-green" [disabled]="!rForm.valid">Send Code</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="team-preview" class="slide">
+    <div class="tema_view">
+        <div class="header_top_nmee w-100" *ngFor="let matchdetails of matchdetails">
+            <p>Team: {{teamname}} ( T{{showteamnumber}} )</p>
+			<p ><a (click)="editteams(showteamnumber)" *ngIf="matchdetails.matchstatus=='notstarted'"><i class="fas fa-pencil-alt"></i></a>
+                <button type="button" (click)="closeteampreview();"><i class="fas fa-times-circle"></i></button>
+            </p>
+        </div>
+        <div class="d_fl_grow w-100">
+            <div class="cricet_ground_set" *ngIf='!isMobMode'>
+                <span class="sec_nam_ttf">Wicket-Keeper</span>
+                <div class="player_show">
+                    <div class="player_img" *ngFor="let keeper of teamdetails | playerrole:  'keeper';">
+                        <span class="capvive" *ngIf="keeper.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="keeper.vicecaptain=='1'">VC</span>
+                        <img src="{{keeper.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="keeper.team=='team1'">{{keeper.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="keeper.team=='team2'">{{keeper.name}}</span>
+                        <span class="font_11 white mt-1">{{keeper.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{keeper.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{keeper.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{keeper.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{keeper.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{keeper.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+                    </div>
+                </div>
+                <span class="sec_nam_ttf">Batsmen</span>
+                <div class="player_show wttf">
+                    <div class="player_img" *ngFor="let batsman of teamdetails | playerrole:  'batsman';">
+                        <span class="capvive" *ngIf="batsman.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="batsman.vicecaptain=='1'">VC</span>
+                        <img src="{{batsman.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+                        <span class="font_11 white mt-1">{{batsman.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{batsman.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{batsman.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{batsman.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{batsman.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{batsman.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+                    </div>
+                </div>
+                <span class="sec_nam_ttf">All-Rounders</span>
+                <div class="player_show wttf">
+                    <div class="player_img" *ngFor="let allrounder of teamdetails | playerrole:  'allrounder';">
+                        <span class="capvive" *ngIf="allrounder.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="allrounder.vicecaptain=='1'">VC</span>
+                        <img src="{{allrounder.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+                        <span class="font_11  white mt-1">{{allrounder.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{allrounder.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{allrounder.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{allrounder.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{allrounder.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{allrounder.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+                    </div>
+                </div>
+                <span class="sec_nam_ttf">Bowlers</span>
+                <div class="player_show wttfc">
+                    <div class="player_img" *ngFor="let bowler of teamdetails | playerrole:  'bowler';">
+                        <span class="capvive" *ngIf="bowler.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="bowler.vicecaptain=='1'">VC</span>
+                        <img src="{{bowler.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+                        <span class="font_11  white mt-1">{{bowler.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{bowler.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{bowler.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{bowler.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{bowler.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{bowler.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+                    </div>
+                </div>
+				<div class="w-100 text-center" *ngFor="let matchdetails of matchdetails">
+					<div class="w-100 bottompoint d-flex" *ngIf="matchdetails.matchstatus != 'notstarted' ">
+						<div class="w-50 onediv text-center">
+							<span>Total Points</span>
+							<p>{{totalpoints}}</p>
+						</div>
+						<div class="w-50 onediv1 text-center">
+							<a routerLink="/point-system">Point System</a>
+						</div>
+					</div>
+				 
+					
+				</div>
+            </div>
+            <div class="cricet_ground_set" *ngIf='isMobMode'>
+                <span class="sec_nam_ttf">Wicket-Keeper</span>
+                <div class="player_show">
+                    <div class="player_img" *ngFor="let keeper of teamdetails | playerrole:  'keeper';">
+                        <span class="capvive" *ngIf="keeper.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="keeper.vicecaptain=='1'">VC</span>
+                        <img src="{{keeper.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="keeper.team=='team1'">{{keeper.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="keeper.team=='team2'">{{keeper.name}}</span>
+                        <span class="font_11 white mt-1">{{keeper.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{keeper.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{keeper.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{keeper.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{keeper.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{keeper.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+                    </div>
+                </div>
+                <span class="sec_nam_ttf">Batsmen</span>
+                <div class="player_show wttf">
+                    <div class="player_img" *ngFor="let batsman of teamdetails | playerrole:  'batsman';let i=index">
+						<ng-container *ngIf='i<=3'>
+                        <span class="capvive" *ngIf="batsman.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="batsman.vicecaptain=='1'">VC</span>
+                        <img src="{{batsman.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+                        <span class="font_11 white mt-1">{{batsman.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{batsman.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{batsman.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{batsman.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{batsman.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{batsman.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+						</ng-container>
+                    </div>
+                </div>
+                <div class="player_show wttf" id="playerCentre">
+                    <div class="player_img" *ngFor="let batsman of teamdetails | playerrole:  'batsman';let i=index">
+						<ng-container *ngIf='i>3'>
+                        <span class="capvive" *ngIf="batsman.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="batsman.vicecaptain=='1'">VC</span>
+                        <img src="{{batsman.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+                        <span class="font_11 white mt-1">{{batsman.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{batsman.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{batsman.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{batsman.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{batsman.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{batsman.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+						</ng-container>
+                    </div>
+                </div>
+                <span class="sec_nam_ttf">All-Rounders</span>
+                <div class="player_show wttf">
+                    <div class="player_img" *ngFor="let allrounder of teamdetails | playerrole:  'allrounder';let i=index">
+						<ng-container *ngIf='i<=3'>
+                        <span class="capvive" *ngIf="allrounder.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="allrounder.vicecaptain=='1'">VC</span>
+                        <img src="{{allrounder.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+                        <span class="font_11  white mt-1">{{allrounder.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{allrounder.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{allrounder.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{allrounder.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{allrounder.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{allrounder.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+						</ng-container>
+                    </div>
+                </div>
+                <div class="player_show wttf" id="playerCentre">
+                    <div class="player_img" *ngFor="let allrounder of teamdetails | playerrole:  'allrounder';let i=index">
+						<ng-container *ngIf='i>3'>
+                        <span class="capvive" *ngIf="allrounder.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="allrounder.vicecaptain=='1'">VC</span>
+                        <img src="{{allrounder.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+                        <span class="font_11  white mt-1">{{allrounder.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{allrounder.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{allrounder.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{allrounder.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{allrounder.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{allrounder.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+						</ng-container>
+                    </div>
+                </div>
+                <span class="sec_nam_ttf">Bowlers</span>
+                <div class="player_show wttfc">
+                    <div class="player_img" *ngFor="let bowler of teamdetails | playerrole:  'bowler';let i=index">
+						<ng-container *ngIf='i<=3'>
+                        <span class="capvive" *ngIf="bowler.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="bowler.vicecaptain=='1'">VC</span>
+                        <img src="{{bowler.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+                        <span class="font_11  white mt-1">{{bowler.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{bowler.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{bowler.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{bowler.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{bowler.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{bowler.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+						</ng-container>
+                    </div>
+                </div>
+                <div class="player_show wttfc" id="playerCentre">
+                    <div class="player_img" *ngFor="let bowler of teamdetails | playerrole:  'bowler';let i=index">
+						<ng-container *ngIf='i>3'>
+                        <span class="capvive" *ngIf="bowler.captain=='1'">C</span>
+                        <span class="vicecapvive" *ngIf="bowler.vicecaptain=='1'">VC</span>
+                        <img src="{{bowler.image}}" class="img-fluid ply_er">
+                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+                        <span class="font_11  white mt-1">{{bowler.current_points}} PTS</span>
+						<table  *ngIf="matchdetails.matchstatus!='notstarted'">
+							<thead>
+								<tr><th colspan="2">{{bowler.name}}</th></tr>
+								<tr><th>Type</th><th>Points</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Starting</td><td>{{bowler.startingpoints}}</td></tr> 
+								<tr><td>Batting</td><td>{{bowler.batting_points}}</td></tr> 
+								<tr><td>Bowling</td><td>{{bowler.bowling_points}}</td></tr> 
+								<tr><td>Fielding</td><td>{{bowler.fielding_points}}</td></tr> 
+							</tbody>
+						</table>
+						</ng-container>
+                    </div>
+                </div>
+				<div class="w-100 text-center" *ngFor="let matchdetails of matchdetails">
+					<div class="w-100 bottompoint d-flex" *ngIf="matchdetails.matchstatus != 'notstarted' ">
+						<div class="w-50 onediv text-center">
+							<span>Total Points</span>
+							<p>{{totalpoints}}</p>
+						</div>
+						<div class="w-50 onediv1 text-center">
+							<a routerLink="/point-system">Point System</a>
+						</div>
+					</div>
+				 
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="pointSystem" class="pointSystem">
+    <div class="fantasy-scorecard__match-card "  *ngFor="let matchdetails of matchdetails">
+        <div class="fantasy-scorecard__teams">
+			<i class="fa fa-arrow-left" (click)="closecompletescore()"></i>
+            <div class="fantasy-scorecard__team-detail"><span><img class="fantasy-scorecard__team-flag" src="{{matchdetails.team1logo}}"></span><span>{{matchdetails.team1name}}</span></div>
+            <div class="fantasy-scorecard__team-detail"><span><img class="fantasy-scorecard__team-flag" src="{{matchdetails.team2logo}}"></span><span>{{matchdetails.team2name}}</span></div>
+        </div>
+        <!-- <div class="fantasy-scorecard__match-status">COMPLETED</div> -->
+    </div>
+    <div class="fantasy-scorecard__table-container">
+        <table class="fantasy-scorecard__table">
+            <thead class="fantasy-scorecard__table-header">
+                <td class="fantasy-scorecard__header-cell">Players</td>
+                <td class="fantasy-scorecard__header-cell">Starting 11</td>
+                <td class="fantasy-scorecard__header-cell">Runs</td>
+                <td class="fantasy-scorecard__header-cell">4's</td>
+                <td class="fantasy-scorecard__header-cell">6's</td>
+                <td class="fantasy-scorecard__header-cell">S/R</td>
+                <td class="fantasy-scorecard__header-cell">50/100</td>
+                <td class="fantasy-scorecard__header-cell">Duck</td>
+                <td class="fantasy-scorecard__header-cell">Wkts</td>
+                <td class="fantasy-scorecard__header-cell">Maiden Over</td>
+                <td class="fantasy-scorecard__header-cell">E/R</td>
+                <td class="fantasy-scorecard__header-cell">Bonus</td>
+                <td class="fantasy-scorecard__header-cell">Catch</td>
+                <td class="fantasy-scorecard__header-cell">Run Out/Stumping</td>
+                <td class="fantasy-scorecard__header-cell">Total</td>
+            </thead>
+            <tbody>
+                <tr class="fantasy-scorecard__row" *ngFor="let scorecard of scorecard">
+                    <td class="fantasy-scorecard__cell">{{scorecard.playername}}</td>
+                    <td class="fantasy-scorecard__cell">{{scorecard.startingpoints}}</td>
+                    <td class="fantasy-scorecard__cell">{{scorecard.runs}}</td>
+                    <td class="fantasy-scorecard__cell">{{scorecard.fours}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.sixs}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.strike_rate}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.century}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.duck}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.wickets}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.maidens}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.economy_rate}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.bonus}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.catch}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.stumping}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.total}}</td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>	

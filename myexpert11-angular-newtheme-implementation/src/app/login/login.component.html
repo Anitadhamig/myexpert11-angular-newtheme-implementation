@@ -1,0 +1,174 @@
+
+	<section class="body-section-home">     
+		<div class="body-section-home-inner position-relative">
+			
+			<app-left-side></app-left-side>
+			<!-- <div class="rightBox rightBoxlog">
+				<div class="w-100 d-flex"> -->
+					<!-- <div class="rightBox-inner" style="display: block;">						
+						<div class="flex-wth w-100">
+							<div class="row logo_section">
+								<a><img class="img-fluid fantasy_logo" src="/assets/images/logo-me11.png"></a>
+							</div>
+							<div class="login_form_design">
+								<div class="login_formM">
+									<form  [formGroup]="lForm" (ngSubmit)="login(lForm.value)">
+										<div class="email_password log-sig">										  
+											<input formControlName="email" id="email_id" name="email_id" type="text" required class="forms_field-input"  />
+											<label for="user_email">Email/Mobile no. </label>
+											<span><i class="fas fa-user" aria-hidden="true"></i></span>
+											<div class="br_line"></div>
+										 </div>
+										<div class="email_password log-sig">
+											<input  formControlName="password" id="password" name="password" type="password" required class="forms_field-input" />
+											<label _ngcontent-c4="" class="" for="user_email">Password </label>
+											 <p class="eyebtn"><i class="fa fa-eye"></i></p> -->
+											<!-- <span><i class="fa fa-key" aria-hidden="true"></i></span>
+											<div class="br_line"></div>
+										 </div>
+										
+										<div class="loginForm">
+											<button  (Click)="login(lForm.value)" >Login Now</button>
+										</div>
+										<div class="forget_psw">
+											<a  data-target="#forgotPassword" data-toggle="modal">Forgot Password?</a>
+										</div>
+									</form>
+								</div>
+
+								<div>
+									<div class="or_innerSec"><span>or</span></div>
+								</div>
+
+									<p class="m-0 font_12  text-center">LOGIN WITH</p>
+								<div class="google_fbMain signup_th">
+									<ul class="list-inline">
+										<li class="list-inline-item fb_section facebook_section">
+											<button class="facebook" (click)="signInWithFB();"><img src="/assets/images/facebook.png"><span>facebook</span></button>
+										</li>
+										<li class="list-inline-item fb_section ggl_section">
+											<button class="google" (click)="signInWithGoogle();"><img src="/assets/images/google.png"><span>google</span></button>
+										</li>
+									</ul>
+								</div>			 -->
+								<!-- <div class="footer-ref"> -->
+									<!-- <div class="ref-acc">
+										<p>Have a referral code?</p>
+										<a href="login.html">Click here</a>
+									</div> --> 
+									<!-- <div class="ref-acc txt-ri w-100">
+										<p class="text-center">New to MyExpert11?  
+										<a routerLink="/register">Register FREE</a></p>
+									</div>
+								</div>							
+							</div>
+						</div> -->
+					<!-- </div>  -->
+				<!-- </div>
+			//</div> -->
+		</div>
+ 	</section>
+
+
+<div  class="modal fade" id="forgotPassword" role="dialog" >
+    <div class="login_modalInner"></div>
+    <div class="modal-dialog modaldialog login_formM">
+		<div  id="createTeamPopUp">
+			<button  class="close btncloses" data-dismiss="modal" type="button" #closeBtn>×</button>
+			<h3  class="popupTitle">Forgot Password</h3>
+
+			<div  class="col-md-12 col-sm-12 col-xs-12 popupInner login_formM" >
+				<p  class="newtext"> Don't worry about your password. You can reset your password from here.</p>
+				<form class="select_login_form_sec login_form_design" [formGroup]="forgetform" (ngSubmit)="forgotpassword(forgetform.value)">
+					<div  class="email_password log-sig">
+						<input  class="form-control"  formControlName="email"  type="text">
+						<label >Email/Mobile no. </label>
+						<span><i class="fa fa-envelope" aria-hidden="true"></i></span> 
+						<div class="br_line"></div>
+					</div>
+
+					<button  (Click)="forgotpassword(forgetform.value)" type="submit">
+						Send otp
+					</button>
+				</form>
+
+			</div>
+		</div>
+    </div>
+</div>
+
+
+ 
+<div class="modal fade" id="entercodemodal" role="dialog">
+    <div class="modal-dialog modaldialog login_formM">   
+        <div id="createTeamPopUp"><button type="button" class="close btncloses" data-dismiss="modal">×</button>
+           <h3 class="popupTitle">OTP</h3>
+             
+            <div class="col-md-12 col-sm-12 col-xs-12 popupInner login_formM" >
+                <p class="newtext"> We have sent you an OTP. Please check.      </p>
+                <form [formGroup]="entercodeform" (ngSubmit)="matchcode(entercodeform.value)" class="select_login_form_sec login_form_design">
+                <div class="email_password log-sig">
+                    <input class="form-control" formControlName="code"  type="text">
+                    <label>OTP</label>  
+					<span><i class="fa fa-edit" aria-hidden="true"></i></span>
+					<div class="br_line"></div>
+                </div>
+                
+                <button   (Click)="matchcode(entercodeform.value)" type="submit" >
+                    Submit
+                </button>
+            </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="resetpasswordmodal" role="dialog">   
+    <div class="modal-dialog modaldialog">
+        <div id="createTeamPopUp"><button type="button" class="close btncloses" data-dismiss="modal">×</button>
+           <h3 class="popupTitle">Enter New password here</h3>
+            
+            <div class="col-md-12 col-sm-12 col-xs-12 popupInner login_formM" >
+                <p class="newtext"> Now you can reset your password by entering your new password here.  </p>
+                <form class="select_login_form_sec login_form_design" [formGroup]="resetform" (ngSubmit)="resetpassword(resetform.value)">
+                <div class="email_password log-sig mb-3">
+                    <input class="form-control" formControlName="repassword" type="password">
+                    <label>Password</label>
+					<span><i class="fa fa-key" aria-hidden="true"></i></span>
+					<div class="br_line"></div>
+                </div>
+                <div class="email_password log-sig" >
+                    <input class="form-control" formControlName="reconfirmpassword"  type="password">
+                    <label> Confirm Password</label>
+					<span><i class="fa fa-key" aria-hidden="true"></i></span>
+					<div class="br_line"></div>
+                </div>
+				
+                <button  type="submit" (Click)="resetpassword(resetform.value)" >
+                    Submit
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="verifCaptca" role="dialog">
+    <div class="modal-dialog modaldialog login_formM">   
+        <div id="createTeamPopUp"><button type="button" class="close btncloses" data-dismiss="modal">×</button>
+           <h3 class="popupTitle">Verify Captca</h3>
+		   <div class="captchaContr" *ngIf="isAuthenticated">  
+			<re-captcha (resolved)="resolved($event)" 
+				siteKey="6Ldmf7AZAAAAAL-NZWtlP6ijKmQXngowRzqcEbHx">  
+			</re-captcha> 
+		</div>
+           
+        </div>
+    </div>
+</div>
+
+
+
+	

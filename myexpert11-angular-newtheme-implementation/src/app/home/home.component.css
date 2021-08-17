@@ -1,0 +1,23 @@
+.main_header{
+	top: 0px;
+} 
+.filtertal{ 
+cursor: pointer
+}
+
+
+/* [type="radio"] + label::before { */
+    /* content: ''; */
+    /* position: absolute; */
+    /* top: -3px; */
+    /* left: 0; */
+    /* height: 15px; */
+    /* z-index: 0; */
+    /* border-radius: 1px; */
+    /* margin-top: 2px; */
+    /* -webkit-transition: 0.2s; */
+    /* -moz-transition: 0.2s; */
+    /* -o-transition: 0.2s; */
+    /* -ms-transition: 0.2s; */
+    /* transition: 0.2s; */
+/* } */

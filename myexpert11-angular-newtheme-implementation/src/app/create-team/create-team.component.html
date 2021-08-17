@@ -1,0 +1,1347 @@
+
+	<section class="body-section-home">     
+		<div class="body-section-home-inner">
+			
+				<app-left-side></app-left-side>
+				<div class="rightBox">
+					<div class="rightBox-inner db">						
+						<div class="flex-wth">
+					<!--	<header class="main_header main_header_2 pt-0" id="header1">
+							<div class="mobile_nav">
+								<div class="" id="fixHead">
+								<app-header></app-header>
+ 
+									<div class="info-bar w-100 col-lg-12 col-md-12 cl-sm-12 col-12 p-0">
+									    <div class="infobarContent">
+									        <div class="infobarContentRow w-100 d-flex" *ngFor="let matchdetails of matchdetails">
+
+									            <div class="js--match-header-title infobarContentLeft">{{matchdetails.team1name}} vs {{matchdetails.team2name}}</div>
+									            <div class="infobarContentLeft text-center">
+									                <div class="timer d-flex justify-content-center align-items-center"><i class="far fa-clock	" style="height: 16px; width: 16px; font-size: 16px;"></i><span class="timeRemaining"><countdown-timer [end]="matchdetails.time_start"></countdown-timer></span></div>
+									            </div> 
+									        </div>
+									    </div>
+									</div>
+								</div>
+							</div>
+						</header>  -->
+						
+						<!-- <div class="container-fluid p-0 me_crt_TeamMain mb-5">
+							<div class="row marginZ w-100">
+								<div class="col-lg-12 col-sm-12 col-md-12 p-0 me_tab_fild_add">
+									<ul class="nav nav-tabs nav_tabs" role="tablist">
+									    <li class="nav-item m-0">
+									      <a class="nav-link active pl-0 pr-0" data-toggle="tab" href="#wicketkeeper">WK
+									      	<span class="d-inline-block color_white {{playerTypeCount.keeper.color}}" [ngClass]="team.totalSize == team.currentSize? 'greencolor' : 'uncheckedClass'">{{playerTypeCount.keeper.selected}}</span></a>
+									    </li>
+									    <li class="nav-item m-0">
+									      <a class="nav-link pl-0 pr-0" data-toggle="tab" href="#batsmen">BAT
+									      <span class="d-inline-block color_white {{playerTypeCount.batsman.color}}" [ngClass]="team.totalSize == team.currentSize? 'greencolor' : 'uncheckedClass'">{{playerTypeCount.batsman.selected}}</span></a>
+									    </li>
+									    <li class="nav-item m-0">
+									      <a class="nav-link pl-0 pr-0" data-toggle="tab" href="#allrounder">AR
+									      <span class="d-inline-block color_white {{playerTypeCount.allrounder.color}}" [ngClass]="team.totalSize == team.currentSize? 'greencolor' : 'uncheckedClass'">{{playerTypeCount.allrounder.selected}}</span></a>
+									    </li>
+									    <li class="nav-item m-0">
+									      <a class="nav-link pl-0 pr-0" data-toggle="tab" href="#bowler">BOWL
+									      <span class="d-inline-block color_white {{playerTypeCount.bowler.color}}" [ngClass]="team.totalSize == team.currentSize? 'greencolor' : 'uncheckedClass'">{{playerTypeCount.bowler.selected}}</span></a>
+									    </li>
+									</ul>
+								</div>
+								
+								
+								<div class="col-lg-12 col-sm-12 col-md-12 p-0">
+									<div class="tab-content w-100 mb-4">
+
+										<div id="wicketkeeper" class="container tab-pane active p-0"> 						
+											<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+												Pick 1 Wicket-Keeper
+											</div> 				 
+						                    <div class="table-responsive teamtable">
+						                        <table class="table selectPlayer" [mfData]="playerslist" #mf="mfDataTable"> 
+						                         <thead>
+													<tr> 
+					                                    <th><mfDefaultSorter by="name">Player</mfDefaultSorter></th> 
+					                                    <th><mfDefaultSorter by="teamname">Team</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="credit">Credits</mfDefaultSorter></th> 
+														<th></th>
+					                                </tr>
+					                            </thead>
+					                            <tbody>
+					                                 <tr id="plusbtn" [ngClass]="wicketkeepers.isSelected==true ? 'redPlus' : ''" *ngFor="let wicketkeepers of mf.data | playerrole:  'keeper'"  class="tblborder">
+														<td class="position-relative d-flex ">
+														<i class="fa fa-info playerstateinfo"  (click)="playerstate(wicketkeepers.playerkey,wicketkeepers.id,matchid)"></i>
+															<img src="{{wicketkeepers.image}}" class="mr-3" >
+															<span (click)="addPlayer(wicketkeepers)" class="w-100 pt-2 mt-1">{{wicketkeepers.name}} </span>
+														</td>
+														<td (click)="addPlayer(wicketkeepers)">
+															{{wicketkeepers.teamname}} 
+														</td>
+														<td (click)="addPlayer(wicketkeepers)">
+															{{wicketkeepers.totalpoints}} 
+														</td>
+														<td (click)="addPlayer(wicketkeepers)">
+															{{wicketkeepers.credit}} 
+														</td>
+														<td (click)="addPlayer(wicketkeepers)" class=""><i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i>
+														</td>
+																																	
+<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{wicketkeepers.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(wicketkeepers.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div> 
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.teams}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(wicketkeepers.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>	
+					                                </tr>
+					                            </tbody>
+					                        </table>
+					                    </div>
+										</div>
+										<div id="batsmen" class="container tab-pane p-0">
+											<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+												Pick 3-5 Batsmen
+											</div> 				 
+						                    <div class="table-responsive teamtable">
+						                        <table class="table selectPlayer" [mfData]="playerslist" #mf1="mfDataTable">
+						                            <thead>
+						                                <tr>
+					                                    <th><mfDefaultSorter by="name">Player</mfDefaultSorter></th> 
+					                                    <th><mfDefaultSorter by="teamname">Team</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="credit">Credits</mfDefaultSorter></th> 
+														<th></th>
+					                                </tr>
+					                            </thead>
+					                            <tbody>
+					                               <tr id="plusbtn" [ngClass]="batsman.isSelected==true ? 'redPlus' : ''" *ngFor="let batsman of mf1.data | playerrole:  'batsman'"  class="tblborder">
+														<td class="position-relative d-flex">
+														<i class="fa fa-info playerstateinfo"  (click)="playerstate(batsman.playerkey,batsman.id,matchid)"></i>
+															<img src="{{batsman.image}}" class="mr-3">
+															<span  (click)="addPlayer(batsman)"  class="w-100 pt-2 mt-1">{{batsman.name}} </span>
+														</td>
+														<td (click)="addPlayer(batsman)" >
+															{{batsman.teamname}} 
+														</td>
+														<td (click)="addPlayer(batsman)" >
+															{{batsman.totalpoints}} 
+														</td>
+														<td (click)="addPlayer(batsman)" >
+															{{batsman.credit}} 
+														</td>
+														<td  (click)="addPlayer(batsman)" class=""><i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i></td>																																
+<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{batsman.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(batsman.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div>
+						 
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.teams}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(batsman.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>	
+					                                </tr>
+					                            </tbody>
+					                        </table>
+					                    </div>
+										</div>
+										<div id="allrounder" class="container tab-pane p-0">
+											<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+												Pick 1-3 All Rounder
+											</div> 				 
+						                    <div class="table-responsive teamtable">
+						                        <table class="table selectPlayer" [mfData]="playerslist" #mf2="mfDataTable">
+						                            <thead>
+						                                <tr>
+					                                    <th><mfDefaultSorter by="name">Player</mfDefaultSorter></th> 
+					                                    <th><mfDefaultSorter by="teamname">Team</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="credit">Credits</mfDefaultSorter></th> 
+														<th></th>
+					                                </tr>
+					                            </thead>
+					                            <tbody>
+					                                  <tr id="plusbtn" [ngClass]="allrounder.isSelected==true ? 'redPlus' : ''" *ngFor="let allrounder of mf2.data | playerrole:  'allrounder'"  class="tblborder">
+														<td class="position-relative d-flex" >
+														<i class="fa fa-info playerstateinfo"  (click)="playerstate(allrounder.playerkey,allrounder.id,matchid)"></i>
+															<img src="{{allrounder.image}}" class="mr-3" >
+															<span class="w-100 pt-2 mt-1" (click)="addPlayer(allrounder)" >{{allrounder.name}} </span>
+														</td>
+														<td (click)="addPlayer(allrounder)">
+															{{allrounder.teamname}} 
+														</td>
+														<td (click)="addPlayer(allrounder)">
+															{{allrounder.totalpoints}} 
+														</td>
+														<td (click)="addPlayer(allrounder)">
+															{{allrounder.credit}} 
+														</td>
+														<td  (click)="addPlayer(allrounder)" class=""><i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i></td>
+																																														
+<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{allrounder.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(allrounder.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div>
+			 
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.teams}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(allrounder.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>	
+					                                </tr>
+					                            </tbody>
+					                        </table>
+					                    </div>
+										</div>
+										<div id="bowler" class="container tab-pane p-0">
+											<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+												Pick 3-5 Bowler
+											</div> 				 
+						                    <div class="table-responsive teamtable">
+						                        <table class="table selectPlayer" [mfData]="playerslist" #mf3="mfDataTable">
+						                            <thead>
+						                                <tr>
+					                                    <th><mfDefaultSorter by="name">Player</mfDefaultSorter></th> 
+					                                    <th><mfDefaultSorter>Team</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+					                                    <th><mfDefaultSorter by="totalpoints">Credits</mfDefaultSorter></th> 
+														<th></th>
+					                                </tr>
+					                            </thead>
+					                           <tbody>
+					                                  <tr id="plusbtn" [ngClass]="bowler.isSelected==true ? 'redPlus' : ''" *ngFor="let bowler of mf3.data | playerrole:  'bowler'" class="tblborder">
+														<td class="position-relative d-flex" ><i class="fa fa-info playerstateinfo"  (click)="playerstate(bowler.playerkey,bowler.id,matchid)"></i>
+															<img src="{{bowler.image}}" class="mr-3" >
+															<span (click)="addPlayer(bowler)" class="w-100 pt-2 mt-1">{{bowler.name}} </span>
+														</td>
+														<td  (click)="addPlayer(bowler)">
+															{{bowler.teamname}} 
+														</td>
+														<td  (click)="addPlayer(bowler)">
+															{{bowler.totalpoints}} 
+														</td>
+														<td (click)="addPlayer(bowler)">
+															{{bowler.credit}} 
+														</td>
+														<td (click)="addPlayer(bowler)" class=""><i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i></td>
+														
+<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{bowler.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(bowler.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div>
+				 
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.teams}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(bowler.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>	
+					                                </tr>
+					                            </tbody>
+					                        </table>
+					                    </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>   -->
+						
+						
+						<div class="ftc_center_sec">
+						<div class="w-100 ftc_index_inner">
+							<nav id="" class="row marginZ w-100 ft_header_main  padding_lR15  ftc_main2Header create_teamheader createteambg">
+								<div class="w-100 d-flex align-items-center ftc_header_1 padding_tb5"  *ngFor="let matchdetails of matchdetails">
+									<div class="d-flex ftc_hdrImg">
+										<a (click)="back()"><i class="fas fa-arrow-left font-18 color_white"></i></a>
+									</div>
+									<div class="justify-content-center d-flex margin-auto" ><span class="d-inline-block color_white font_16 font_w500" ><countdown-timer [end]="matchdetails.time_start"></countdown-timer></span>
+									</div>
+									<div class="d-flex right_links">
+										<div class="d-flex w-100 text-center teamchanges">
+										<!-- <select [(ngModel)]="sel"  (change)="filterForeCasts(sel)" > -->
+											<!-- <option value="classic">Classic</option> -->
+											<!-- <option value="batting">Batting</option> -->
+											<!-- <option value="bowling">Bowling</option>  -->
+										<!-- </select> -->
+									</div>
+									</div>
+								</div>
+								<div class="d-block w-100"  *ngFor="let matchdetails of matchdetails">
+									<div class="d-flex w-100 color_white mt_section">
+										<div class="d-flex flex-column  _main_temasc">
+											<p class="font_14 m-0 ">Players</p>
+											<div class="d-inline-flex sm_des">
+												<span class="font_26 font_w600">{{team.currentSize}} </span>
+												<span class="font_14  font_w500">/{{team.totalSize}}</span>
+											</div>
+										</div>
+										<div class="d-flex flex-row  _main_temasc">
+											<span class="team_img1"><img src="{{matchdetails.team1logo}}"></span>
+											<div class="d-inline-flex flex-column text-center">
+												<span class="font_14 font_w500 text-uppercase">{{matchdetails.team1name}}</span>
+												<span class="font_26  font_w600">{{perteamsize.team1.selected}}</span>
+											</div>
+										</div>
+										<div class="d-flex flex-row  _main_temasc">
+											<div class="d-inline-flex flex-column text-center">
+												<span class="font_14 font_w500 text-uppercase">{{matchdetails.team2name}}</span>
+												<span class="font_26  font_w600">{{perteamsize.team2.selected}}</span>
+											</div>
+											<span class="team_img1"><img src="{{matchdetails.team2logo}}"></span>
+										</div>
+										<div class="d-flex flex-column  _main_temasc">
+												<p class="font_14 m-0 ">Credit Left</p>
+												<div class="d-inline-flex sm_des">
+													<span class="font_26 font_w600">{{credit.max - credit.used}} </span>
+													<span class="font_14  font_w500 " style="opacity:0"></span>
+												</div>
+											</div>
+									</div>
+									<div class="d-flex w-100 text-center">
+										<span class="color_white w-100 font_15 font_w500">Max 7 players from a team</span>
+									</div>
+									<div class="progressContainer_00657" id="countclasic"> 
+										<div class="stepperContainer_b9ae4">
+											<div class="stepperBlock_8b62f " [ngClass]="team.currentSize >= '1'? 'activeStepper_2007e' : 'inactiveStepper_4d390'" ><span class="activeNumber_89478" *ngIf="team.currentSize == '1'">1</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390"[ngClass]="team.currentSize >= '2'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '2'">2</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390"[ngClass]="team.currentSize >= '3'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '3'">3</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '4'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '4'">4</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '5'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '5'">5</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '6'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '6'">6</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '7'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '7'">7</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '8'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '8'">8</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '9'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '9'">9</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '10'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '10'">10</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '11'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '11'">11</span><span class="lastStepper_2bce1"  *ngIf="team.currentSize != '11'">11</span></div>
+										</div>
+									</div>
+									<div class="progressContainer_00657 hide" id="countbatting">
+										<div class="stepperContainer_b9ae4">
+											<div class="stepperBlock_8b62f " [ngClass]="team.currentSize >= '1'? 'activeStepper_2007e' : 'inactiveStepper_4d390'" ><span class="activeNumber_89478" *ngIf="team.currentSize == '1'">1</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390"[ngClass]="team.currentSize >= '2'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '2'">2</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390"[ngClass]="team.currentSize >= '3'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '3'">3</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '4'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '4'">4</span></div> 
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '5'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '5'">5</span><span class="lastStepper_2bce1"  *ngIf="team.currentSize != '5'">5</span></div>
+										</div>
+									</div>
+									<div class="progressContainer_00657 hide" id="countbowling">
+										<div class="stepperContainer_b9ae4">
+											<div class="stepperBlock_8b62f " [ngClass]="team.currentSize >= '1'? 'activeStepper_2007e' : 'inactiveStepper_4d390'" ><span class="activeNumber_89478" *ngIf="team.currentSize == '1'">1</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390"[ngClass]="team.currentSize >= '2'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '2'">2</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390"[ngClass]="team.currentSize >= '3'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '3'">3</span></div>
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '4'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '4'">4</span></div> 
+											<div class="stepperBlock_8b62f inactiveStepper_4d390" [ngClass]="team.currentSize >= '5'? 'activeStepper_2007e' : 'inactiveStepper_4d390'"><span class="activeNumber_89478" *ngIf="team.currentSize == '5'">5</span><span class="lastStepper_2bce1"  *ngIf="team.currentSize != '5'">5</span></div>
+										</div>
+									</div>
+
+								</div>
+							</nav>
+							
+							<div class="w-100 ftc_tab_details_main ftc_all_inner ftc_all_mb sel_players">
+								<div class="row marginZ w-100  listCateInner "><div   class="w-100" style="max-height: none;" tabindex="0"><div id="" class="w-100" style="position:relative; top:0; left:0;" dir="ltr">
+								<div class="w-100">
+									<div class="row marginZ w-100 ftc_create_team_tab">
+										<ul class="nav nav-tabs navtabs w-100 font_w600" role="tablist ">
+										    <li class="nav-item marginZ" id="wkk"> 
+										      	<a class="nav-link text-center d-flex align-items-center active show" data-toggle="tab" href="#wicketkeeper">
+										      		<span>WK</span>
+										      		<span class="ftc_select_t d-flex align-items-center justify-content-center   ml-1">({{playerTypeCount.keeper.selected}})</span>
+										      	</a>
+										    </li>
+										    <li class="nav-item marginZ" id="batk">
+										      	<a class="nav-link text-center d-flex align-items-center" data-toggle="tab" href="#batsmen">
+										      		<span>BAT</span>
+										      		<span class="ftc_select_t d-flex align-items-center justify-content-center   ml-1">({{playerTypeCount.batsman.selected}})</span>
+										      	</a>
+										    </li>
+										    <li class="nav-item marginZ" id="allk">
+										      	<a class="nav-link text-center d-flex align-items-center" data-toggle="tab" href="#allrounder">
+										      		<span>AR</span>
+										      		<span class="ftc_select_t d-flex align-items-center justify-content-center   ml-1">({{playerTypeCount.allrounder.selected}})</span>
+										      	</a>
+										    </li>
+										    <li class="nav-item marginZ" id="bowlk">
+										      	<a class="nav-link text-center d-flex align-items-center" data-toggle="tab" href="#bowler">
+										      		<span>BOWL</span>
+										      		<span class="ftc_select_t d-flex align-items-center justify-content-center   ml-1">({{playerTypeCount.bowler.selected}})</span>
+										      	</a>
+										     </li>
+										</ul>
+									</div>
+									<div class="col-lg-12 col-sm-12 col-md-12 p-0 newcssheight">
+										<div class="tab-content w-100 mb-4">
+											<div id="wicketkeeper" class="container tab-pane active p-0"> 	
+												<div class="row marginZ w-100 ftc_players_team">
+													<div class="row marginZ w-100 d-flex align-items-center justify-content-center padding_top20 ">
+														<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+													    		<span *ngIf="playerTypeCount.keeper.max-playerTypeCount.keeper.min==0">Pick  {{playerTypeCount.keeper.min}} Wicket-Keeper</span>
+																<span *ngIf="playerTypeCount.keeper.max-playerTypeCount.keeper.min!=0">Pick  {{playerTypeCount.keeper.min}} - {{playerTypeCount.keeper.max}} Wicket-Keeper</span>
+														</div> 
+													</div>
+
+													<div class="container ftc_player_table w-100">
+														<table class="table " [mfData]="playerslist" #mf="mfDataTable">
+													    	<thead>
+													      		<tr class="text-center   font_15">
+														        	<th></th>  
+														        	<th style="text-align: left!important"><mfDefaultSorter by="name">Player</mfDefaultSorter></th>  
+								                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+								                                    <th><mfDefaultSorter by="credit">Credits</mfDefaultSorter></th> 
+														        	<th>
+																	</th>
+														      	</tr>
+														    </thead>
+														    <tbody>
+													      	<tr id="plusbtn" class="color_darkblue font_13 font_500 text-center" [ngClass]="wicketkeepers.isSelected==true ? 'redPlus' : ''" *ngFor="let wicketkeepers of mf.data | playerrole:  'keeper'">
+													        	<td>
+													        		<img src="{{wicketkeepers.image}}"  class="mCS_img_loaded" (click)="playerstate(wicketkeepers.playerkey,wicketkeepers.id,matchid)">
+													        		<i class="fa fa-info-circle" aria-hidden="true"></i>
+													        	</td>
+													        	<td (click)="addPlayer(wicketkeepers)">
+													        		<span class="font-bold">{{wicketkeepers.name}}</span>
+													        		<span class="font_w500 font_11">{{wicketkeepers.teamname}}</span>
+													        	</td>
+													        	<td (click)="addPlayer(wicketkeepers)">
+																<span class="playerdatas notplaying" *ngIf="wicketkeepers.playingstatus=='0'">Not Playing</span>
+																<span class="playerdatas playing" *ngIf="wicketkeepers.playingstatus=='1'">Playing</span>
+																<span> {{wicketkeepers.totalpoints}}</span>
+																
+																</td>
+													        	<td (click)="addPlayer(wicketkeepers)"><span> {{wicketkeepers.credit}}</span></td>
+													        	<td (click)="addPlayer(wicketkeepers)" style="text-align: center"><span class="slecty">
+																		<i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i>
+																	</span></td>
+																	
+																	<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{wicketkeepers.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(wicketkeepers.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div>
+						<!--<div class="imageCourtesyFont_2e07e"><span class="imageCourtesy_0b4dd">Powered by </span><span class="imageCourtesyName_649ee">SKILLUP</span></div>-->
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.team}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(wicketkeepers.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>
+													      	</tr>
+														</tbody>
+												  	</table>
+												</div>
+											</div>
+										</div>
+										<!-- batsman section -->
+										<div id="batsmen" class="container tab-pane  p-0" > 	
+												<div class="row marginZ w-100 ftc_players_team">
+													<div class="row marginZ w-100 d-flex align-items-center justify-content-center padding_top20 ">
+														<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+													    		
+																<span>Pick  {{playerTypeCount.batsman.min}} - {{playerTypeCount.batsman.max}} Batsmen</span>
+														</div> 
+													</div>
+
+													<div class="container ftc_player_table w-100">
+														<table class="table " [mfData]="playerslist" #mf1="mfDataTable">
+													    	<thead>
+														      	<tr class="text-center   font_15">
+														        	<th></th>  
+														        	<th style="text-align: left!important"><mfDefaultSorter by="name">Player</mfDefaultSorter></th>  
+								                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+								                                    <th><mfDefaultSorter by="credit">Credits</mfDefaultSorter></th> 
+														        	<th>
+																	</th>
+														      	</tr>
+														    </thead>
+														    <tbody>
+													      	<tr id="plusbtn"  class="color_darkblue font_13 font_500 text-center"  [ngClass]="batsman.isSelected==true ? 'redPlus' : ''" *ngFor="let batsman of mf1.data | playerrole:  'batsman'" >
+													        	<td>
+													        		<img src="{{batsman.image}}"  class="mCS_img_loaded" (click)="playerstate(batsman.playerkey,batsman.id,matchid)">
+													        		<i class="fa fa-info-circle" aria-hidden="true"></i>
+													        	</td>
+													        	<td (click)="addPlayer(batsman)">
+													        		<span class="font-bold">{{batsman.name}}</span>
+													        		<span class="font_w500 font_11">{{batsman.teamname}}</span>
+													        	</td>
+													        	<td (click)="addPlayer(batsman)">
+																<span class="playerdatas notplaying" *ngIf="batsman.playingstatus=='0'">Not Playing</span>
+																<span class="playerdatas playing" *ngIf="batsman.playingstatus=='1'">Playing</span>
+																<span> {{batsman.totalpoints}}</span></td>
+													        	<td (click)="addPlayer(batsman)"><span> {{batsman.credit}}</span></td>
+													        	<td (click)="addPlayer(batsman)" style="text-align: center;"><span class="slecty">
+																		<i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i>
+																	</span></td>
+																	<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{batsman.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(batsman.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div>
+						<!--<div class="imageCourtesyFont_2e07e"><span class="imageCourtesy_0b4dd">Powered by </span><span class="imageCourtesyName_649ee">SKILLUP</span></div>-->
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.team}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(batsman.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>
+													      	</tr>
+														</tbody>
+												  	</table>
+												</div>
+											</div>
+										</div>
+										<!-- allrounder sections -->
+										<div id="allrounder" class="container tab-pane  p-0"> 	
+												<div class="row marginZ w-100 ftc_players_team">
+													<div class="row marginZ w-100 d-flex align-items-center justify-content-center padding_top20 ">
+														<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+													    		<span>Pick  {{playerTypeCount.allrounder.min}} - {{playerTypeCount.allrounder.max}} Allrounder</span>
+														</div> 
+													</div>
+
+													<div class="container ftc_player_table w-100">
+														<table class="table " [mfData]="playerslist" #mf2="mfDataTable">
+													    	<thead>
+														      	<tr class="text-center   font_15">
+														        	<th></th>  
+														        	<th style="text-align: left!important"><mfDefaultSorter by="name">Player</mfDefaultSorter></th>  
+								                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+								                                    <th><mfDefaultSorter by="credit">Credits</mfDefaultSorter></th> 
+														        	<th>
+																	</th>
+														      	</tr>
+														    </thead>
+														    <tbody>
+													      	<tr id="plusbtn"  class="color_darkblue font_13 font_500 text-center"  [ngClass]="allrounder.isSelected==true ? 'redPlus' : ''" *ngFor="let allrounder of mf1.data | playerrole:  'allrounder'" >
+													        	<td>
+													        		<img src="{{allrounder.image}}"  class="mCS_img_loaded" (click)="playerstate(allrounder.playerkey,allrounder.id,matchid)">
+													        		<i class="fa fa-info-circle" aria-hidden="true"></i>
+													        	</td> 
+													        	<td (click)="addPlayer(allrounder)">
+													        		<span class="font-bold">{{allrounder.name}}</span>
+													        		<span class="font_w500 font_11">{{allrounder.teamname}}</span>
+													        	</td>
+													        	<td (click)="addPlayer(allrounder)">
+																<span class="playerdatas notplaying" *ngIf="allrounder.playingstatus=='0'">Not Playing</span>
+																<span class="playerdatas playing" *ngIf="allrounder.playingstatus=='1'">Playing</span>
+																<span> {{allrounder.totalpoints}}</span></td>
+													        	<td (click)="addPlayer(allrounder)" ><span> {{allrounder.credit}}</span></td>
+													        	<td (click)="addPlayer(allrounder)" style="text-align: center;"><span class="slecty">
+																		<i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i>
+																	</span></td>
+																	<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{allrounder.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(allrounder.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div>
+						<!--<div class="imageCourtesyFont_2e07e"><span class="imageCourtesy_0b4dd">Powered by </span><span class="imageCourtesyName_649ee">SKILLUP</span></div>-->
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.team}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(allrounder.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>
+													      	</tr>
+														</tbody>
+												  	</table>
+												</div>
+											</div>
+										</div>
+										<!-- bowler section -->
+										<div id="bowler" class="container tab-pane  p-0" > 	
+												<div class="row marginZ w-100 ftc_players_team">
+													<div class="row marginZ w-100 d-flex align-items-center justify-content-center padding_top20 ">
+														<div class="col-lg-12 col-sm-12 col-md-12  wicket_keepr d-flex align-items-center justify-content-center text-uppercase pickplayer">
+													    		<span>Pick  {{playerTypeCount.bowler.min}} - {{playerTypeCount.bowler.max}} Bowlers</span>
+														</div> 
+													</div>
+
+													<div class="container ftc_player_table w-100">
+														<table class="table " [mfData]="playerslist" #mf3="mfDataTable">
+													    	<thead>
+														      	<tr class="text-center   font_15">
+														        	<th></th>  
+														        	<th style="text-align: left!important"><mfDefaultSorter by="name">Player</mfDefaultSorter></th>  
+								                                    <th><mfDefaultSorter by="totalpoints">Points</mfDefaultSorter></th>
+								                                    <th><mfDefaultSorter by="credit">Credits</mfDefaultSorter></th> 
+														        	<th>
+																	</th>
+														      	</tr>
+														    </thead>
+														    <tbody> 
+													      	<tr id="plusbtn"  class="color_darkblue font_13 font_500 text-center"  [ngClass]="bowler.isSelected==true ? 'redPlus' : ''" *ngFor="let bowler of mf1.data | playerrole:  'bowler'" >
+													        	<td>
+													        		<img src="{{bowler.image}}"  class="mCS_img_loaded" (click)="playerstate(bowler.playerkey,bowler.id,matchid)">
+													        		<i class="fa fa-info-circle" aria-hidden="true"></i>
+													        	</td>
+													        	<td (click)="addPlayer(bowler)">
+													        		<span class="font-bold">{{bowler.name}}</span>
+													        		<span class="font_w500 font_11">{{bowler.teamname}}</span>
+													        	</td>
+													        	<td (click)="addPlayer(bowler)">
+																<span class="playerdatas notplaying" *ngIf="bowler.playingstatus=='0'">Not Playing</span>
+																<span class="playerdatas playing" *ngIf="bowler.playingstatus=='1'">Playing</span>
+																<span> {{bowler.totalpoints}}</span></td>
+													        	<td (click)="addPlayer(bowler)"><span> {{bowler.credit}}</span></td>
+													        	<td (click)="addPlayer(bowler)" style="text-align: center;"><span class="slecty">
+																		<i class="fa fa-plus create-team__team-selector__player-card__cell__team-selector-icon"></i>
+																	</span></td>
+																	<div class="bottom-sheet bottomSheet_1602f" id="palyerinfo{{bowler.playerkey}}"> 
+<div class="bg-overlay bg-overlay--fade-in"></div>
+<div class="bottom-sheet-container bottom-sheet-container--swipe-in">
+	<div *ngFor="let dtl of playerfullinfo">
+		<div class="player-profile-toolBar">
+			<div> 
+					<div class="align-center mt-1 cursor-pointer" (click)="playerstateclose(bowler.playerkey)"><i class="fas fa-chevron-down"></i></div> 
+			</div>{{dtl.playername}}</div>
+		<div class="player-profile-info player-profile-info--footer">
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div>
+						<div class="player-profile-avatar-icon" [ngStyle]="{'background-image': 'url(' + dtl.playerimage + ')'}" ></div>
+						<!--<div class="imageCourtesyFont_2e07e"><span class="imageCourtesy_0b4dd">Powered by </span><span class="imageCourtesyName_649ee">SKILLUP</span></div>-->
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Credits</div>
+						<div class="player-profile-info__header-data">{{dtl.playercredit}}</div>
+					</div>
+				</div>
+				<div class="player-profile-cell">
+					<div>
+						<div class="light text-upper player-profile-info__header">Total Points</div>
+						<div class="player-profile-info__header-data">{{dtl.playerpoints}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="player-profile-row--border player-profile-row">
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Team</div>{{dtl.team}}</div>
+				</div>
+				<div class="player-profile-cell">
+					<div class="text-uppercase">
+						<div class="light text-upper player-profile-info__header">Role</div>{{dtl.playerrole}}</div>
+				</div>
+			</div>
+			<div style="overflow-y: scroll;"> 
+				<div class="player-profile-stats-title bold">Match wise Fantasy Stats</div>
+				<div class="player-profile-stats-header text-upper player-profile-row">
+					<div class="player-profile-cell">
+						<div>Match</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Points</div>
+					</div>
+					<div class="player-profile-cell">
+						<div>Selected By</div>
+					</div>
+				</div>
+				<div *ngIf="dtl.matches?.length">
+					<div class="player-profile-row--border player-profile-row" *ngFor="let tmdtl of dtl.matches">
+						<div class="player-profile-cell">
+							<div>
+								<div>{{tmdtl.short_name}}</div>
+								<div class="player-profile-row__time light">{{tmdtl.matchdate}}</div>
+							</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.total_points}}</div>
+						</div>
+						<div class="player-profile-cell">
+							<div>{{tmdtl.selectper}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="create-team__player-profile__footer">
+			<button class="btn btn--raised btn--white cursor-pointer" (click)="playerstateclose(bowler.playerkey)">
+				<div class="align-center">Close</div>
+			</button>
+		</div>
+	</div>
+</div>
+</div>
+													      	</tr>
+														</tbody>
+												  	</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								</div>
+							</div></div></div>
+						</div>
+
+						</div>
+ 
+						<div class="ftc_footer_main w-100 bg_colorblue" style="background: transparent;">
+							<div class="ftc_footer_inner2 d-flex align-items-center padding_lR15 w-100">
+									<div class="d-flex margin-auto">
+										<a   (click)="teampreview();" class="new-button disabledButton_cf79e raisedGreenButtonDisabled_e0a23  raisedGreenButton_20c05 mr-2">
+											Team Preview
+										</a>
+										<a (click)="nextbtn();" class=" ml-2 new-button disabledButton_cf79e  raisedGreenButtonDisabled_e0a23"  [ngClass]="team.totalSize == team.currentSize? 'raisedGreenButton_20c05' : 'uncheckedClass'">
+											CONTINUE
+										</a>
+									</div>
+							 
+							</div>
+						</div> 
+					</div>
+
+							</div>
+						</div>
+						<!--
+						<div class="create-team__team-selector__footer text-upper ctFooter_07b1f">
+						    <div class="teamPreviewButtonWrapper_129a4" (click)="teampreview()">
+						        <div class="js--team-preview-btn teamPreviewButton_263f2"><i class="fa fa-angle-up"></i> 
+						            <div class="teamPreviewText_2ca01">Team Preview</div>
+						        </div>
+						    </div>
+						    <div class="create-team__team-selector__footer-action-container text-upper"  *ngFor="let matchdetails of matchdetails" >
+						        <div class="footerDetailLeftContent_0a3c3">
+						            <div class="footerDetailLeftInner_695c7">
+						                <div class="footerSquadDetail_289be">
+						                    <div class="footerSquadCountContainer_84fcf footerLargeCountContainer_e20d1"> 
+						                        <div class="footerSquadCount_1fb82">{{perteamsize.team1.selected}}</div>
+						                    </div>
+						                    <div class="footerSquadInactive_d6046">{{matchdetails.team1name}}</div>
+						                </div>
+						                <div class="footerSquadDetail_289be">
+						                    <div class="footerSquadCountContainer_84fcf footerLargeCountContainer_e20d1"> 
+						                        <div class="footerSquadCount_1fb82">{{perteamsize.team2.selected}}</div>
+						                    </div>
+						                    <div class="footerSquadInactive_d6046">{{matchdetails.team2name}}</div>
+						                </div>
+						                <div class="footerSquadDetail_289be">
+						                    <div class="footerSquadCountContainer_84fcf footerLargeCountContainer_e20d1">
+						                        <div>{{team.currentSize}}</div>
+						                        <div class="footerSquadInactive_d6046">/{{team.totalSize}}</div>
+						                    </div>
+						                    <div class="footerSquadInactive_d6046">PLAYERS</div>
+						                </div>
+						            </div>
+						            <div class="footerSquadDetail_289be">
+						                <div class="footerSquadCountContainer_84fcf footerLargeCountContainer_e20d1">
+						                    <div>{{credit.max - credit.used}}</div>
+						                    <div class="footerSquadInactive_d6046">/{{credit.max}}</div>
+						                </div>
+						                <div class="footerSquadInactive_d6046">Credits Left</div>
+						            </div>
+						        </div>
+						        <div>
+						            <button class="footerNextBtnDisabled_cf07b"  [ngClass]="team.totalSize == team.currentSize? 'active' : 'unactive'" (click)="nextbtn();">NEXT</button>
+						        </div> 
+						    </div>
+						</div>
+						-->
+					</div>
+				</div>
+			</section>
+
+
+		<div id="team-preview" class="slide"> 
+			<div class="tema_view">
+				<div class="header_top_nmee w-100">  
+					<p>
+						<button type="button" (click)="closeteampreview();"><i class="fas fa-times-circle"></i></button>
+					</p>
+				</div>
+				<div class="d_fl_grow w-100" *ngIf="resultplayer?.length>0">	
+					<div class="cricet_ground_set" *ngIf='!isMobMode'>	
+						<span class="sec_nam_ttf">Wicket-Keeper</span>
+						<div class="player_show" >
+							<div class="player_img" *ngFor="let keeper of resultplayer | playerrole:  'keeper';">
+								<img src="{{keeper.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="keeper.team=='team1'">{{keeper.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="keeper.team=='team2'">{{keeper.name}}</span>
+		                        <span class="font_11 white mt-1">{{keeper.credit}} Cr.</span>
+							</div>
+						</div>
+						<span class="sec_nam_ttf">Batsmen</span>
+						<div class="player_show wttf">
+							<div class="player_img" *ngFor="let batsman of resultplayer | playerrole:  'batsman';let i=index;"> 
+								
+								<img src="{{batsman.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+		                        <span class="font_11 white mt-1">{{batsman.credit}} Cr.</span>
+							</div> 
+						</div>
+						<span class="sec_nam_ttf">All-Rounders</span>
+						<div class="player_show wttf">
+							<div class="player_img" *ngFor="let allrounder of resultplayer | playerrole:  'allrounder';let i=index;"> 
+								<img src="{{allrounder.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+		                        <span class="font_11  white mt-1">{{allrounder.credit}} Cr.</span>
+							</div> 
+						</div>
+						<span class="sec_nam_ttf">Bowlers</span>
+						<div class="player_show wttfc">
+							<div class="player_img" *ngFor="let bowler of resultplayer | playerrole:  'bowler';let i =index;"> 
+								<img src="{{bowler.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+		                        <span class="font_11  white mt-1">{{bowler.credit}} Cr.</span>
+							</div> 
+						</div>
+					</div>
+					<div class="cricet_ground_set" *ngIf='isMobMode'>	
+						<span class="sec_nam_ttf">Wicket-Keeper</span>
+						<div class="player_show" >
+							<div class="player_img" *ngFor="let keeper of resultplayer | playerrole:  'keeper';">
+								<img src="{{keeper.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="keeper.team=='team1'">{{keeper.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="keeper.team=='team2'">{{keeper.name}}</span>
+		                        <span class="font_11 white mt-1">{{keeper.credit}} Cr.</span>
+							</div>
+						</div>
+						<span class="sec_nam_ttf">Batsmen</span>
+						<div class="player_show wttf">
+							<div class="player_img" *ngFor="let batsman of resultplayer | playerrole:  'batsman';let i=index;"> 
+								<ng-container *ngIf='i<=3'>
+								<img src="{{batsman.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+								<span class="font_11 white mt-1">{{batsman.credit}} Cr.</span>
+								</ng-container>
+							</div> 
+						</div>
+						<div class="player_show wttf" id="playerCentre">
+							<div class="player_img" *ngFor="let batsman of resultplayer | playerrole:  'batsman';let i=index;"> 
+								<ng-container *ngIf='i>3'>
+								<img src="{{batsman.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+								<span class="font_11 white mt-1">{{batsman.credit}} Cr.</span>
+								</ng-container>
+							</div> 
+						</div>
+						<span class="sec_nam_ttf">All-Rounders</span>
+						<div class="player_show wttf">
+							<div class="player_img" *ngFor="let allrounder of resultplayer | playerrole:  'allrounder';let i=index;"> 
+								<ng-container *ngIf='i<=3'>
+								<img src="{{allrounder.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+								<span class="font_11  white mt-1">{{allrounder.credit}} Cr.</span>
+								</ng-container>
+							</div> 
+						</div>
+						<div class="player_show wttf" id="playerCentre">
+							<div class="player_img" *ngFor="let allrounder of resultplayer | playerrole:  'allrounder';let i=index;"> 
+								<ng-container *ngIf='i>3'>
+								<img src="{{allrounder.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+								<span class="font_11  white mt-1">{{allrounder.credit}} Cr.</span>
+								</ng-container>
+							</div> 
+						</div>
+						<span class="sec_nam_ttf">Bowlers</span>
+						<div class="player_show wttfc">
+							<div class="player_img" *ngFor="let bowler of resultplayer | playerrole:  'bowler';let i =index;"> 
+								<ng-container *ngIf='i<=3'>
+								<img src="{{bowler.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+								<span class="font_11  white mt-1">{{bowler.credit}} Cr.</span>
+								</ng-container>
+							</div> 
+						</div>
+						<div class="player_show wttfc" id="playerCentre">
+							<div class="player_img" *ngFor="let bowler of resultplayer | playerrole:  'bowler';let i =index;"> 
+								<ng-container *ngIf='i>3'>
+								<img src="{{bowler.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+								<span class="font_11  white mt-1">{{bowler.credit}} Cr.</span>
+								</ng-container>
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+	 	</div>
+ 
+
+
+
+
+ 

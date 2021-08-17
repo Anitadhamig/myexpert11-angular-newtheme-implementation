@@ -1,0 +1,15 @@
+.rightBox{
+	min-width: 450px;
+	max-width: 450px;
+}
+.login_formM form a{
+	float: none;
+	right: 0px;
+}
+
+.leftBox-inner{
+    width: calc(100% - 450px);
+ }
+ .logo_section .fantasy_logo {
+    height: 80px; 
+}

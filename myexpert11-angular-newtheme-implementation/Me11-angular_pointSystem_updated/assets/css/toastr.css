@@ -1,0 +1,136 @@
+.toast,
+.toast-title { 
+}
+
+.toast-error {
+    color: red
+}
+
+.toast-center-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.toast-top-right {
+    top: 40%;
+    left: 0;
+    right: 0;
+    margin: auto
+}
+
+.toast-message {
+    word-wrap: break-word
+}
+
+.toast-message a,
+.toast-message label {
+    color: #FFF
+}
+
+.toast-message a:hover {
+    color: #CCC;
+    text-decoration: none
+}
+
+.toast-close-button {
+    position: relative;
+    right: -.3em;
+    top: -.3em;
+    float: right;
+    font-size: 20px; 
+    color: #FFF;
+    text-shadow: 0 1px 0 #fff
+}
+
+.toast-close-button:focus,
+.toast-close-button:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .4
+}
+
+button.toast-close-button {
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0
+}
+
+.overlay-container{
+    pointer-events: none;
+    position: absolute;
+    z-index: 999999;
+	top: 0px;
+    right: 0px; 
+    max-width: 45%;
+    min-width: 45%;
+    margin: auto;
+}
+
+.toast-container {
+}
+
+.toast-container * {
+    box-sizing: border-box
+}
+ 
+.toast-container .toast {
+    position: absolute;
+    overflow: hidden;
+    margin: 0px auto 0;
+    font-size: 12px;
+    padding:20px ;
+    width: 100%; 
+    text-align: center;
+	color: #fff;
+}
+
+.toast-container .toast:hover {
+    box-shadow: 0 0 4px #000;
+    opacity: 1;
+    cursor: pointer
+}
+
+.toast-container.toast-bottom-center .toast,
+.toast-container.toast-bottom-full-width .toast,
+.toast-container.toast-top-center .toast,
+.toast-container.toast-top-full-width .toast {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.toast {
+    background-color: #fbfbfb;
+    pointer-events: auto;
+    overflow: hidden; 
+    position: absolute;
+    top: 0;
+    box-shadow: 0 0 14px 0 rgba(80, 94, 120, .08)
+}
+
+.toast-success { 
+	background: #24ba38;
+}
+
+.toast-error {
+    background: #FF6347
+}
+
+.toast-info {
+    background: #2F96B4
+}
+
+.toast-warning {
+    background: #F89406
+}
+
+.toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #000;
+    opacity: .4
+}

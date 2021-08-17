@@ -1,0 +1,306 @@
+	<section class="body-section-home">     
+		<div class="body-section-home-inner"> 
+			<app-left-side></app-left-side>
+			<div class="rightBox">
+				<div class="rightBox-inner db">		
+
+					<div class="flex-wth w-100"> 
+							<header class="main_header main_header_2" id="header1">
+								<div class="mobile_nav">
+									<div class="" id="fixHead">
+
+										<!-- <app-header></app-header> -->
+										<div class="info-bar w-100 col-lg-12 col-md-12 cl-sm-12 col-12 p-0">
+										    <div class="infobarContent newcheck">
+										        <div class="infobarContentRow w-100 d-flex">   
+										        	<div class="js--match-header-title infobarContentLeft"> 
+														<button class="btn_icon color_white p-0" (click)="back_button()">
+															<i class="fas fa-arrow-left font-16"></i>
+														</button>
+														<a class="btn_icon home_icon theme-color mr-3 font-16" routerLink="/home"><i class="fas fa-home"></i></a>		
+														<span class="namematchest">{{matchdetails.team1name}} vs {{matchdetails.team2name}}</span>
+													</div>
+										            <div class="infobarContentLeft text-center">
+										                <div class="timer d-flex justify-content-center align-items-center"><i class="far fa-clock" style="height: 16px; width: 16px; font-size: 16px;"></i><span class="timeRemaining"><countdown-timer [end]="matchdetails.time_start"></countdown-timer></span>												
+															<button class="btn_icon ml-auto mr-0 color_white p-0 imagewaallet" routerLink="/my-account" *ngIf="loginid!= ''">
+																<!-- <i class="fas fa-credit-card"></i> -->
+																<i class="fas fa-wallet"></i>
+															</button>
+														</div>
+										            </div>
+										        </div>
+										    </div>
+ 
+										</div>
+									</div>
+								</div>
+							</header> 
+							
+							<div class="container-fluid me_crt_TeamMain bg_clrfa mb-5">
+								<div class="row marginZ w-100 mb-5">
+									
+									<div class="col-lg-12 col-sm-12 col-md-12 col-12 choose_c_vc text-center">
+										<h6 class="w-100 text-uppercase my_teams__title d-flex justify-content-center text-center m-0">You can create up to 10 teams for a single contest</h6>
+									</div> 	 
+									<div class="col-lg-12 col-sm-12 col-md-12 col-12 p-0" *ngIf="jointeamlists?.length>0">
+										<div class="em_teams">
+										    <div class="em_teams_team mt-4"  *ngFor="let teamlist of jointeamlists"> 
+										        <div class="em_topSection d-flex justify-space-between align-items-center">
+										            <div>Team: {{teamlist.teamnumber}}</div>
+										            <div class="d-flex">
+													
+										            <a class="em_resetButton text-center m-0  mr-3 d-flex align-items-center justify-content-center" (click)="myteamSingle(teamlist.teamid,teamlist.teamnumber)">
+
+									                    <div class="em_primaryButtonAlign  d-flex align-items-center" ><i class="far fa-eye" style="height: 14px; width: 14px; font-size: 14px;"></i> 
+									                    </div>
+									                </a>
+										            <a class="em_resetButton text-center m-0 mr-3 d-flex align-items-center justify-content-center" (click)="editteam(teamlist.teamnumber)">
+
+										                <div class="em_primaryButtonAlign d-flex 		align-items-center" ><i class="fas fa-pencil-alt" style="height: 14px; width: 14px; font-size: 14px;"></i> 
+										                </div>
+										            </a>
+
+										            
+										            <a class="em_resetButton text-center m-0 d-flex align-items-center justify-content-center" (click)="cloneteam(teamlist.teamid,teamlist.teamnumber)" *ngIf="jointeamlists?.length<=9">
+
+										                <div class="em_primaryButtonAlign  d-flex align-items-center"><i class="far fa-clone" style="height: 14px; width: 14px; font-size: 14px;"></i> 
+										                </div>
+										            </a>
+													</div>
+										        </div>
+										        <div>
+										            <div class="em_teams_bottomsection em_bottomSection d-flex justify-space-between align-items-center">
+										               <!-- <div class="em_teams_roleentity">
+										                    <div>
+										                        <div class="em_teams_roleentityeven">Captain</div>
+										                        <div class="em_teams_roleentity_player">{{teamlist.captain}}</div>
+										                    </div>
+										                </div>
+										                <div class="em_teams_roleentity">
+										                    <div>
+										                        <div class="em_teams_roleentityodd">Vice Captain</div>
+										                        <div class="em_teams_roleentity_player">{{teamlist.vicecaptain}}</div>
+										                    </div>
+										                </div> -->
+														
+														<div class="teamdataaa d-flex">
+															<div class="teamdatainr mr-3">
+																<span class="text-uppercase">
+																	{{teamlist.team1name}}
+																</span>
+																<p>
+																	{{teamlist.team1count}}
+																</p>
+															</div>
+															<div class="teamdatainr">
+																<span class="text-uppercase">
+																	{{teamlist.team2name}}
+																</span>
+																<p>
+																	{{teamlist.team2count}}
+																</p>
+															</div>
+														</div>
+														
+														<div class="captainSec d-flex">	
+															<div class="singlepic  mr-3">
+																<img src="{{teamlist.captainimage}}">
+																<span class="captainInr orenge">C</span> 
+																<span class="playerdatasP notplaying" *ngIf="teamlist.cplayed=='0'"></span> 
+																<span class="playerdatasP playing" *ngIf="teamlist.cplayed=='1'"></span>
+																<p>{{teamlist.captainname}}</p>
+															</div>
+															<div class="singlepic">
+																<img src="{{teamlist.vicecaptainimage}}"> 
+																<span class="captainInr blue">VC</span> 
+																<span class="playerdatasP playing" *ngIf="teamlist.vcplayed=='1'"></span>
+																<span class="playerdatasP notplaying" *ngIf="teamlist.vcplayed=='0'"></span> 
+																<p>{{teamlist.vicecaptainname}}</p>
+															</div>	
+														</div> 
+														
+														
+										            </div>
+										        </div>
+										        <div class="em_buttonBar d-flex align-items-center justify-space-between">
+													<div class="pl-3">WK <strong>{{teamlist.keeper}}</strong>
+													</div>
+													<div>BAT <strong>{{teamlist.batsman}}</strong>
+													</div>
+													<div>ALL <strong>{{teamlist.allrounder}}</strong>
+													</div>
+													<div class="pr-3">BOWL <strong>{{teamlist.bowler}}</strong>
+													</div>
+										        </div>
+										    </div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="me_teams_footer d-flex align-items-center justify-content-center align-content-center m-auto" *ngIf="jointeamlists?.length<=9">
+								<a class="me_footer_btn creatteambt text-uppercase" (click)="create_team()" *ngIf="jointeamlists?.length==0">Create Team</a>
+								<a class="me_footer_btn creatteambt text-uppercase" (click)="create_team()" *ngIf="jointeamlists?.length>0">Create Team ({{jointeamlists?.length + 1}})</a>
+							</div>
+						 
+	                    </div> 
+                    </div>
+                </div>
+            </div> 
+    </section>
+
+
+ 
+		<div id="team-preview" class="slide"> 
+			<div class="tema_view">
+				<div class="header_top_nmee w-100"> 
+					<p>Team: ( T{{teamnumber}} ) </p>
+					<p><a (click)="editteam(teamnumber)"><i class="fas fa-pencil-alt"></i></a>
+						<button type="button" (click)="closeteampreview();"><i class="fas fa-times-circle"></i></button>
+					</p>
+				</div>
+				<div class="d_fl_grow w-100">	
+					<div class="cricet_ground_set" *ngIf='!isMobMode'>	
+						<span class="sec_nam_ttf">Wicket-Keeper</span>
+						<div class="player_show"> 
+							<div class="player_img" *ngFor="let keeper of teamdetails | playerrole:  'keeper';">
+								<span class="capvive" *ngIf="keeper.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="keeper.vicecaptain=='1'">VC</span>
+								<img src="{{keeper.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="keeper.team=='team1'">{{keeper.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="keeper.team=='team2'">{{keeper.name}}</span>
+		                        <span class="font_11 white mt-1">{{keeper.credit}} Cr</span>
+									</div>
+								</div>
+						<span class="sec_nam_ttf">Batsmen</span>
+						<div class="player_show wttf" >
+							<div class="player_img" *ngFor="let batsman of teamdetails | playerrole:  'batsman';let i=index">
+								<span class="capvive" *ngIf="batsman.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="batsman.vicecaptain=='1'">VC</span>
+								<img src="{{batsman.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+								<span class="font_11 white mt-1">{{batsman.credit}} Cr</span>
+							</div> 
+						</div>
+						<span class="sec_nam_ttf">All-Rounders</span>
+						<div class="player_show wttf">
+							<div class="player_img" *ngFor="let allrounder of teamdetails | playerrole:  'allrounder';">
+								<span class="capvive" *ngIf="allrounder.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="allrounder.vicecaptain=='1'">VC</span>
+								<img src="{{allrounder.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+		                        <span class="font_11  white mt-1">{{allrounder.credit}} Cr</span>
+									</div> 
+								</div>
+						<span class="sec_nam_ttf">Bowlers</span>
+						<div class="player_show wttfc">
+							<div class="player_img" *ngFor="let bowler of teamdetails | playerrole:  'bowler';">
+								<span class="capvive" *ngIf="bowler.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="bowler.vicecaptain=='1'">VC</span>
+								<img src="{{bowler.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+		                        <span class="font_11  white mt-1">{{bowler.credit}} Cr</span>
+							</div> 
+						</div>
+					</div>
+					<div class="cricet_ground_set" *ngIf='isMobMode'>	
+						<span class="sec_nam_ttf">Wicket-Keeper</span>
+						<div class="player_show"> 
+							<div class="player_img" *ngFor="let keeper of teamdetails | playerrole:  'keeper';let i =index">
+								<span class="capvive" *ngIf="keeper.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="keeper.vicecaptain=='1'">VC</span>
+								<img src="{{keeper.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="keeper.team=='team1'">{{keeper.name}} </span>  
+		                        <span class="ply_name backblue" *ngIf="keeper.team=='team2'">{{keeper.name}}</span>
+								<span class="font_11 white mt-1">{{keeper.credit}} Cr</span>
+									</div>
+								</div>
+						<span class="sec_nam_ttf">Batsmen</span>
+						<div class="player_show wttf" >
+							<div class="player_img" *ngFor="let batsman of teamdetails | playerrole:  'batsman';let i=index">
+								<ng-container *ngIf='i <= 3 '>
+								<span class="capvive" *ngIf="batsman.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="batsman.vicecaptain=='1'">VC</span>
+								<img src="{{batsman.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+		                        <span class="font_11 white mt-1">{{batsman.credit}} Cr</span>
+								</ng-container>
+								
+							</div> 
+							
+								</div>
+						<div class="player_show wttf" id="playerCentre" >
+							<div class="player_img" *ngFor="let batsman of teamdetails | playerrole:  'batsman';let i=index">
+								<ng-container *ngIf='i > 3 '>
+								<span class="capvive" *ngIf="batsman.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="batsman.vicecaptain=='1'">VC</span>
+								<img src="{{batsman.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="batsman.team=='team1'">{{batsman.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="batsman.team=='team2'">{{batsman.name}}</span>
+		                        <span class="font_11 white mt-1">{{batsman.credit}} Cr</span>
+								</ng-container>
+								
+							</div> 
+							
+								</div>
+						<span class="sec_nam_ttf">All-Rounders</span>
+						<div class="player_show wttf">
+							<div class="player_img" *ngFor="let allrounder of teamdetails | playerrole:  'allrounder';let i=index">
+								<ng-container *ngIf='i <= 3 '>
+								<span class="capvive" *ngIf="allrounder.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="allrounder.vicecaptain=='1'">VC</span>
+								<img src="{{allrounder.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+		                        <span class="font_11  white mt-1">{{allrounder.credit}} Cr</span>
+								</ng-container>
+								
+							</div> 
+								</div>
+						<div class="player_show wttf" id="playerCentre">
+							<div class="player_img" *ngFor="let allrounder of teamdetails | playerrole:  'allrounder';let i=index">
+								<ng-container *ngIf='i > 3 '>
+								<span class="capvive" *ngIf="allrounder.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="allrounder.vicecaptain=='1'">VC</span>
+								<img src="{{allrounder.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="allrounder.team=='team1'">{{allrounder.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="allrounder.team=='team2'">{{allrounder.name}}</span>
+		                        <span class="font_11  white mt-1">{{allrounder.credit}} Cr</span>
+								</ng-container>
+								
+							</div> 
+								</div>
+						<span class="sec_nam_ttf">Bowlers</span>
+						<div class="player_show wttfc">
+							<div class="player_img" *ngFor="let bowler of teamdetails | playerrole:  'bowler';let i=index">
+								<ng-container *ngIf='i <=3 '>
+								<span class="capvive" *ngIf="bowler.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="bowler.vicecaptain=='1'">VC</span>
+								<img src="{{bowler.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+								<span class="font_11  white mt-1">{{bowler.credit}} Cr</span>
+								</ng-container>
+								
+							</div> 
+						</div>
+						<div class="player_show wttfc" id="playerCentre">
+							<div class="player_img" *ngFor="let bowler of teamdetails | playerrole:  'bowler';let i=index">
+								<ng-container *ngIf='i >3 '>
+								<span class="capvive" *ngIf="bowler.captain=='1'">C</span>
+								<span class="vicecapvive" *ngIf="bowler.vicecaptain=='1'">VC</span>
+								<img src="{{bowler.image}}" class="img-fluid ply_er">
+		                        <span class="ply_name" *ngIf="bowler.team=='team1'">{{bowler.name}}</span>  
+		                        <span class="ply_name backblue" *ngIf="bowler.team=='team2'">{{bowler.name}}</span>
+								<span class="font_11  white mt-1">{{bowler.credit}} Cr</span>
+								</ng-container>
+								
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+	 	</div>

@@ -1,0 +1,24 @@
+
+
+						
+						<div class="headerRow_c14ad headerRow col-lg-12 col-md-12 col-sm-12 col-12">
+						    <div class="row marginZ white-space-nowrap">
+							    <div class="header_top col-lg-4 col-md-4 col-sm-4 col-4 p-0 d-flex align-items-center"> 
+							        <button class="btn_icon color_white p-0" (click)="back_button()">
+							            <i class="fas fa-arrow-left"></i>
+							        </button>
+							        <a class="btn_icon home_icon pl-4 color_white" routerLink="/"><i class="fas fa-home"></i></a>
+							    </div>
+							     <div class="header_top col-lg-4 col-md-4 col-sm-4 col-4 p-0 d-flex align-items-center justify-content-center">
+							    <div class="headerTitle text-uppercase color_white font_w600">
+							    {{notdata.headertext}}</div> 
+							    </div>
+
+							     <div class="header_top col-lg-4 col-md-4 col-sm-4 col-4 0-0 d-flex align-items-center paddingZ">
+							        <button class="btn_icon ml-auto mr-0 color_white p-0 imagewaallet" routerLink="/my-account" *ngIf="loginid!= ''">
+							        	<!-- <i class="fas fa-credit-card"></i> -->
+							        	<img src="assets/images/deposit.png">
+							        </button>
+							    </div>
+						    </div>
+						</div>

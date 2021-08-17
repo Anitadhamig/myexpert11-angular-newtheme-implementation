@@ -1,0 +1,142 @@
+
+	<section class="homepage_container"> 
+ 		
+	 		<div class="center relative overflow-x-hidden centerpart  col-sm-4 paddingZ">
+	 			<div class="col-sm-12 homemiddle bg-home"> 
+		 			<div class="col-sm-12 paddingZ mt-top_fix">
+		 				<div class="bgb2 w-100 walletka">
+						    <div class="w-100 db tc p-3 font-11">
+						        <div class="w-25 dib floatleft b--white-10 walletbordTop walletvoardbottom">
+						            <p class="mt-2 font-12 font-bold white">TOTAL</p>
+						            <div>
+						                <i class="dib fa fa-inr white">
+						                </i>
+						                <p class="dib white ">{{userdatass.totalamount}}</p>
+						            </div>
+						        </div>
+						        <div class="w-25 dib b--white-10 floatleft walletbordTop walletvoardbottom">
+						            <p class="mt-2 font-12 font-bold  white">DEPOSIT</p>
+						            <div>
+						                <i class="dib fa fa-inr white">
+						                </i>
+						                <p class="dib white">{{userdatass.balance}}</p>
+						            </div>
+						        </div>
+						        <div class="w-25 dib b--white-10 floatleft walletbordTop walletvoardbottom">
+						            <p class="mt-2 font-12 font-bold white">BONUS</p>
+						            <div> 
+						                <i class="dib fa fa-inr white">
+						                </i>
+						                <p class="dib white">{{userdatass.bonus}}</p>
+						            </div>
+						        </div>
+						        <div class="w-25 dib b--white-10 floatleft walletbordRight walletbordTop walletvoardbottom">
+						            <p class="mt-2 font-12 font-bold  white">WINNIGS</p>
+						            <div>
+						                <i class="dib fa fa-inr white">
+						                </i>
+						                <p class="dib white">{{userdatass.winning}}</p>
+						            </div>
+						        </div>
+						        
+						        <div class="w-100 db ph3"> 
+						            <p class="db w-100 floatleft mt-2 white font-12 font-bold mb-3">Minimum withdrawable limit is Rs.100</p>
+						        </div>
+						    </div>
+						</div>
+						<div class="w-100 p-3 mt-3">
+							<div class="w-100 db tc f6 ">
+							    <div class="w-100 dib font-12 text white">Choose Amount to withdraw</div>
+							    <div class="w-100 db flex justify-between items-center mt-1">
+							        <button class="w-100 mr-2 font-12 font-bold white background-transparent border-white p-2" (click)="AddAmount('100');">
+							            + <i class="dib fa fa-inr">
+							            </i> 100
+							        </button>
+							        <button class="w-100 mr-2 font-12 font-bold white background-transparent border-white p-2" (click)="AddAmount('200');">
+							            + <i class="dib fa fa-inr white">
+							            </i> 200
+							        </button>
+							        <button class="w-100 mr-2 font-12 font-bold white background-transparent border-white p-2" (click)="AddAmount('500');">
+							            + <i class="dib fa fa-inr">
+							            </i> 500
+							        </button>
+							        <button class="w-100 mr-2 font-12 font-bold white background-transparent border-white p-2" (click)="AddAmount('1000');">
+							           + <i class="dib fa fa-inr">
+							            </i> 1000
+							        </button>
+							    </div>
+							</div>
+
+
+							<div class="w-100 db tc mt-5">
+							    <div class="w-100 dib font-12 text white">Enter Amount to withdraw</div>
+							   <div class="w-100 db flex items-center b--white-70">
+						            <i class="dib fa fa-inr font-12 white">
+						            </i>
+								    <input id="amountadd" (keypress)="isNumber($event)"  [(ngModel)]="user.balance"  class="background-transparent white font-12 font-bold pl-1 height40" value="30" maxlength="9" min="0" required>
+								</div>
+							</div>
+
+							
+
+							<div class="w-100 db mt-3 text-center justify-between">
+								 <button class="w-45 text-center dib common_Button  " (click)="updatemoney('bank');">		 
+					        		PROCEED TO BANK
+					       		 </button> 
+								 <button class="w-45 text-center dib common_Button " (click)="updatemoney('paytm');">		 
+					        		PROCEED TO PAYTM
+					       		 </button> 
+							</div>
+
+						</div>
+
+ 
+					   <div class="w-100 mt-3 p-3" *ngIf="userwithdraw?.length>0">
+					   		<h4 class="white font-16 font-bold tc mb-2">Most Recent Transactions</h4>
+						   <div class="w-100 single_player" >
+								<label class="w-100 marginZ  font-11" >
+									<div class="w-100 db flex"> 
+										<div class="dib ttu w-35" >
+										 Withdrawl Date
+										</div>   
+										<div class="dib ttu w-35" >
+											Approval Date
+										</div>   
+										<div class="dib ttu w-15" > 
+											Amount
+										</div>   
+										<div class="dib ttu w-15" >
+											Status
+										</div>   
+									</div>
+								</label>
+							</div>  
+						   <div class="w-100 single_player" *ngFor="let userwithdraw of userwithdraw">
+								<label class="w-100 marginZ  font-11" >
+									<div class="w-100 db flex"> 
+										<div class="dib ttu w-35" >
+											 {{userwithdraw.withdrawl_date}}
+										</div>   
+										<div class="dib ttu w-35" >
+											{{userwithdraw.approval_date}}
+										</div>   
+										<div class="dib ttu w-15" > 
+											<i aria-hidden="true" class="fa fa-inr"></i> {{userwithdraw.amount}}
+										</div>   
+										<div class="dib ttu w-15" >
+											{{userwithdraw.status}}
+										</div>   
+									</div>
+								</label>
+							</div>  
+ 						<p class="white font-12 font-bold mt-2 mb-3">*This data synchronizes after every 24 hours.</p>
+						</div>  
+
+
+
+					</div> 
+	 			</div>
+	 			 
+
+ 		</div> 
+	</section>

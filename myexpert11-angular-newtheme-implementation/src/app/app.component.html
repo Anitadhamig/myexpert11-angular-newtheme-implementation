@@ -1,0 +1,11 @@
+<!-- <app-header *ngIf="mode == 'login'"></app-header> -->
+<div id="overlay" *ngIf="loading || load">
+	<div id="loader">		
+		<div class="loader loaderinner">
+		  <img src="/assets/images/loader.gif" alt="loader images" style="width: 100px;">
+		</div>
+	</div>
+</div>
+<router-outlet></router-outlet>
+<!-- <app-footer *ngIf="mode == 'login'"></app-footer> -->
+ 

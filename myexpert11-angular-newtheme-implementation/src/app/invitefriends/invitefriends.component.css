@@ -1,0 +1,48 @@
+
+.socialicon{
+	
+}
+.socialicon a{
+	
+}
+.socialicon a i{
+	height: 28px;
+    width: 40px;
+    padding: 0px!important;
+    font-size: 25px;
+    background: transparent;
+}
+.socialicon a i.whatsapp {
+    color: #0ad561; 
+}
+.socialicon a i.facebook {
+    color: #3b5998;
+}
+.socialicon a i.twitter {
+    color: #50abf1;
+}
+.socialicon a i.envelope {
+    color: #d14836;
+}
+.referal{
+	max-width: 200px;
+    margin: 0px auto 30px;
+}
+.inviteotherbtn a{
+    /* background: #ff5722; */
+    color: #ff5722;
+    font-size: 14px;
+    /* padding: 7px 0px; */
+    /* min-width: 125px; */
+    /* border-radius: 4px; */
+    margin-bottom: 15px;
+}
+
+.copyto{
+	font-size: 30px;
+    position: absolute;
+    right: -25px;
+    top: 8px;
+    color: #ff5722!important;
+    cursor: pointer;
+}

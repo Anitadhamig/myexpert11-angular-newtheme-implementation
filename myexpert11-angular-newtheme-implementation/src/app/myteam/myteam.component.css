@@ -1,0 +1,92 @@
+.main_header{
+	top: 0px;
+}
+.em_buttonBar { 
+    background: #f0f0f0;
+}
+.em_topSection { 
+    background: #f0f0f0;
+}
+.teamdataaa{
+	
+}
+.teamdataaa   .teamdatainr{
+	text-align: center;
+}
+.teamdataaa   .teamdatainr   span{
+	    color: #a29b9b;
+}
+.teamdataaa   .teamdatainr   p{
+	margin: 0px;
+	font-size: 18px;
+}
+.captainSec{
+	
+}
+.captainSec   .singlepic {
+	
+	text-align: center;
+	position: relative;
+}
+.captainSec   .singlepic   p{
+	
+	margin: 0px;
+	font-size: 11px;
+	color: #fff;
+	background: red;
+	padding: 0px 11px;
+	max-width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.captainSec   .singlepic   img{
+	
+	width: 40px;
+	height: 40px;
+}
+.captainSec   .singlepic   .captainInr{
+	
+	position: absolute; 
+	color: #fff;
+	font-size: 11px;
+	font-weight: 700;
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 50%;
+	left: 0px;
+}
+.orenge{
+	background: #ff5722;
+}
+.blue{
+	background: #3d49b5;
+}
+.playerdatasP{
+	position: absolute;
+	height: 8px;
+	width: 8px;
+	z-index: 11;
+	border-radius: 21px;
+	bottom: 22px;
+}
+.playing{
+	
+	background: #008000;
+}
+.notplaying{
+	background: #FF0000;
+}
+
+.em_teams_bottomsection {
+ 
+    padding: 15px 15px;
+
+}
+
+#playerCentre{
+	margin-left: -8%;
+	justify-content: center;
+}

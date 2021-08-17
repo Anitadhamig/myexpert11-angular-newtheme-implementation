@@ -1,0 +1,259 @@
+
+	<section class="body-section-home">     
+		<div class="body-section-home-inner">
+			
+				<app-left-side></app-left-side>
+				<div class="rightBox">
+					<div class="rightBox-inner db">						
+						<div class="flex-wth">
+						
+						<app-header></app-header>
+
+							<section class="tabs-sec-me">
+								<div class="tabs mt-3 pb-2 mb-5"> 									
+									<div class="w-100 row ml-0 mr-0 review_main_sec">
+										<div class="row ml-0 mr-0 mb-3 w-100 review_inner" *ngIf="statusreview.status=='pending'">
+											<h5 class="theme-color p-0 m-0">Your review status is pending</h5>
+										</div>
+										<div class="row ml-0 mr-0 mb-3 w-100 review_inner" *ngIf="statusreview.status=='approved'">
+											<h5 class="green-color p-0 m-0">Your review is published</h5>
+										</div>
+										<div class="row ml-0 mr-0 mb-3 w-100 review_inner" *ngIf="statusreview.status=='Not submit'"> 
+											<div class="rate_review_main d-flex align-items-center ">
+												<div class="review_user_images">
+													<img src="{{userdatass.image}}">
+												</div>
+												<div class="revew_user_details">
+													<h5 class="m-0 w-100 d-flex p-0 align-items-center">{{userdatass.team}} 
+ 												<div>					
+												<div class="stars rate" data-percent="30" style="margin-top:10px;">	
+													<fieldset class="rating5">
+														<input type="radio" id="star5" [(ngModel)]="reviewsform.other" name="other" value="5.0" />
+															<label class = "full fas fa-star" for="star5" ></label>
+														<input type="radio" id="star4half" [(ngModel)]="reviewsform.other" name="other" value="4.5" />
+															<label class="half fas fa-star-half" for="star4half"></label>
+														<input type="radio" id="star4" [(ngModel)]="reviewsform.other" name="other" value="4.0" />
+															<label class = "full  fas fa-star" for="star4"></label>
+														<input type="radio" id="star3half" [(ngModel)]="reviewsform.other" name="other" value="3.5" />
+															<label class="half fas fa-star-half" for="star3half"></label>
+														<input type="radio" id="star3" [(ngModel)]="reviewsform.other" name="other" value="3.0" />
+															<label class = "full  fas fa-star" for="star3"></label>
+														<input type="radio" id="star2half" [(ngModel)]="reviewsform.other" name="other" value="2.5" />
+															<label class="half fas fa-star-half" for="star2half"></label>
+														<input type="radio" id="star2" [(ngModel)]="reviewsform.other" name="other" value="2.0" />
+															<label class = "full  fas fa-star" for="star2"></label>
+															
+														<input type="radio" id="star1half" [(ngModel)]="reviewsform.other" name="other" value="1.5" />
+															<label class="half fas fa-star-half" for="star1half"></label>
+															
+														<input type="radio" id="star1" [(ngModel)]="reviewsform.other" name="other" value="1.0" />
+															<label class = "full  fas fa-star" for="star1"></label>
+															
+														<input type="radio" id="starhalf" [(ngModel)]="reviewsform.other" name="other" value="0.5" />
+															<label class="half fas fa-star-half" for="starhalf"></label>
+													</fieldset>
+													</div> 
+											  </div> 
+													</h5>
+													<p class="m-0">Your review will be posted publicly on the web</p>
+												</div>
+											</div>
+											<div class="w-100 review_type_form">
+												<form class="m-0">
+													<textarea class="form-control" placeholder="Type a Message" [(ngModel)]="reviewsform.message" name="message"></textarea>
+ 
+												</form>
+											</div>
+
+											<div class="w-100 marginZ row review_youtube_link">
+												<input type="text" placeholder="Paste a You Tube Link" class="form-control" [(ngModel)]="reviewsform.youtubelink" name="youtubelink">
+												<span><i class="fas fa-link"></i></span>
+											</div>
+											<div class="row marginZ w-100 img_upload">
+												<div class="img_upload_sec d-flex align-items-center justify-content-center">
+													<span class="d-flex align-items-center justify-content-center">
+														<input type="file" id="imgaeforreview" class="hidden" (change)="Previewimage($event)">
+														<label for="imgaeforreview" class="text-center">
+															<img src="/assets/images/upload.png" class="margin-auto" /><br>
+															<span class="font_12 font-bold mt-2">Add Photo</span>
+														</label>
+													</span>
+												</div>
+											</div>
+											<div class="w-100 row marginZ review_submit_button">
+												<button class="text-uppercase" (click)="submitreview()">
+													<i class="fa fa-paper-plane" aria-hidden="true"></i> 
+													<span>Send a Review</span>
+												</button>
+											</div>
+										</div>
+										
+										<div class="row ml-0 mr-0 mb-3 w-100 review_inner" *ngFor="let sreview of site_review">
+											<div class="row ">
+												<div class="col-md-12 mb-10 w-100"><h5>Review statistics</h5></div>
+											</div>
+											<div class=" align-items-center w-100" style="justify-content: center;display: flex;">					
+												<div class="stars rate ml-0 mr-0" data-percent="30" style="margin-top:0px;">
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==0">
+														 <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==0.5">
+														 <i class="fas fa-star-half-alt" style="color:rgb(255,110,0);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==1">
+														 <i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==1.5">
+														  <i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														  <i class="fas fa-star-half-alt" style="color:rgb(255,110,0);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==2">
+															<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+															<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+															  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+															  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+															  <i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==2.5">
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fas fa-star-half-alt" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														<i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==3">
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+														<i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==3.5">
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fas fa-star-half-alt" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==4">
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(201,201,201);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==4.5">
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fas fa-star-half-alt" style="color:rgb(255,110,0);"></i>
+													</fieldset>
+													<fieldset class="rating5" *ngIf="sreview.avr_rate==5">
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+														<i class="fa fa-star" style="color:rgb(255,110,0);"></i>
+													</fieldset>
+												</div> 
+											</div>	
+											<div class="row ml-0 mr-0  w-100 revew_user_details">
+												<div class="col-md-12"><p class="text-center review_time">Average ratings: {{sreview.avr_rate}}</p></div>
+											</div>
+											<div class="row ml-0 mr-0  w-100 revew_user_details justify-space-between">
+												<div class="col-xs-4 text-center wid33"><b>{{sreview.total_review}}</b></div>
+												<div class="col-xs-4 text-center wid33"><b>{{sreview.photo_review}}</b></div>
+												<div class="col-xs-4 text-center wid33"><b>{{sreview.video_review}}</b></div>
+											</div>
+											<div class="row ml-0 mr-0  w-100 revew_user_details justify-space-between">
+												<div class="col-xs-4 text-center review_time wid33">Reviews</div>
+												<div class="col-xs-4 text-center  review_time wid33">Photo Reviews</div> 
+												<div class="col-xs-4 text-center review_time wid33">Video Reviews</div>
+											</div>
+										</div>
+										<!-- {{allreview | json}} -->
+										<div class="row ml-0 mr-0 mb-3 w-100 review_inner" *ngFor="let reviews of allreview">
+											<div class="rate_review_main d-flex align-items-center w-100">
+												<div class="review_user_images">
+													<img src="{{reviews.userimage}}">
+												</div>
+												<div class="revew_user_details w-100">
+													<h5 class="m-0 w-100 d-flex p-0 align-items-center">{{reviews.team}}
+															<div>					
+																<div class="stars rate" data-percent="30" style="margin-top:0px;">	<fieldset class="rating5">
+																<input type="radio" id="star5{{reviews.team}}"   value="5.0" [checked]="reviews.rate==5" />
+																	<label class = "full fas fa-star" for="star5{{reviews.team}}" ></label>
+																<input type="radio" id="star4half{{reviews.team}}"   value="4.5" [checked]="reviews.rate==4.5" />
+																	<label class="half fas fa-star-half" for="star4half{{reviews.team}}"></label>
+																<input type="radio" id="star4{{reviews.team}}"  value="4.0" [checked]="reviews.rate==4" />
+																	<label class = "full  fas fa-star" for="star4{{reviews.team}}"></label>
+																<input type="radio" id="star3half{{reviews.team}}"  value="3.5" [checked]="reviews.rate==3.5" />
+																	<label class="half fas fa-star-half" for="star3half{{reviews.team}}"></label>
+																<input type="radio" id="star3{{reviews.team}}"  value="3.0" [checked]="reviews.rate==3" />
+																	<label class = "full  fas fa-star" for="star3{{reviews.team}}"></label>
+																<input type="radio" id="star2half{{reviews.team}}"  value="2.5" [checked]="reviews.rate==2.5" />
+																	<label class="half fas fa-star-half" for="star2half{{reviews.team}}"></label>
+																<input type="radio" id="star2{{reviews.team}}"  value="2.0" [checked]="reviews.rate==2" />
+																	<label class = "full  fas fa-star" for="star2{{reviews.team}}"></label>
+																	
+																<input type="radio" id="star1half{{reviews.team}}"  value="1.5" [checked]="reviews.rate==1.5" />
+																	<label class="half fas fa-star-half" for="star1half{{reviews.team}}"></label>
+																	
+																<input type="radio" id="star1{{reviews.team}}"  value="1.0" [checked]="reviews.rate==1" />
+																	<label class = "full  fas fa-star" for="star1{{reviews.team}}"></label>
+																	
+																<input type="radio" id="starhalf{{reviews.team}}"  value="0.5" [checked]="reviews.rate==0.5" />
+																	<label class="half fas fa-star-half" for="starhalf{{reviews.team}}"></label>
+															</fieldset></div> 
+													  </div>
+
+													</h5>
+													<span class="review_time">{{reviews.created_at}}</span>
+													<p class="m-0">{{reviews.review}}</p>  
+												</div>
+												
+											</div> 
+											<div class="row marginZ w-100 img_upload pt-3">
+												<div class="img_upload_sec d-black align-items-center justify-content-center">
+													<span class="d-black align-items-center justify-content-center">
+													<img src="{{reviews.image}}"  *ngIf="reviews.image!=''" class="mb-3" style="width: auto; max-width: 100%;"> 
+													<iframe  [src]="getEmbededUrl(reviews.youtube)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen  *ngIf="reviews.youtube!=''" style="width: auto; max-width: 100%;"></iframe></span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<app-footer></app-footer>
+							
+						</div>
+						</div>
+						</div>
+					</div>
+				</section>
+
+
+
+
+
+
+
+
+ 
+

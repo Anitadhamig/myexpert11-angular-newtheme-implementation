@@ -1,0 +1,120 @@
+<section class="body-section-home">     
+<div class="body-section-home-inner">
+<app-left-side></app-left-side>
+<div class="rightBox">
+<div class="rightBox-inner db">						
+	<div class="flex-wth">
+		<app-header></app-header>
+		<section  class="slid_tabs mt-5 mb-5 pb-3"> 
+			
+		  <div  class="col-sm-12 commonPages">  
+							<div class="row me11_static_mainHeader">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain"> 
+									<!-- <span class="font_w600 mt-2 mb-2">If you have questions about our website, tools, subscriptions, or anything else: </span> -->
+									<!-- <p>Contact us through our support center and we’ll do our best to respond as quickly as possible.</p> -->
+									<span class="font_w600 mt-2 mb-2">If you have questions about our website, tools, subscriptions, or anything else: Send Mail to -</span>
+									<a class="d-inline-block w-100" href="mailto:support@myexpert11.com">support@myexpert11.com</a>
+									<span class="font_w600 mt-2 mb-2">Interested in joining our network of experts, news correspondents, affiliates, and advertisers?</span>
+									<a class="d-inline-block w-100" href="mailto:partners@myexpert11.com">partners@myexpert11.com</a>
+
+									<span class="font_w600 mt-2 mb-2">For all other business-related inquiries: </span>
+									<a class="d-inline-block w-100" href="mailto:info@myexpert11.com">info@myexpert11.com</a>
+									
+									
+									<p class="mt-4">Have an enquiry? <a  data-toggle="modal" data-target="#feedbackform" style="color: #007bff;" >Click here to fill the form.</a></p>
+									<span class="font_w600 mt-2 mb-2">Find us on social media</span>
+									<div class="col-lg-12 col-md-12 col-12 p-0">
+										<div class="socialicon oneicon">
+											<a target="_blank" href="https://www.youtube.com/channel/UCoX2GBqtYCrW5gImSeMdS8A"><i class="fab fa-youtube youtube"></i></a> 
+											<a target="_blank" href="https://twitter.com/MY_EXPERT11"><i class="fab fa-facebook facebook"></i></a> 
+											<a target="_blank" href="https://www.facebook.com/myexpert11"><i class="fab fa-twitter twitter"></i></a>
+											<!-- <a target="_blank" href="https://plus.google.com"><i class="fab fa-google-plus envelope"></i></a> -->
+											<a target="_blank" href="https://www.instagram.com/myexpert11/"><i class="fab fa-instagram instagram"></i></a>
+											<a target="_blank" href="https://t.me/MyExpert11Support"><i class="fab fa-telegram telegram"></i></a>
+										</div>
+									</div>
+									
+									<p class="mt-4">Telegram Customer Support: <a href="tel:+917247808394" style="color: #007bff;" >+917247808394</a></p>
+									<br> 
+									
+									<p style="font-size: 10px">
+										CORPORATE OFFICE:<br> 
+										SPORTENA FANTASY PRIVATE LIMITED<br>
+										FLAT NO-409, SAGAR RESIDENCY H.NO-762,<br>
+										GHANSOLI, NAVI MUMBAI, MAHARASHTRA 400701<br>
+										EMAIL: <a href="admin@myexpert11.com">admin@myexpert11.com</a>
+									</p>
+									
+								</div>
+							</div>
+
+			</div>
+		</section>
+	</div>
+</div>
+		
+		<app-footer></app-footer>
+		
+	</div>
+</div>
+</section>
+
+
+<div id="feedbackform" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog modaldialog">
+		<button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+		<div  id="createTeamPopUp"> 
+			
+			<h3 class="popupTitle">Submit a request </h3> 
+			<div class="w-100 margin-auto popupInner p-3">
+				<p> Please fill the details below </p>
+				<div class="w-100">
+					<div class="w-100 db center">
+						<div class=" mainWrapper login_formM mt-0 p-0">
+						
+							<div class="deatilForm  font-12 mb-3"> 
+								<input  class="font-12 font-bold background-transparent w-100 dib b--white-70"   placeholder="Enter your name*"  type="text" [(ngModel)]="feedbackform.name" />  
+							</div>
+							<div class="deatilForm  font-12 mb-3"> 
+								<input  class="font-12 font-bold background-transparent w-100 dib b--white-70"    placeholder="Your Email Address*" type="email" [(ngModel)]="feedbackform.email" />  
+							</div>
+							<div class="deatilForm  font-12 mb-3"> 
+								<input  class="font-12 font-bold background-transparent w-100 dib b--white-70"   placeholder="Your Mobile NO (Optional)"   type="text" [(ngModel)]="feedbackform.mobile" maxlength="10"/>  
+							</div>
+							<div class="deatilForm  font-12 mb-3"> 
+								<input  class="font-12 font-bold background-transparent w-100 dib b--white-70"   placeholder="Subject*"  type="text"  [(ngModel)]="feedbackform.subject" />  
+							</div>
+							<div class="deatilForm  font-12 mb-3"> 
+								<textarea  class="font-12 font-bold background-transparent w-100 dib b--white-70"  [(ngModel)]="feedbackform.message"  placeholder="How we can help you today? (Please enter the details of your request)"></textarea>
+							</div>
+							<div class="deatilForm  font-12 mb-3"> 
+								<label> What are you contacting us about?*</label>
+								<select  [(ngModel)]="feedbackform.region" class="font-12 font-bold background-transparent w-100 dib b--white-70" required>
+									<option value=""> Select</option>
+									<option value="AccountVerification"> Account Verification</option>
+									<option value="Contests"> Contests</option>
+									<option value="DepositsWithdrawals"> Deposits & Withdrawals</option>
+									<option value="Affiliates"> Affiliates</option>
+									<option value="General"> General </option>
+									<option value="Bug"> Bug </option>
+								</select>
+							</div>
+							<div class="deatilForm  font-12 mb-3"> 
+								<input  class="font-12 font-bold background-transparent w-100 dib b--white-70"   placeholder="Your Myexerpt11 Team Name  (if applicable)" value=""  [(ngModel)]="feedbackform.teamname"  type="text"  />  
+							</div>
+							
+						</div>
+					</div>
+					<div class="w-100 flex justify-between items-center">
+						<ul class="addButon w-100">
+							<li  class="floatleft w-100"> 
+								<button class="font-12 background-green black font-bold p-2 w-100 floatright tc  cursor-pointer"  (click)="submitForm()">SUBMIT</button>
+							</li> 
+						</ul>
+					</div>
+				</div>
+			</div> 
+		</div> 
+    </div>
+</div> 
+

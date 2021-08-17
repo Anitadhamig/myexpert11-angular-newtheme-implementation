@@ -1,0 +1,381 @@
+	<section class="body-section-home">     
+		<div class="body-section-home-inner">
+				<app-left-side></app-left-side>
+				<div class="rightBox">
+					<div class="rightBox-inner db">						
+						<div class="flex-wth">
+
+
+							<app-header></app-header>
+
+							<section  class="slid_tabs mt-5 mb-5 pb-3"> 
+								
+								<div  class="col-sm-12 commonPages"> 							  
+
+									<div class="row me11_static_mainHeader">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain"> 
+											<h5 class="w-100 mt-2 mb-2">Myexpert11 bounty program:</h5>
+											<p>You can play fantasy without money and win Cash Prizes. Complete the tasks from MyExpert11 and
+												get Bonus, which can be used to get participate in MyExpert11 Fantasy Contest to Win Fantasy
+												Cash Price.
+											</p> 
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain"> 
+											<h5 class="w-100 mt-2 mb-2">WHAT IS BOUNTY?</h5>
+											<p>Bounty is an opportunity for you to get Bonus that can be used to participate in the MyExpert11
+												Fantasy Contest to win Cash Prices. All you need to do is complete some simple tasks that you can
+												find below. For each task you get a certain reward.
+												<br>
+												Complete the tasks, register them and wait for verification. After that you will receive your reward
+												and start playing. Your activity is checked manually. It can take up to 48 hours.
+												<br>
+												For more information about the Bounty program, see <a routerLink="/faq">F.A.Q.</a> You can also contact our support
+												team for help.
+											</p> 
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain"> 
+											<h5 class="w-100 mt-2 mb-2">Get Bonus for assignments</h5> 
+										</div>
+									</div>
+								</div>
+
+								<section class="tabs_sec_boundy">
+									<div class="county_tabs">
+										<ul class="nav nav-tabs" role="tablist">
+										    <li class="nav-item">
+											    <a class="nav-link active ripple tra_his" data-toggle="collapse" href="#fb">
+												    <div class="bounty_links">
+														<div class="socail_img" (click)="fbshare('facebook')">
+															<img src="assets/images/facebbok_img.png" class="img-fludid">
+														</div>
+														<div class="socail_tabs">
+															<h6 class="fb">Facebook Bounty</h6>
+															<div class="tb_mai">
+																<i class="fas fa-gift"></i>
+																<span>Reward Prize Upto: ₹ 10,00,000</span>
+															</div>
+														</div>
+														<button type="button" class="share_socialhere" (click)="fbshare('facebook')" target="_blank">Share</button>
+													</div>
+											    </a>
+												<div id="fb" class="container tab-pane active socail_tabs collapse "><br>
+													<h6 class="fb">Facebook Bounty</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>• Link your Facebook account in your MyExpert11 account.</li>
+														<li>• Like and Rate our Facebook Page</li>
+														<li>• Your account must be active.</li>
+														<li>• Press the "Share" button and publish the related post on your page.</li>
+														<li>• One of your friends must follow the link and register.</li>
+														<li >• You will Get ₹ 51 Instantly FREE from Each Sign Up.*</li>
+														<li >Registration of multiple accounts is prohibited. All account in violation will be excluded from participation.</li>
+														<small>*Terms & Condition apply</small>
+													</ul>
+													<button type="button" class="share_social"  (click)="fbshare('facebook')" target="_blank">Share</button>
+												  </div>
+												</div>
+											</li>
+										    <li class="nav-item">
+												<a class="nav-link active ripple tra_his" data-toggle="collapse" href="#twittr">
+										      	 <div class="bounty_links">
+													<div class="socail_img" (click)="twittershare('twitter');">
+														<img src="assets/images/twitter_im.png" class="img-fludid">
+													</div>
+													<div class="socail_tabs">
+														<h6 class="twitter">Twitter Bounty</h6>
+														<div class="tb_mai">
+															<i class="fas fa-gift"></i>
+															<span>Reward Prize Upto: ₹ 10,00,000</span>
+														</div>
+													</div>
+													<button type="button" class="share_socialhere" (click)="twittershare('twitter');" target="_blank">Share</button>
+												</div>
+										      </a>
+											  <div id="twittr" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="twitter">TWITTER BOUNTY</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul> 
+														<li>• Link your Twitter account in your personal account.</li>
+														<li>• Follow us on Twitter.</li>
+														<li>• Your account must be active.</li>
+														<li>• Press the "Share" button and publish the related post on your page.</li>
+														<li  >• You will Get ₹ 51 Instantly FREE from Each Sign Up.*</li>
+														<li>• One of your friends must follow the link and register.</li>
+														<li>Registration of multiple accounts is prohibited. All account in violation will be excluded from participation.</li>
+														<small>*Terms & Condition apply</small>
+													</ul>
+													<button type="button" class="share_social" (click)="twittershare('twitter');" target="_blank">Share</button> 
+												  </div>
+												</div>
+										    </li>
+										    <li class="nav-item">
+											  <a class="nav-link active ripple tra_his" data-toggle="collapse" href="#whatsapp">
+										      	 <div class="bounty_links">
+													<div class="socail_img" (click)="shareonwhatsapp();">
+														<img src="assets/images/whatsapp.png" class="img-fludid" >
+													</div>
+													<div class="socail_tabs">
+														<h6 class="whatsapp">whatsapp Bounty</h6>
+														<div class="tb_mai">
+															<i class="fas fa-gift"></i>
+															<span>Reward Prize Upto: ₹ 10,00,000</span>
+														</div>
+													</div>
+													<button type="button" class="share_socialhere" (click)="shareonwhatsapp();" target="_blank">Share</button>
+												</div>
+										      </a>
+											  <div id="whatsapp" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="whatsapp">whatsapp Bounty</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>• Subscribe MyExpert11 YouTube Channel.</li>
+														<li>• Comments on our Videos.</li>
+														<li>• Press the "Share" button and publish the related Videos on your social profile.</li>
+														<li  >• You will Get ₹ 51 Instantly FREE from Each Sign Up.*</li>
+														<li>• One of your friends must follow the link and register.</li>
+														<li>Registration of multiple accounts is prohibited. All account in violation will be excluded from participation.</li>
+														<small>*Terms & Condition apply</small>
+													</ul>	
+													<button type="button" class="share_social" (click)="shareonwhatsapp();" target="_blank">Share</button>
+												  </div>
+												</div>
+										    </li>
+											<li class="nav-item">
+												 <a class="nav-link active ripple tra_his" data-toggle="collapse" href="#instagram">
+										      	 <div class="bounty_links">
+													<div class="socail_img">
+														<img src="assets/images/instagram.png" class="img-fludid" >
+													</div>
+													<div class="socail_tabs">
+														<h6 class="instagram">instagram Bounty</h6>
+														<div class="tb_mai">
+															<i class="fas fa-gift"></i>
+															<span>Reward Prize Upto: ₹ 10,00,000</span>
+														</div>
+													</div>
+												</div>
+										      </a>
+											  <div id="instagram" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="instagram">instagram Bounty</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>• Link your INSTAGRAM account in your personal account.</li>
+														<li>• Follow us on Instagram.</li>
+														<li>• Your account must be active.</li>
+														<li>• Press the "Share" button and publish the related post on your page.</li>
+														<li  >• You will Get ₹ 51 Instantly FREE from Each Sign Up.*</li>
+														<li>•One of your friends must follow the link and register.</li>
+														<li>Registration of multiple accounts is prohibited. All account in violation will be excluded from participation.</li>
+														<small>*Terms & Condition apply</small>
+													</ul>	
+													<button type="button" class="share_social" (click)="shareonwhatsapp();" target="_blank">Share</button>
+												  </div>
+												</div>
+										    </li>
+											<li class="nav-item">
+												 <a class="nav-link active ripple tra_his" data-toggle="collapse" href="#youtube">
+													 <div class="bounty_links">
+														<div class="socail_img">
+															<img src="assets/images/youtube_vid.png" class="img-fludid" >
+														</div>
+														<div class="socail_tabs">
+															<h6 class="youtube">youtube Bounty</h6>
+															<div class="tb_mai">
+																<i class="fas fa-gift"></i>
+																<span>Reward Prize Upto: ₹ 10,00,000</span>
+															</div>
+														</div>
+													</div>
+												  </a>
+												  <div id="youtube" class="container tab-pane fade socail_tabs collapse "><br>
+													  <h6 class="ytube">YOUTUBE BOUNTY</h6>
+													  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+													  <div class="cony_boundy">
+														<ul>
+															<li>• Subscribe MyExpert11 YouTube Channel.</li>
+															<li>• Comments on our Videos.</li>
+															<li>• Press the "Share" button and publish the related Videos on your social profile.</li>
+															<li >• You will Get ₹ 51 Instantly FREE from Each Sign Up.*</li>
+															<li>• One of your friends must follow the link and register.</li>
+															<li>Registration of multiple accounts is prohibited. All account in violation will be excluded from participation.</li>
+															<small>*Terms & Condition apply</small>
+														</ul>
+													  </div>
+													</div>
+										    </li>
+											<li class="nav-item">
+												 <a class="nav-link active ripple tra_his" data-toggle="collapse" href="#blog">
+										      	 <div class="bounty_links">
+													
+													<div class="socail_tabs">
+														<h6 class="blog">Your blog/website</h6>
+														<div class="tb_mai">
+															<i class="fas fa-gift"></i>
+															<span>Reward Prize Upto: ₹ 10,00,000</span>
+														</div>
+													</div>
+												</div>
+										      </a>
+											  <div id="blog" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="blog">Your blog/website</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>• Write an article about the company and your experience with us on your website\blog.</li>
+														<li>• The article must contain at least 1000 characters.</li>
+														<li >• You will Get ₹ 51 Instantly FREE from Each Sign Up.*</li>
+														<li> To get RS 100 Instant Cash reward directly into your bank account send the blog link to bounty@myexpert11.com</li>
+														<li><b>IMPORTANT:</b>Do not delete the article even after checking the job. In case of deletion, the result will be canceled.</li>
+														<small>*Terms & Condition apply</small>
+													</ul>
+												  </div>
+												</div>
+										    </li>
+											<li class="nav-item">
+												<a class="nav-link active ripple tra_his" data-toggle="collapse" href="#inviting">
+													 <div class="bounty_links">
+														
+														<div class="socail_tabs">
+															<h6 class="blog">Inviting friends</h6>
+															<div class="tb_mai">
+																<i class="fas fa-gift"></i>
+																<span>Reward Prize Upto: ₹ 10,00,000</span>
+															</div>
+														</div>
+													</div>
+												</a>
+												<div id="inviting" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="inviting">Inviting friends</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>• Using your affiliate links, invite your friends to join MyExpert11.</li>
+														<li>• Invite Your Friends and You Both will Get ₹ 51 Instantly FREE from Each Sign Up.*</li>
+														<small>*Terms & Condition apply</small>
+													</ul>
+												  </div>
+												</div>
+										    </li>
+											<li class="nav-item">
+												<a class="nav-link active ripple tra_his" data-toggle="collapse" href="#webinars">
+										      	 <div class="bounty_links">
+													
+													<div class="socail_tabs">
+														<h6 class="blog">Organizations of webinars</h6>
+														<div class="tb_mai">
+															<i class="fas fa-gift"></i>
+															<span>Reward Prize Upto: ₹ 10,00,000</span>
+														</div>
+													</div>
+												</div>
+										      </a>
+											  <div id="webinars" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="webinars">Organizations of webinars</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>Write an article in your blog in your own language. Take this carefully and follow the instructions below:</li>
+														<li>•	The article should have more than 2000 characters without spaces.</li>
+														<li>•	The article should contain at least 2 links to the website myexpert11.com </li>
+														<li>•	The article should be unique and interesting for the reader. </li>
+														<li>•	The article should contain screenshots of myexpert11.com </li>
+														<li> The article is evaluated based on its size, creativity and the size of the audience of the blog.</li>
+														<li> Plagiarism, including translation of articles from other users into another language, is PROHIBITED</li>
+														<li>Also you can make a video review of our company. Video must meet the following requirements: </li>
+														<li>•	The duration of the video should be more than 3 minutes. </li>
+														<li> •	The video should show your face.</li>
+														<li>•	The video should be footage from the site myexpert11.com </li>
+														<li> •	Video should be interesting and creative.</li>
+														<li> •	The video should show some of your actions (Registration, Inviting Your Friends, performance of bounty, Add Cash, Join Create Team, Join Contest).</li>
+														<li> •	The video should contain a story about the company and your experience with it.</li>
+														<li>•	Any creativity and use of technologies are welcomed (dynamic installation, corporate style, integration of video inserts, shooting in an unusual place, use of a selfie stick or shooting from 1 person). </li>
+														<li>•	You will Get ₹ 51 Instantly FREE from Each Sign Up.* </li>
+														<li>To get RS 100 Instant Cash reward directly into your bank account send the blog link to bounty@myexpert11.com </li>
+														<small>*Terms & Condition apply</small>
+													</ul>
+												  </div>
+												</div>
+										    </li>
+											
+											<li class="nav-item">
+												<a class="nav-link active ripple tra_his" data-toggle="collapse" href="#video">
+													 <div class="bounty_links">
+														
+														<div class="socail_tabs">
+															<h6 class="blog">Video review</h6>
+															<div class="tb_mai">
+																<i class="fas fa-gift"></i>
+																<span>Reward Prize Upto: ₹ 10,00,000</span>
+															</div>
+														</div>
+													</div>
+												</a>
+												<div id="video" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="video">Video review</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>•	Record a video review, where you talk about MyExpert11 </li>
+														<li>•	The video should show your face.</li>
+														<li>•	Video must be at least HD 720p quality (1280x720).</li>
+														<li>•	The minimum video length is 30 seconds.</li>
+														<li>•	Upload the video to YouTube.</li>
+														<li>•	The description and name of the video should contain keywords to optimize the search for this topic.</li>
+														<li>•	Leave the link to the MyExpert11 in the description.</li>
+														<li>•	Post a video review on a Reviews page.</li>
+														<li>•	Make a repost of the video in your social network.</li>
+														<li>ATTENTION: Do not delete the video. If you delete the video, this action will be regarded as fraud.</li>
+														<li>Registration of multiple accounts is prohibited, all violated accounts will be excluded from participation.</li>
+														<li>Checking this task Bounty is carried out in manual mode and can take up to 48 hours.</li>
+														<small>*Terms & Condition apply</small>
+														</ul>
+												  </div>
+												</div>
+										    </li>
+											<li class="nav-item">
+												<a class="nav-link active ripple tra_his" data-toggle="collapse" href="#mobile_app">
+										      	 <div class="bounty_links">
+													
+													<div class="socail_tabs">
+														<h6 class="blog">Mobile app bounty</h6>
+														<div class="tb_mai">
+															<i class="fas fa-gift"></i>
+															<span>Reward Prize Upto: ₹ 10,00,000</span>
+														</div>
+													</div>
+												</div>
+												</a>
+												<div id="mobile_app" class="container tab-pane fade socail_tabs collapse "><br>
+												  <h6 class="mobile_app">Mobile app bounty</h6>
+												  <h4 class="tb_head_social">Reward Prize Upto: ₹ 10,00,000</h4>
+												  <div class="cony_boundy">
+													<ul>
+														<li>•	Download the MyExpert11 mobile application for Android or IOS</li>
+														<li>•	Sign in to your account using the app.</li>
+														<li>•	Rate mobile app in Google Play.</li>
+														<li>MyExpert11 bonuses will be automatically credited to your account after all conditions are completed.</li>
+														<small>*Terms & Condition apply</small>
+														</ul>
+												  </div>
+												</div>
+											</li>
+										</ul>
+										<!-- Tab panes -->
+										<!-- <div class="tab-content"> -->
+										  <!-- </div> -->
+									</div>
+								</section>
+						 
+							</section>
+						</div>
+					</div>
+							
+							<app-footer></app-footer>
+							
+						</div>
+					</div>
+				</section>

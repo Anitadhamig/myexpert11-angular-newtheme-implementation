@@ -1,0 +1,100 @@
+.cApViceC label span  {
+    height: 40px ;
+    width: 40px ;
+    padding: 6px 0px ;
+    border: 2px solid #dcdcdc;
+    background: transparent;
+    line-height: 24px;
+	cursor: pointer;
+	display: inline-block;
+    font-weight: 300;
+	border-radius: 50%;
+transition: all 0.6s ease;
+font-size: 16px;
+text-align: center;
+margin: 0px 2px;
+}
+.cApViceC label span{	
+    font-size: 18px;
+    color: #7b7a7a;
+}
+.footerActionContainer_e4950{ 
+    background: transparent;
+}
+.ecaptain{	
+    color: #fff !important;
+    border-color: #ff5722 !important;
+    background: #ff5722 !important;
+}
+.evcaptain{	
+    color: #fff !important;
+    border-color: #24ba38 !important;
+    background: #24ba38 !important;
+}
+.row.marginZ.w-100.create_teamselectorplayer {
+    margin-bottom: -15px !important;
+}
+/*
+.cApViceC input[type="radio"]:checked + .CapSelClass{
+    border-color: #ff5722;
+    background: #ff5722;
+}
+.cApViceC input[type="radio"]:checked + .CapSelClass span{ 
+    color: #fff;
+}
+.cApViceC input[type="radio"]:checked + .VCapSelClass {
+    border-color: #24ba38;
+    background: #24ba38;
+}
+.cApViceC input[type="radio"]:checked + .VCapSelClass span{
+    transition: all 0.4s ease;
+    color: #fff;
+}
+*/
+.hide{
+	display: none;
+}
+.headprt{
+	    margin-bottom: 0px;
+}
+.headprt span{
+	    margin-top: 5px;
+}
+.headprt button{
+	background: #fff;
+	color: #a7a7a7;
+	border-radius: 4px;
+	border: 0px;
+	margin: 0px 10px 0px 10px;
+	padding: 5px 15px;
+	border: 1px solid transparent;
+}
+.headprt button.active{ 
+	color: #000; 
+	border: 1px solid #4982ff;
+}
+.create_teamselectorplayer span {
+    font-size: 12px;
+    color: #7b7a7a;
+    font-weight: 500;
+    padding: 5px 10px;
+    opacity: 0;
+}
+.selectCptDiv_VC span {
+    color: #000; 
+}
+.footerNextBtnDisabled_cf07b.unactive { 
+    opacity: 1; 
+
+}
+.selectCptDiv_VC span span {
+    color: #7b7a7a; 
+}
+.selectCptDiv_VC h5 {
+    font-size: 12px;
+    font-weight: 700;
+}
+.flex-fill.captionName.width15.cursor-pointer { 
+    border-radius: 50%;
+    overflow: hidden;
+}

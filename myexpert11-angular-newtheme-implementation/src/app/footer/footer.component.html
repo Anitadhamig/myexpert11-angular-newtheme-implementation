@@ -1,0 +1,29 @@
+ 
+<section class="footer_main" *ngIf="loginid!= ''">
+	<div class="footer_inner1">
+		<div class="footer_links" [ngClass]="notdata.headertext=='Cricket home' ? 'activeclass' : ''" >
+			<a routerLink="/home" class="tb_links">
+				<i class="fas fa-home"></i>
+				<span>Home</span>
+			</a>
+		</div>
+		<div class="footer_links" [ngClass]="notdata.headertext=='My contests' ? 'activeclass' : ''" >
+			<a routerLink="/my-contests" class="tb_links">
+				<i class="fas fa-trophy"></i>
+				<span>My Contests</span> 
+			</a>
+		</div>
+		<div class="footer_links" [ngClass]="notdata.headertext=='Me' ? 'activeclass' : ''">
+			<a routerLink="/me" class="tb_links">
+				<i class="fas fa-user"></i>
+				<span>Me</span>
+			</a>
+		</div>
+		<div class="footer_links" [ngClass]="notdata.headertext=='More' ? 'activeclass' : ''">
+			<a routerLink="/more" class="tb_links">
+				<i class="fas fa-info"></i>
+				<span>More</span>
+			</a>
+		</div>
+	</div>
+</section>

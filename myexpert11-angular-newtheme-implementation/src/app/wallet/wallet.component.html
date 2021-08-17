@@ -1,0 +1,745 @@
+
+	<section class="body-section-home">     
+		<div class="body-section-home-inner">
+			
+			<app-left-side></app-left-side>
+			<div class="rightBox">
+				<div class="rightBox-inner db">						
+					<div class="flex-wth">
+					<div class="w-100 pb-5 mb-5">
+						 
+						<app-header></app-header>
+						<div class="acc-tb mt-5 ">
+							<div class="tabs">
+								<div class="tabs-links account_main">
+									<div class="left_sde ri_det">
+										<p class="show-he">Total Balance</p>
+										<span class="Show-bal"><i class="fas fa-rupee-sign"></i> <span class="rs_money">{{userdatass.totalamount}}</span></span>
+									</div>
+									<div class="right_lin"><button type="button" data-toggle="modal" data-target="#addmoney">Add Money</button></div>
+								</div>
+								<div class="tabs-links account_main">
+									<div class="left_sde ri_det">
+										<p class="show-he">Deposited</p>
+										<p class="Show-bal-small"><i class="fas fa-rupee-sign rs"></i> <span class="sm-money">{{userdatass.balance}}</span></p>
+										<p class="imp-lin"> This money can not be withdraw</p>
+									</div>
+								</div>
+								<div class="tabs-links account_main">
+									<div class="left_sde ri_det">
+										<p class="show-he">Winnings</p>
+										<p class="Show-bal-small"><i class="fas fa-rupee-sign rs"></i><span class="sm-money">{{userdatass.winning}}</span></p>
+										<p class="imp-lin">Minimum amount you can withdraw <i class="fas fa-rupee-sign"></i> 200</p>
+									</div>
+									<div class="right_lin"><button type="button" (click)="withdrawableamount()" >withdraw</button></div>
+								</div>
+								<div class="tabs-links account_main">
+									<div class="left_sde ri_det">
+										<p class="show-he">Bonus</p>
+										<p class="Show-bal-small"><i class="fas fa-rupee-sign rs"></i><span class="sm-money">{{userdatass.bonus}}</span></p> 
+										<!-- <p class="imp-lin">Maximum usable cash bonus = 10% of entry fees</p> -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row me11_static_mainHeader" id="rewards">
+							<div  class="col-sm-12 commonPages"> 
+									<h4 class="pl-3">Refer & Earn</h4> 
+								<div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain menu"> 
+									 <p class="sml_p pb-3">The more you refer, the bigger your bonus</p>
+									   <div class="data_show">
+									   <p class="sinle_style"> Referral Stats</p>
+											<ul class="p-2">
+												 <li>
+												 <span>My Referrals</span>
+												 <span>{{myrefer}}</span>
+												 </li>
+												 <li>
+												 <span>Verified</span>
+												 <span>{{verified}}</span>
+												 </li>
+												 <li>
+												 <span>Cash Added</span>
+												 <span>{{cashadded}}</span>
+												 </li>
+
+										   </ul>
+									   </div>
+									 <p class="sinle_style pt-2 pb-2">Invite Your friend and Both of you will get <i class="fa fa-inr"></i>51 free  cash bonus</p>
+									 <div class="w-100 text-center">
+										<a class="btn btn-success btns border-0 p-2" routerLink="/invite-friends">Invite Friend</a>
+									 </div>
+								</div>
+								 
+							</div>
+						</div>
+						
+						<div class="row me11_static_mainHeader" id="rewards">
+							<div  class="col-sm-12 commonPages"> 
+									<h4 class="pl-3">Rewards</h4> 
+								<div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain"> 
+									<h5 class="w-100 mt-2 mb-2 pb-0">Opportunity to maximize your profit.</h5>									
+									<p>Maximize your referrals, achieve milestones and celebrate your reward cash prizes!</p>
+									
+									<div class="clainreward p-0"> 
+										<div class="w-100 row ml-0 mr-0 review_main_sec p-0 m-0 mt-0"> 
+											<div class="w-100 claim_table p-0">
+												<table class="table table-striped ">
+													 <thead>
+															<tr>
+															<th>Sr.</th>
+															<th>No. of Referrals</th>
+															<th>Time Duration(Days)</th> 
+															<th>Cash Prize</th>  
+														</tr>
+													</thead>
+													<tbody>
+														<tr *ngFor="let allusersreward of allusersreward; let i = index;">
+															<td>{{i + 1}}</td>
+															<td>{{allusersreward.no_of_referral}}</td>  
+															<td>{{allusersreward.time}}</td>  
+															<td>{{allusersreward.price}}</td> 
+														</tr> 
+													</tbody>
+												</table>
+											</div>
+										</div> 
+									</div>
+									<!-- <p><strong>ELIGIBILITY: </strong><br>  -->
+										<!-- The users that: (i) have an account registered and a verified gaming account with MyExpert11; (ii) -->
+										<!-- are eligible to participate in the pay-to-play MyExpert11 fantasy cricket game according to the -->
+										<!-- Terms and Conditions defined by MyExpert11; and (iii) have downloaded and installed the -->
+										<!-- Application on their respective mobile devices, are considered as eligible for participating in the -->
+										<!-- Program. -->
+									<!-- </p>  -->
+								</div>
+								
+								<div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain row topsecrat mb-0">  
+									<div class="col-lg-6 col-md-6 col-sm-6 col-6">  
+										 <a  type="button"   data-toggle="modal" data-target="#reward">Rewards T&C </a>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-6">  
+										 <a  type="button" data-toggle="modal" data-target="#eligibility">Eligibility</a> 
+									</div>
+								</div>
+								<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-12 static_detailsmain  mb-0">   -->
+									<!-- <p class="m-0"><strong>REWARDS T&C: </strong></p>  -->
+									<!-- <ul style="list-style-type: none;" class="pl-3  mb-0"> -->
+										<!-- <li> -->
+											<!-- 1. Your referral will be counted for this reward after your referrals do their first deposit. -->
+										<!-- </li> -->
+										<!-- <li> -->
+											<!-- 2. You will get your reward within 48 hours after your claim it in your MyExpert11 Wallet. -->
+										<!-- </li> -->
+										<!-- <li> -->
+											<!-- 3. This is an extra reward price and it will not affect your Referral bonus. -->
+										<!-- </li> -->
+										<!-- <li> -->
+											<!-- 4. Reward price will be credited equally into user's myexpert11 wallets (Deposit & winning wallet). -->
+										<!-- </li> -->
+										<!-- <li> -->
+											<!-- 5. Once you claimed this reward, you will never be able to re-participate in same reward program in future. -->
+										<!-- </li> -->
+										<!-- <li> -->
+											<!-- 6. You are bind with MyExpert11 <a routerLink="/terms-conditions"> T&Cs. </a> -->
+										<!-- </li> -->
+									<!-- </ul> -->
+								<!-- </div> -->
+							</div>
+						</div>
+						<div class="tabs-sec-me my-rewards mt-3">
+							<div class="tabs">
+								<div class="w-100" *ngIf="allreward?.length>0">
+									<h4 class="pl-3">Win More Rewards</h4> 
+									<div class="d-flex flex-wrap">
+										<div *ngFor="let allreward of allreward">
+											<div class="reward_card" *ngIf="allreward.status == 1">
+												<h5><i class="fas fa-rupee-sign"></i> {{allreward.amount}} <small>Cash Bonus</small></h5>
+												<i class="fas fa-check"></i>
+												<span>created {{allreward.date}}</span>
+											</div>   
+										</div>   
+									</div>
+								</div>
+
+								<div class="clainreward"  *ngIf="ourreward?.length>0"> 
+									<div class="w-100 row ml-0 mr-0 review_main_sec p-0">
+									<h5 class="pl-2">Win More Rewards</h5>
+
+										<div class="w-100 claim_table">
+											<table class="table table-border ">
+												 <thead>
+												        <tr>
+												       	<th>Sr.</th>
+													    <th>No. of Referrals</th>
+														<th>Time Duration(Days)</th> 
+														<th>Rewards Prize</th> 
+														<th>Claim it</th>
+													</tr>
+												</thead>
+												<tbody>
+												    <tr *ngFor="let ourreward of ourreward; let i = index;">
+													    <td>{{i + 1}}</td>
+													    <td>{{ourreward.referdusers}}</td>  
+													    <td>{{ourreward.days}}</td>  
+														<td>{{ourreward.price}}</td> 
+														<td><span class="background-green claimCheck" *ngIf="ourreward.claimstatus=='1'" (click)="getreward(ourreward.rewardid)">Claim</span>
+														<span *ngIf="ourreward.claimstatus=='-1'" (click)="getreward(ourreward.rewardid)">Processing</span> 
+														<span *ngIf="ourreward.claimstatus=='2'" (click)="getreward(ourreward.rewardid)"><img src="assets/images/right-icon.png"></span>
+														<span *ngIf="ourreward.claimstatus=='0'"></span></td>  
+														
+													</tr> 
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<!-- {{ourreward | json}} -->
+									<!--<div *ngIf="ourreward?.length=>0">
+										<div class="clainrewardinner" *ngFor="let ourreward of ourreward">
+											<h6 *ngIf="ourreward.claimstatus==0">refered {{ourreward.referdusers}}  user to win rs.{{ourreward.price}} in {{ourreward.days}} day</h6>
+											<h6 *ngIf="ourreward.claimstatus==1">You have won rs.{{ourreward.price}}. please claim you cash</h6>
+											<button *ngIf="ourreward.claimstatus==1">Claim</button>
+										</div> 
+									</div> -->
+								</div>
+							</div>
+						</div>
+						<div class="clainreward mt-0" *ngIf="partners.status=='1'"> 
+							<div class="w-100 row ml-0 mr-0 review_main_sec p-0 mt-0">
+							<h5 class="pl-2">Partner Stats</h5>
+
+								<div class="w-100 claim_table">
+									<table class="table table-striped ">
+										 <thead>
+												<tr>
+												<!-- <th>Sr.</th> -->
+												<th>My Partner Code</th>
+												<th>Total No of referrals</th>  
+												<th>Total Partner Commission</th>  
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<!-- <td>{{i + 1}}</td> -->
+												<td>{{partners.partnercode}}</td>  
+												<td> {{partners.totalreferals}}</td>   
+												<td>{{partners.totalcommission}}</td>   
+											</tr> 
+										</tbody>
+									</table>
+								</div>
+							</div> 
+						</div>
+						<div class="tabs-sec-me my-transcation ">
+							<div class="tabs">
+								<div class="tabs-links main_transcation">
+									<a (click)="mytransaction()">
+										<div class="left_sde">
+											<span class="my_trasn">Transactions</span>
+										</div>
+										<i class="fas fa-chevron-right aero_rig"></i>
+									</a>
+								</div> 
+							</div>
+						</div> 
+					</div>
+						
+						<app-footer></app-footer>
+						
+					</div>
+				</div> 
+			</div>
+		</div> 
+	</section>
+
+
+
+
+
+			<div class="modal fade" id="addmoney" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+						<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+				          	<div class=" float-left w-100">
+							    <div class="em_dialog_header  p-0 color_darkblue font_14 text-uppercase letter_space font_w600">Add Cash</div> 
+							    <div class="em_dialog_body p-0"> 								 
+							    	<div class="w-100" *ngIf="alloffer?.length"> 
+										<div class="font_10 mb-3 d-block bonusimage bonuspartfirstimage">
+											<!-- <img src="assets/images/payment-bonus.jpg"> -->
+											<h5>Make 1st Time Deposit to Get <span>Instant Bonus</span></h5>
+											<p  *ngFor="let getallawards of getallawards">Deposit <i class="fa fa-inr"></i><span>{{getallawards.min_amt}}</span> Get <i class="fa fa-inr"></i><span>{{getallawards.bonus}}</span><p>  
+											
+											
+										</div>
+										<div class="w-100 dib font-12 text "><p class="m-0 em_inviteCodeTip">Enter Amount to Calculate the Welcome Bonus:</p></div>
+											
+										<div class="add_cash_details d-flex align-items-center mb-3">
+											<div class="bonus_section" >
+												<div class="bonus_green d-flex align-items-center justify-content-center">
+													<span class="pl-1">
+													<span *ngIf="allofferbonusfind?.length>0">₹{{allofferbonusfind[0].bonus}}</span>
+
+
+													</span>
+													<span>Bouns</span>
+												</div>
+											</div>
+											<div class="add_money text-center">
+												<form class="m-0"> 
+													<input class="form-control marginZ w-100 d-inline-block d_flex_align" type="number" name="setchallengesize" required="" [(ngModel)]="allofferbonus.balance" (keypress)="isNumber($event)" (change)="AddAmount(allofferbonus.balance)" (keyup)="setbonus($event)"   placeholder="Enter Amount">
+												</form>
+											</div> 
+										</div>
+									</div> 				 
+							    	<div class="w-100" *ngIf="!alloffer?.length"> 
+										<div class="font_10 mb-3 bonuspartsecondimage">
+											
+									        <div  *ngFor="let getallofr of getallofr; let i = index;" class="addcashnew">
+												<div class="w-100 getallofr" id="getofr{{i}}"  (click)="AddAmountnew(getallofr.amount,i);">
+													<div class="d-flex">
+														<img src="assets/images/gift-icon.png">
+														<span>Get <i class="fa fa-inr"></i>{{getallofr.bonus}} Bonus</span>
+														<img src="assets/images/gift-icon.png">
+													</div>
+													<div>
+														<p>Deposit <i class="fa fa-inr"></i>{{getallofr.amount}}</p>
+														<p>offer valid Til: {{getallofr.expire}}</p>
+													</div>
+												</div>
+									        </div> 
+											
+											
+										</div>
+									</div>
+							    	<div class="w-100" *ngFor="let balance of balance">
+								        <div class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative" >
+								           <span>Current Balance</span>
+								           <span><i class="fas fa-rupee-sign"></i> {{balance.usertotalbalance}}</span>
+								        </div>
+								        <div class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 mt-2 font_12 d-flex align-items-center position-relative">
+								           <span>Usable Balance</span>
+								           <span><i class="fas fa-rupee-sign"></i> {{balance.usablebalance}}</span>
+								        </div>
+							        </div>
+							        <div class="em_inviteCodeTip color_darkblue letter_space pl-0 font_w500 font_14 padding_tb10 ">Add Cash to your account</div>
+							        
+									<div class="w-100 db tc  addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Enter Amount to Add</p></div>
+									   <div class="w-100 db flex items-center b--white-70 position-relative">
+								            <i class="dib fas fa-rupee-sign font-12 position-fainr">
+								            </i>
+										    <input id="amountadd" (keypress)="isNumber($event)"  [(ngModel)]="user.balance"  class="background-transparent  font-12 font-bold height40 w-100  " value="30" maxlength="9" min="0" required>
+										</div>
+									</div>
+									<div class="w-100 db tc f6 addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Choose Amount to Add</p></div>
+									    <div class="w-100 db flex justify-between items-center mt-1">
+									        <button class="  mr-2 font-12 font-bold  background-transparent p-1" (click)="AddAmount('100');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 100
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmount('200');">
+									            + <i class="dib fas fa-rupee-sign ">
+									            </i> 200
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmount('500');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 500
+									        </button> 
+									    </div>
+									</div>
+
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-4">
+									<div class="w-100 dib font-12 text "><p class="m-0 em_inviteCodeTip">Select A Payment Method</p></div>
+									</div>
+
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-4">
+							        	<button class="background-white walletbtn" (click)="payumoneyadd('paytm');"><img src="assets/images/paytm.png" class="img-fluid"></button>
+							        	<button class="background-white walletbtn"(click)="payumoneyadd('razorpay');"><img src="assets/images/razorpay.jpg" class="img-fluid"></button>
+							        </div>
+ 
+							    </div>
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+
+
+			<div class="modal fade in show" id="addcashfirsttime" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+				          	<div class=" float-left w-100"> 
+								<div class="bonus_card_main">
+									<div class="w-100 add_cash_heading pb-3">
+										<h5 class="m-0">Add Cash To your Account</h5>
+									</div>
+									<div class="add_cash_details d-flex align-items-center mb-3">
+										<div class="bonus_section" >
+											<div class="bonus_green d-flex align-items-center justify-content-center">
+												<span class="pl-1">
+
+
+													<span *ngIf="allofferbonusfind?.length>0">₹{{allofferbonusfind[0].bonus}}</span>
+
+
+												</span>
+												<span>Bouns</span>
+											</div>
+										</div>
+										<div class="add_money text-center">
+											<form class="m-0"> 
+												<input class="form-control marginZ w-100 d-inline-block d_flex_align" type="number" name="setchallengesize" required="" [(ngModel)]="allofferbonus.balance" (keypress)="isNumber($event)" (keyup)="setbonus($event)"   placeholder="Enter Amount">
+											</form>
+										</div>
+										<div class="button_add text-right">
+											<button class="text-uppercase" (click)="addmoneybybonus(allofferbonus.balance)">Add</button>
+										</div>
+									</div>
+
+
+									<div class="add_cash_details d-flex align-items-center mb-3" >
+										<div class="bonus_section">
+											<div class="bonus_green d-flex align-items-center justify-content-center">
+												<span class="pl-1" *ngIf="allofferbonusone?.length>0">₹{{allofferbonusone[0].bonus}}</span>
+												<span>Bouns</span>
+											</div>
+										</div>
+										<div class="add_money text-center">
+											<span>₹25</span>
+									
+										</div>
+										<div class="button_add text-right">
+											<button class="text-uppercase" (click)="addmoneybybonus('25')">Add</button>
+										</div>
+									</div> 
+  
+									<div class="add_cash_details d-flex align-items-center mb-3">
+										<div class="bonus_section">
+											<div class="bonus_green d-flex align-items-center justify-content-center">
+												<span class="pl-1" *ngIf="allofferbonustwo?.length>0">₹{{allofferbonustwo[0].bonus}}</span>
+												<span>Bouns</span>
+											</div>
+										</div>
+										<div class="add_money text-center">
+											<span>₹100</span>
+										</div>
+										<div class="button_add text-right">
+											<button class="text-uppercase" (click)="addmoneybybonus('100')">Add</button>
+										</div>
+									</div> 
+  
+									<div class="add_cash_details d-flex align-items-center mb-3">
+										<div class="bonus_section">
+											<div class="bonus_green d-flex align-items-center justify-content-center">
+												<span class="pl-1" *ngIf="allofferbonusthree?.length>0">₹{{allofferbonusthree[0].bonus}}</span>
+												<span>Bouns</span>
+											</div>
+										</div>
+										<div class="add_money text-center">
+											<span>₹1000</span>
+										</div>
+										<div class="button_add text-right">
+											<button class="text-uppercase" (click)="addmoneybybonus('1000')">Add</button>
+										</div>
+									</div> 
+  
+								</div>
+
+							 </div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+
+
+			<div class="modal fade in show" id="paytype" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+				          	<div class=" float-left w-100"> 							
+
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-4">
+							        	<button class="background-white walletbtn"  style="margin: auto;"  (click)="payumoneyadd('paytm');"><img src="assets/images/paytm.png" class="img-fluid"></button>
+							        	<button class="background-white walletbtn"(click)="payumoneyadd('rozarpay');"><img src="assets/images/rozarpay.jpg" class="img-fluid"></button>
+							        </div> 
+							 </div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+
+ 
+			<div class="modal fade in show" id="rewardget" style="">
+				<div class="modal-dialog em_model_dialog p-0">
+					<div class="modal-content em_dialog_content bg_colorWhite"> 
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class=" float-left w-100"> 
+								<div class="em_dialog_body button_add" style="padding: 0px;">
+									<span class="w-100 bold text-center" style="text-transform: initial;float: left;">Are you sure, you want to claim it?</span>
+									<div class="w-100">
+									<button class="pull-Left mt-4" data-dismiss="modal" type="button" style="background: #4982ff!important">Cancel</button>
+									<button class="background-green pull-right mt-4 pl-3 pr-3" (click)="claimbalance()" style="width: auto">Yes, Claim Now</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade in show" id="notwithdrawmoney" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite"> 
+				        <!-- Modal body -->
+				        <div class="modal-body">
+				          	<div class=" float-left w-100">
+							    <div class="em_dialog_header color_darkblue font_14 text-uppercase letter_space font_w600">WIN MORE TO WITHDRAW!</div>
+							    <div class="em_dialog_body button_add">
+							    	<span>Keep winning and withdraw your winnings once they exceed </span>
+							    	<button class="background-green full-right mt-4" data-dismiss="modal" type="button">OK</button>
+							    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade in show" id="withdrawmoney" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body p-0">
+				          	<div class=" float-left w-100">
+							    <div class="em_dialog_header color_darkblue font_14 text-uppercase letter_space font_w600">Withdraw</div>
+							    <div class="em_dialog_body">
+							        <div class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative">
+							           <span>Max Withdraw Balance</span>
+							           <span><i class="fas fa-rupee-sign"></i> {{userdatass.winning}}</span>
+							        </div>  
+									<div class="w-100 db tc  addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Enter Amount to Withdraw</p></div> 
+									   <div class="w-100 db flex items-center b--white-70 position-relative">
+								            <i class="dib fas fa-rupee-sign font-12 position-fainr">
+								            </i>
+										    <input id="amountadd" (keypress)="isNumber($event)"  [(ngModel)]="withdraw.balance"  class="background-transparent  font-12 font-bold height40 w-100  " value="30" maxlength="9" min="0" required>
+										</div>
+									</div>
+									<p class="imp-lin">Minimum amount to withdraw to Bank <i class="fas fa-rupee-sign"></i> 200 and Paytm <i class="fas fa-rupee-sign"></i> 300</p>
+									<div class="w-100 db tc f6 addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Choose Amount to Withdraw</p></div>
+									    <div class="w-100 db flex justify-between items-center mt-1">
+									        <button class="  mr-2 font-12 font-bold  background-transparent p-1" (click)="AddAmountwith('100');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 100
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmountwith('200');">
+									            + <i class="dib fas fa-rupee-sign ">
+									            </i> 200
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmountwith('500');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 500
+									        </button> 
+									    </div>
+									</div>
+
+
+									<div class="w-100 dib font-12 text mt-4"><p class="m-0">Withdraw balance to:</p></div>
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-2">
+									<div class="radioforwith" (click)="proceedtowithdrawpay('Paytm');">
+										<input type="radio" name="withdraw" id="paytm" >
+										<label for="paytm">
+											<img src="assets/images/paytm.png" class="img-fluid">
+										</label>  
+									</div>
+									
+									<div class="radioforwith"  (click)="proceedtowithdrawpay('Bank');">
+										<input type="radio" name="withdraw" id="bank">
+										<label for="bank">
+											<img src="assets/images/bank.PNG" class="img-fluid">
+										</label>  
+									</div>
+									
+									
+									</div>
+
+										
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-4">
+										<button class="text-uppercase bg_colorBlue background-green color_white border_none font_w600 letter_space w-100" style="border-radius: 4px" (click)="proceedtowithdraw();">Proceed to withdraw</button>   
+							        </div>
+									
+							        <!-- <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-4"> -->
+										<!-- <button class="text-uppercase bg_colorBlue background-green color_white border_none font_w600 letter_space" (click)="paytoptm();">PayTm</button>   -->
+							        	<!-- <button class="text-uppercase bg_colorBlue background-green color_white border_none font_w600 letter_space"(click)="withdrawbalance('Bank');">Bank</button> -->
+							        <!-- </div> -->
+							    </div>
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+			
+			
+			<div class="modal fade in show" id="Paytmno" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body p-0">
+				          	<div class=" float-left w-100">
+							    <div class="em_dialog_header color_darkblue font_14 text-uppercase letter_space font_w600">PayTm Number</div>
+							    <div class="em_dialog_body pt-0"> 
+									<div class="w-100 db tc  mainWrapper paddingZ marginZ" *ngIf="MobileNumberek==''">
+									   <div class="w-100 db flex items-center b--white-70 position-relative mb-1">  
+	   									<input  id="mobileno" maxlength="10" class="font-12 mt-1  background-transparent w-100 dib b--white-70" Style="box-shadow: 0px 0px;" placeholder="Enter your paytm no." [(ngModel)]="MobileNumber" required />
+										</div>
+									</div>
+									<div class="w-100 db tc  mainWrapper paddingZ marginZ"  *ngIf="MobileNumberek!=''"> 
+									    <div class="w-100 dib font-12 text "><p class="m-0">{{MobileNumber}}</p></div>
+									</div>
+									
+									<div  class="w-100 ng-star-inserteded">
+								        <div  class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative">
+								           <span >Withdraw Amount</span>
+								           <span ><i  class="fas fa-rupee-sign"></i> {{withdraw.balance}}</span>
+								        </div> 
+								        <div  class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative">
+								           <span >Paytm Commission @ 2.0%</span>
+								           <span ><i  class="fas fa-rupee-sign"></i> {{paycommision}}</span>
+								        </div> 
+								        <div  class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative">
+								           <span >IGST 18%</span>
+								           <span ><i  class="fas fa-rupee-sign"></i> {{igst}}</span>
+								        </div> 
+								        <div  class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative p-0">
+								           <span >Net Payable Amount</span>
+								           <span ><i  class="fas fa-rupee-sign"></i> {{ntepayble}}</span>
+								        </div> 
+							        </div>
+									<div class="reg-agree height40">
+										<p>
+											<input class="filled-in hide" id="code-in-box" name="checkbox" type="checkbox"  formControlName="terms" >
+											<label for="code-in-box">Accept <a routerLink="/terms-conditions" class="p-0" style="text-decoration: none;color: #4982ff">Term & Conditions</a>
+											</label>
+										</p>
+									</div>
+									
+									
+									
+									<!-- <div class="w-100 dib font-10 text "><p class="m-0  font-10" style="font-size: 10px;">1. Minimum withdraw Rs. 300 maximum 10000</p></div> -->
+									<!-- <div class="w-100 dib font-10 text "><p class="m-0  font-10" style="font-size: 10px;">2. User must have a verified and KYC approved paytm Number </p></div> -->
+									<!-- <div class="w-100 dib font-10 text "><p class="m-0  font-10" style="font-size: 10px;">3. 4% Transaction charge including GST will be deducted from withdrawal amount.</p></div> -->
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-3">
+										<button class="text-uppercase bg_colorBlue background-green color_white border_none font_w600 letter_space"  style="border-radius: 4px" (click)="goback();">Go Back</button>   
+										<button class="text-uppercase bg_colorBlue background-green color_white border_none font_w600 letter_space"  style="border-radius: 4px"  (click)="withdrawbalancepaytmb('Paytm',MobileNumber);">Withdraw</button>    
+							        </div>
+							    </div>
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+			
+			<div class="modal fade in show" id="Paytmnootp" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body p-0">
+				          	<div class=" float-left w-100">
+							    <div class="em_dialog_header color_darkblue font_14 text-uppercase letter_space font_w600">OTP</div>
+							    <div class="em_dialog_body pt-0"> 
+									<div class="w-100 db tc  mainWrapper paddingZ marginZ" >
+									   <div class="w-100 db flex items-center b--white-70 position-relative mb-1">  
+	   									<input  id="mobileno" maxlength="10" class="font-12 mt-1  background-transparent w-100 dib b--white-70" Style="box-shadow: 0px 0px;" placeholder="Enter OTP" [(ngModel)]="otpdone" required />
+										</div>
+									</div> 
+									 
+									
+									 <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-3">
+										<button class="text-uppercase bg_colorBlue background-green color_white border_none font_w600 letter_space"  style="border-radius: 4px" (click)="otpdoneh(otpdone);">Verify</button>   
+									 </div>
+							    </div>
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+			
+			<div class="modal fade in show" id="eligibility" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body p-0">
+				          	<div class=" float-left w-100 static_detailsmain commonPages">  
+								<p class="apnicP"> 
+									The users that: (i) have an account registered and a verified gaming account with MyExpert11; (ii)
+									are eligible to participate in the pay-to-play MyExpert11 fantasy cricket game according to the
+									Terms and Conditions defined by MyExpert11; and (iii) have downloaded and installed the
+									Application on their respective mobile devices, are considered as eligible for participating in the
+									Program.
+								</p> 
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+			<div class="modal fade in show" id="reward" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body p-0">
+				          	<div class=" float-left w-100 static_detailsmain commonPages">  
+								 
+									<ul style="list-style-type: none;" class="pl-3 apnicP  mb-0">
+										<li>
+											1. Your referral will be counted for this reward after your referrals do their first deposit.
+										</li>
+										<li>
+											2. You will get your reward within 48 hours after your claim it in your MyExpert11 Wallet.
+										</li>
+										<li>
+											3. This is an extra reward price and it will not affect your Referral bonus.
+										</li>
+										<li>
+											4. Reward price will be credited equally into user's myexpert11 wallets (Deposit & winning wallet).
+										</li>
+										<!-- <li> -->
+											<!-- 5. Once you claimed this reward, you will never be able to re-participate in same reward program in future. -->
+										<!-- </li> -->
+										<li>
+											5. You are bind with MyExpert11 <a routerLink="/terms-conditions"> T&Cs. </a>
+										</li>
+									</ul>
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+			  </div>
+			  
+			  
+
+<div class="modal fade" id="verifCaptca" role="dialog">
+    <div class="modal-dialog modaldialog login_formM">   
+        <div id="createTeamPopUp"><button type="button" class="close btncloses" data-dismiss="modal">×</button>
+           <h3 class="popupTitle">Verify Captca</h3>
+		   <div class="captchaContr" >  
+			<re-captcha  (resolved)="resolved($event)" 
+				siteKey="6Ldmf7AZAAAAAL-NZWtlP6ijKmQXngowRzqcEbHx">  
+			</re-captcha> 
+		</div>
+           
+        </div>
+    </div>
+</div>

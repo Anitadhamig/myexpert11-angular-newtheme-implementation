@@ -1,0 +1,505 @@
+/*.sorting-header__icon{
+	display: inline-block;
+} 
+.teamtable   thead   th {
+	font-size: 13px !important;font-weight: 600;
+    text-align: left;
+}
+ 
+.nav-link {
+	display: block;
+    padding: 10px 16px;
+}
+.pickplayer{ 
+padding: 15px;
+
+height: auto;
+}
+.teamtable tr img{
+	width:45px;height:45px;border-radius:50%;
+} 
+.teamtable   tbody tr{
+	border-bottom: 1px solid #e8e8e8; 
+}
+.teamtable   tbody   td {
+	padding: 8px 5px;
+    vertical-align: inherit;
+	font-weight:500;	
+    padding: 6px 10px;
+	font-size:13px;
+	white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}  
+.playerstateinfo {
+    position: absolute;
+    top: 6px;
+    left: 45px;
+    background: #e6e0d5;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    line-height: 14px !important;
+    text-align: center;
+    cursor: pointer;
+}
+.redPlus{
+	background: #fff7ec;
+}
+.create-team__team-selector__player-card__cell__team-selector-icon { 
+    display: block; 
+    padding: 4px !important;
+} 
+
+*/
+
+
+#playerCentre{
+	margin-left: -8%;
+	justify-content: center;
+}
+
+.progressContainer_00657 {
+    margin: 8px 16px 16px;
+}
+.stepperContainer_b9ae4 {
+    display: flex;
+    justify-content: center;
+}
+.inactiveStepper_4d390 {
+    background-color: #fff;
+}
+.stepperBlock_8b62f {
+    width: 36px;
+    height: 16px;
+    font-size: 12px;
+    transform: skew(20deg);
+    border: 1px solid #323232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.activeNumber_89478 {
+    font-size: 12px;
+    color: #fff;
+    transform: skew(-20deg);
+}
+.activeStepper_2007e {
+    background-color: #00a037;
+}
+.headerContainer_85dde {
+    background: linear-gradient(104deg, #3c3c3c 50%, #323232 50%);
+    
+}
+
+.tab-pane{
+    margin-top: 94px;
+}
+.ftc_create_team_tab .nav-tabs.navtabs { 
+    top: 180px;
+}
+.ftc_index_inner .row.ftc_main2Header.create_teamheader {
+    height: 180px;
+}
+
+
+.teamchanges{
+	position: absolute;
+	right: 15px;
+	width: auto !important;
+	top: 7px;
+}
+.teamchanges select{
+	height: 30px; 
+	padding: 0px 10px;
+	border-radius: 20px;
+}
+.opacity1{
+    opacity: 1;
+}
+.opacity0{
+    opacity: 0;
+}
+
+.ftc_team_rev{justify-content: space-between;}
+.ftc_team_rev span{letter-spacing: 1px;}
+.selectPlayer .table thead tr th{
+    padding: 10px 0px;
+    letter-spacing: 1px;
+    border-color: transparent;
+}
+.selectPlayer .table tbody tr{
+    background: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.btn{
+    color:white !important;
+}
+.selectPlayer .table tbody tr td{padding:8px 15px;vertical-align: inherit;border-top: 0px;display: flex;
+
+flex-grow: 1;} 
+.selectPlayer .table tbody tr td img{height:40px;position: relative;border-radius: 50%;}
+.selectPlayer .table tbody tr td .fa-info-circle {position: absolute;}
+.selectPlayer .table tbody tr td button{background: transparent; border: none;height: 30px;width: 30px; border: 1px solid;border-radius: 50%;padding: 0px;}
+.redPlus .plus.fa-plus:before  {content: "\f068" !important;  }
+.redPlus .plus {opacity: 1;}
+tr.redPlus{background:#f4f4f4 !important;}
+.letter_space{letter-spacing: 1px;}
+.ftc_footer_main .ftc_footer_inner2 {justify-content: space-between;}
+.ftc_footer_2 .ftc_footer_player{letter-spacing: 1px;font-size: 17px;}
+/* .ftc_footer_2 .ftc_btn_link{padding: 5px 30px;border-radius:0px;} */
+
+
+.ftc_footer_2 .ftc_btn_link:hover,
+.ftc_invite_friendBtn:hover, .ftc_btn_small:hover,
+.ftc_footer_links.width50 .ftc_tb_links:hover,
+.ftc_switch_teams:hover,
+.money_addbtn button:hover,.ftc_add_cashSe button:hover,
+.ftc_hover_effect_btn:hover,
+.ftc_downloadBtn button:hover, .ftc_football_cricket h5:hover{box-shadow:0 2px 7px 0px rgba(2, 2, 2, 0.54), 0 2px 7px 0px rgba(0, 0, 0, 0.19); }
+
+.width50{width:50% !important;}
+.ftc_footer_links.width50 .ftc_tb_links{padding:10px;background: #ff5722;border-radius: 52px;color: #FFF;}
+.selectPlayer table{
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+.selectPlayer table thead tr{
+    display: flex;
+width: 100%;
+justify-content: space-around;
+}
+
+.selectPlayer td {
+}
+.selectPlayer td span{ 
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: 500;
+	align-self: center;
+	flex-grow: 1;
+	flex-basis: 60px;
+	justify-content: center;
+	align-items: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.selectPlayer td span span{ 
+	color: #00a0ff;
+	width: 110px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	float: left;
+}
+.pickplayer{
+	height: 44px;
+	display: flex;
+	align-items: center;
+	color: #000;
+	justify-content: center; 
+}
+.teamtable thead {  
+    border-bottom: 1px solid #efeff4; 
+    background: transparent;
+}
+
+.selectPlayer td  span.slecty{
+	width: 100%;
+	text-align: center;
+	height: 100%;
+	padding-top: 5px;
+	border-left: 1px solid #efeff4;	
+}
+.create-team__team-selector__player-card__cell__team-selector-icon { 
+    height: 30px;
+    width: 30px; 
+    padding-top: 8px;
+    margin-left: 0px;
+}
+
+.creditsContainer_9c26e { 
+}
+
+.ftc_footer_main { 
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16), 0 0px 0px 0 rgba(0,0,0,0.12); 
+}
+.team_img1 img{ 
+	height: 50px;
+}
+.fa-info-circle{
+	color: #ff5722;
+	margin-top: -4px !important;
+	position: absolute;
+	margin-left: -7px;
+}
+tbody{
+    /* display: block; */
+}
+td{
+    text-align: center;
+	/* display: block;  */
+}
+.ftc_player_table .table tbody tr td span {
+    display: block; 
+}
+.ftc_player_table .table tbody tr td:nth-child(2) span {
+	    display: flex;
+		max-width: 160px;
+		width: 160px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+td[valign="top"] {
+    display: block;
+}
+td[valign="top"][style="width: 15%"] {
+    white-space: nowrap;
+    display: table-cell;
+} 
+.hide{
+	display: none!important;
+}
+.glyphicon < a{
+	color: #000 !important;
+}
+.ftc_player_table{
+    padding: 0px 0px 40px 0px !important;
+}
+.ftc_footer_main {
+    height: 55px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    position: fixed;
+    bottom: 0px;
+    max-width: 45%;
+    z-index: 999999;
+    background-color: #e6e0d5;
+    align-items: center;
+    display: flex;
+    background: white;
+    justify-content: center;
+}
+
+
+.nav-tabs.navtabs{
+    background: #fff;
+    border:none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+.nav-tabs.navtabs .nav-item{width: 25%;}
+.nav-tabs.navtabs .nav-item .nav-link{
+    letter-spacing: 1px;
+    position: relative;
+    justify-content: center;
+    padding: 12px 0px;
+    border: none;
+    color: #878787;
+	outline: 0px!important;
+    border-bottom: 4px solid transparent;
+}
+
+.nav-tabs.navtabs .nav-item .nav-link.active{
+	color: #424646;
+    border-radius: 0px;
+    border-bottom: 4px solid #ff5722;
+	background: transparent;
+}
+.nav-tabs.navtabs .nav-item .nav-link .ftc_select_t{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.nav-tabs.navtabs .nav-item .nav-link.active .ftc_select_t{}
+.ftc_team_rev{justify-content: space-between;}
+.ftc_team_rev span{letter-spacing: 1px;}
+.ftc_player_table .table thead tr th{
+    padding: 10px 0px;
+    letter-spacing: 1px;
+    border-color: transparent;
+    border-bottom: 1px solid #e8e8e8!important;
+	font-weight: 500;color: #acacac;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+.font_500{
+	font-weight: 500;
+}
+.ftc_player_table .table tbody tr{
+    background: #fff; 
+    cursor: pointer;
+    border-bottom: 1px solid #e8e8e8!important;
+    /* display: flex; */
+    width: 100%;
+    justify-content: space-around;
+}
+.ftc_player_table .table tbody tr td{padding:8px 0px;vertical-align: inherit;border-top: 0px;min-width: 70px;}
+.ftc_player_table .table tbody tr td span{
+    display: flex;
+    align-items: center;
+}
+.ftc_player_table .table tbody tr td img{height:40px;position: relative;border-radius: 50px;}
+.ftc_player_table .table tbody tr td button{background: transparent; border: none;height: 30px;width: 30px; border: 1px solid;border-radius: 50%;padding: 0px;}
+.redPlus .plus.fa-plus:before  {content: "\f068" !important;  }
+.redPlus .plus {opacity: 1;}
+tr.redPlus{background:#f4f4f4 !important;}
+.letter_space{letter-spacing: 1px;}
+
+.nav-tabs.navtabs{
+    background: #fff;
+    border:none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+.nav-tabs.navtabs .nav-item{width: 25%;}
+.nav-tabs.navtabs .nav-item .nav-link{
+    letter-spacing: 1px;
+    position: relative;
+    justify-content: center;
+    padding: 12px 0px;
+    border: none;
+    color: #878787;
+    border-bottom: 4px solid transparent;
+}
+.padding_tb5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+ .ft_header_main .ftc_hdrImg img {
+    height: 18px;
+}
+#team-preview.slide_left { 
+    z-index: 99999999999!important;
+}
+.nav-tabs.navtabs .nav-item .nav-link .ftc_select_t{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.nav-tabs.navtabs .nav-item .nav-link.active .ftc_select_t{}
+.ftc_team_rev{justify-content: space-between;}
+.ftc_team_rev span{letter-spacing: 1px;}
+.ftc_player_table .table thead tr th{
+    padding: 10px 0px;
+    letter-spacing: 1px;
+    border-color: transparent;
+    border-bottom: 1px solid #e8e8e8!important;
+	font-weight: 500;
+	color: #424646;
+	font-size: 12px;
+	text-transform: uppercase;
+	background: #e6e0d5;
+	text-align: left;
+}
+.font_500{
+	font-weight: 500;
+}
+.ftc_player_table .table tbody tr{
+    background: #fff; 
+    cursor: pointer;
+    border-bottom: 1px solid #e8e8e8!important;
+    /* display: flex; */
+    width: 100%;
+    justify-content: space-around;
+}
+.ftc_player_table .table tbody tr td{padding:8px 0px;vertical-align: inherit;border-top: 0px;min-width: 70px;}
+.ftc_player_table .table tbody tr td span{
+    display: flex;
+    align-items: center;
+}
+.ftc_player_table .table tbody tr td img{height:40px;position: relative;}
+.ftc_player_table .table tbody tr td button{background: transparent; border: none;height: 30px;width: 30px; border: 1px solid;border-radius: 50%;padding: 0px;}
+.redPlus .plus.fa-plus:before  {content: "\f068" !important;  }
+.redPlus .plus {opacity: 1;}
+tr.redPlus{background:#f4f4f4 !important;}
+.letter_space{letter-spacing: 1px;}
+
+.row.ft_header_main {
+    height: 55px;
+    position: fixed;
+    top: 0px;
+    max-width: 45%;
+    justify-content: space-between;
+    z-index: 99;
+	right: 0px; 
+}
+
+.sm_des{
+    align-content: end;
+    justify-content: center;
+}
+.sm_des span:last-child{
+    position: relative;
+bottom: -12px;
+}
+ 
+.team_img1{ 
+    height: 50px;  
+    margin: 0px 10px;
+}
+.mt_section{
+    align-content: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+.ftc_tab_details_main.ftc_tab_details_main.ftc_all_mb.sel_players{
+    margin-top: 132px;
+}
+.padding_lR15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.ftc_create_team_tab .nav-tabs.navtabs {
+    max-width: 45%;
+	background: #e6e0d5;
+    justify-content: space-between;
+    z-index: 99;
+    position: fixed;
+    margin-top: -2px;
+}
+.nav-tabs.navtabs {
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+.raisedGreenButtonDisabled_e0a23 {
+    background: #dcdcdc;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    color: #969696;
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    height: 32px;
+    padding: 8px 8px;
+    text-transform: uppercase;
+    width: 120px;
+    margin: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.disabledButton_cf79e {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.raisedGreenButton_20c05 {
+    background: #25ba38 !important;
+    color: #fff !important;
+    opacity: 1;
+}
+ 

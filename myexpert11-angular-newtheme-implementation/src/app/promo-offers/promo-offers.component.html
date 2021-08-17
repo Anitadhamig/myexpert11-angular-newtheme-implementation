@@ -1,0 +1,32 @@
+<section class="body-section-home">     
+	<div class="body-section-home-inner">
+		<app-left-side></app-left-side>
+		<div class="rightBox">
+			<div class="rightBox-inner db">						
+				<div class="flex-wth">
+
+
+					<app-header></app-header>
+
+					<section  class="slid_tabs mt-5 mb-5 pb-3"> 
+						
+					  <div  class="col-sm-12 commonPages">  
+							<div  class="w-100 mb-3" *ngFor="let offers of offers; let i = index">  
+								<p class="mb-1"><strong>{{offers.title}}</strong></p>
+								<p>{{offers.description}}</p>	  
+								<span class="d-block">
+									<img src="{{offers.image}}"  class="mr-4 mb-3" style="max-width: 100%" *ngIf="offers.image!=''" > 
+									<iframe  style="width: auto; max-width: 100%;"  [src]="getEmbededUrl(offers.youtube)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen  *ngIf="offers.youtube!=''"></iframe>
+								</span> 								
+							</div>
+						
+						</div>
+				 
+					</section>
+				</div>
+			</div>
+			<app-footer></app-footer>
+				
+		</div>
+	</div>
+</section>

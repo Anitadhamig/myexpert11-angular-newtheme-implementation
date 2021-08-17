@@ -1,0 +1,752 @@
+<section class="body-section-home">     
+	<div class="body-section-home-inner"> 
+		<app-left-side></app-left-side>
+			<div class="rightBox">
+				<div class="rightBox-inner db">		
+					<div class="flex-wth w-100">
+						<header class="main_header main_header_2" id="header1">
+								<div class="mobile_nav">
+									<div class="" id="fixHead">
+										<!-- <app-header></app-header> -->
+										<div class="info-bar w-100 col-lg-12 col-md-12 cl-sm-12 col-12 p-0">
+										
+                                        <div class="infobarContent newcheck">
+                                            <div class="infobarContentRow w-100 d-flex" *ngFor="let matchdetails of matchdetails">
+                                                <div class="js--match-header-title infobarContentLeft ">
+														<button class="btn_icon color_white p-0" (click)="back_button()">
+															<i class="fas fa-arrow-left font-16"></i>
+														</button>
+														<a class="btn_icon home_icon theme-color mr-3 font-16" routerLink="/home"><i class="fas fa-home"></i></a>		
+														<span class="namematchest">{{matchdetails.team1name}} vs {{matchdetails.team2name}}</span>
+												</div>
+												
+                                                  <div class="scoreupdation"  *ngIf="matchdetails.matchstatus != 'notstarted'" (click)="completescore()">Score</div>  
+													
+                                                <div class="infobarContentLeft text-center d-flex">
+                                                    <div class="timer d-flex justify-content-center align-items-center" *ngIf="matchdetails.matchstatus=='notstarted'"><i class="far fa-clock" style="height: 16px; width: 16px; font-size: 16px;"></i><span class="timeRemaining"><countdown-timer [end]="matchdetails.time_start"></countdown-timer></span></div> 
+                                                    <div class="timer d-flex justify-content-center align-items-center theme-color" *ngIf="matchdetails.matchstatus=='started'">In Progress</div>
+													<div class="timer d-flex justify-content-center align-items-center theme-color" *ngIf="matchdetails.matchstatus=='IsReviewed' || matchdetails.matchstatus=='pending'">Under Review</div>
+                                                    <div class="timer d-flex justify-content-center align-items-center theme-color  text-capitalize" *ngIf="matchdetails.matchstatus=='completed' || matchdetails.matchstatus=='winnerdeclared'" style="text-transform: normal;">Result</div>
+																					
+															<button class="btn_icon ml-auto mr-0 color_white p-0 imagewaallet" routerLink="/my-account" *ngIf="loginid!= ''">
+																<!-- <i class="fas fa-credit-card"></i> -->
+																<i class="fas fa-wallet"></i>
+															</button>
+                                                </div>
+                                            </div>
+                                        </div>
+										 
+										</div>
+									</div>
+								</div>
+							</header> 
+						<!-- {{getchallenges | json}} -->
+						 <div class="me_segment height_main pt-3 mt-5 mb-5 height_main_new" *ngIf="getchallenges?.length>0" >
+								<div class="row">
+								    <div class="sorting-header sortingHeader_28c64 w-100">
+								        <div class="sorting-header__item" [ngClass]="this.winningsfilter== '1' ? 'sorting-header__item--active' : '' || this.winningsfilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions('win_amount','ordertype');">Winnings
+								            <div class="sorting-header__icon" *ngIf="this.winningsfilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.winningsfilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div>
+								        <div class="sorting-header__item" [ngClass]="this.winnersfilter== '1' ? 'sorting-header__item--active' : '' || this.winnersfilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions('totalwinners','ordertype');">Winners
+								            <div class="sorting-header__icon" *ngIf="this.winnersfilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.winnersfilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div>
+								        <div class="sorting-header__item" [ngClass]="this.teamsfilter== '1' ? 'sorting-header__item--active' : '' || this.teamsfilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions('maximum_user','ordertype');">Teams
+								            <div class="sorting-header__icon" *ngIf="this.teamsfilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.teamsfilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div>
+								        <div class="sorting-header__item " [ngClass]="this.entryfeefilter== '1' ? 'sorting-header__item--active' : '' || this.entryfeefilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions('entryfee','ordertype');">Entry
+								            <div class="sorting-header__icon" *ngIf="this.entryfeefilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.entryfeefilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div>
+								    </div>
+								</div>
+								<!-- {{getchallenges | json}} -->
+							    <div class="mt-3"> 
+								    <a class="contestdefine" *ngFor="let allcontest of getchallenges"  >
+										<div  class="me_mainWrapper ">
+											<div class="me_contestSpecs">
+												<div class="me_contestSpecWrapper me_contestSpecsLeft" (click)="singlechallenge(allcontest.id);">
+													<div class="me_contestSpecsTitle">Total Winnings</div>
+													<div class="me_contestSpecsValue"><span><span class="d11-icon">₹</span><span class="me_currency_amount">{{allcontest.win_amount}}</span></span> 
+													</div>
+												</div>
+												<div class="me_contestSpecWrapper me_contestSpecscenter"> 
+													<div class="me_contestSpecsTitle">Winners</div>
+													<!-- <div class="me_contestSpecsValue color-gray me_contestSpecsCenter" *ngIf="!allcontest.price_card && !allcontest.winning_percentage" (click)="singlechallenge(allcontest.id);">
+														<div>1</div>
+														<div ><i class="fas fa-chevron-down" style=" width: 24px; font-size: 15px;"></i>
+														</div>
+													 </div> -->
+													<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="allcontest.contest_type=='Amount' || allcontest.contest_type==''">
+														<div (click)="totalwins(allcontest.id)">{{allcontest.totalwinners}}</div>
+														<div (click)="totalwins(allcontest.id)"><i class="fas fa-chevron-down" style=" width: 24px; font-size: 15px;"></i></div>
+
+													<div id="winnner-rank{{allcontest.id}}" class="closeactive" (click)="totalwinsclose(allcontest.id)">
+														<div class="em_bottom_sheet">
+															<div class="em_winnerBreakupWrapper">
+																<div class="em_headerContainer contehead d-flex justify-content-space-between ">
+																	<div class="color_white -w-100">Winning Breakup</div>
+																	<div class="em_tamp " (click)="totalwinsclose(allcontest.id)">Close</div> 
+																</div>
+																<div class="em_breakupContainer_center">
+																	<p>Prize Pool</p>
+																	<span><span class="d11-icon">₹</span>{{allcontest.win_amount}}</span>
+																</div>
+																<div class="em_breakupContainer">
+																	<div class="em_scroll">
+																		<div class="em_breakupWrapper">
+																			<div class="em_rankRowWrapper d-flex align-items-center" *ngFor="let pricecards of allcontest.price_card">
+																				<div class="em_rankRowTitle">Rank {{pricecards.start_position}}</div>
+																				<div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">{{pricecards.price}}</span></span>
+																				</div>
+																			</div> 
+																		</div>
+																		<div class="em_infoTextWrapper text-left align-items-center justify-content-space-around">Note: The actual prize money may be different than the prize money mentioned above if there is a tie for any of the winning positions. Check FAQs for further details . As per government regulations, a tax of 31.2% will be deducted if an individual wins more than Rs.10,000</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													</div>
+													<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="allcontest.contest_type=='Percentage'" (click)="singlechallenge(allcontest.id);">
+														<div>{{allcontest.winning_percentage}}%</div> 
+													</div>
+												</div>
+												<div class="me_contestSpecWrapper me_contestSpecsRight" (click)="singlechallenge(allcontest.id);">
+													<div class="me_contestSpecsTitle">Entry Fee</div>
+													<div class="me_contestSpecsValue"><span><span class="d11-icon">₹</span><span class="currency-amount">{{allcontest.entryfee}}</span></span>
+													</div>
+												</div>
+											</div>
+											<div class="me_contestsDetailsAndCta mb-3">
+												<div class="me_contestDetailAndCtaLeft"  (click)="singlechallenge(allcontest.id);">
+													<div class="me_contestProgressBar">
+														<div class="me_contestProgressInner" [ngStyle]="{width:allcontest.getjoinedpercentage}"></div>
+													</div>
+													<div class="me_contestTeamSection">
+														<div *ngIf="allcontest.contest_type=='Percentage'">{{allcontest.joinedusers}} Teams joined 
+														</div>
+														<div *ngIf="allcontest.contest_type=='Amount' || allcontest.contest_type==''">{{allcontest.maximum_user - allcontest.joinedusers}} Teams Left
+														 
+														</div>
+
+	 
+														<div *ngIf="allcontest.contest_type=='Percentage'"><span *ngIf="allcontest.joinedusers!=0">{{allcontest.joinedusers}}/</span>∞ Teams</div> 
+														<div *ngIf="allcontest.contest_type=='Amount' || allcontest.contest_type==''"><span *ngIf="allcontest.joinedusers!=0">{{allcontest.joinedusers}}/</span>{{allcontest.maximum_user}} Teams</div>
+													</div>
+												</div>
+												
+												<div>
+													<div>
+														<div class="js--contest-card-join-btn" *ngIf="allcontest.maximum_user!=0">
+															<button class="me_borderedButton" (click)="firstcheckprofle(allcontest.entryfee,allcontest.id);" *ngIf="allcontest.isselected == false  && allcontest.joinedusers < allcontest.maximum_user">Join</button>
+															<button class="me_borderedButton"(click)="invitethischallenge(allcontest.id,allcontest.matchkey);" *ngIf="allcontest.isselected == true  && allcontest.joinedusers < allcontest.maximum_user">invite</button> 
+														</div> 
+														 <div class="js--contest-card-join-btn" *ngIf="allcontest.maximum_user==0">
+															<button class="me_borderedButton" (click)="firstcheckprofle(allcontest.entryfee,allcontest.id);" *ngIf="allcontest.isselected == false">Join</button>
+															<button class="me_borderedButton"(click)="invitethischallenge(allcontest.id,allcontest.matchkey);" *ngIf="allcontest.isselected == true">invite</button> 
+														</div> 
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										<div class="me_contestsDetailsAndCta_bootom">  
+											<div class="notificcls">
+												<span class="ml" *ngIf="allcontest.multi_entry=='1'">M</span>
+												<span class="cm" *ngIf="allcontest.confirmed_challenge=='1'">C</span>
+												<span class="bo" *ngIf="allcontest.is_bonus=='1'">B</span>
+											</div> 
+											<div class="">
+												<p class="parsdeck" *ngIf="allcontest.bonus_percentage != '0'">{{allcontest.bonus_percentage}}  Bonus</p> 
+											 </div>
+										</div>
+								    </a> 
+
+								</div>
+							</div>
+							
+						 <div class="me_segment height_main pt-3 mt-5 mb-5 height_main_new " *ngIf="reamincontest?.length>0">
+								
+								<div class="row">
+								    <div class="sorting-header sortingHeader_28c64 w-100">
+								        <div class="sorting-header__item" [ngClass]="this.winningsfilter== '1' ? 'sorting-header__item--active' : '' || this.winningsfilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions1('win_amount','ordertype');">Winnings
+								            <div class="sorting-header__icon" *ngIf="this.winningsfilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.winningsfilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div>
+								        <div class="sorting-header__item" [ngClass]="this.winnersfilter== '1' ? 'sorting-header__item--active' : '' || this.winnersfilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions1('totalwinners','ordertype');">Winners
+								            <div class="sorting-header__icon" *ngIf="this.winnersfilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.winnersfilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div>
+								        <div class="sorting-header__item" [ngClass]="this.teamsfilter== '1' ? 'sorting-header__item--active' : '' || this.teamsfilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions1('maximum_user','ordertype');">Teams
+								            <div class="sorting-header__icon" *ngIf="this.teamsfilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.teamsfilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div>
+								        <div class="sorting-header__item " [ngClass]="this.entryfeefilter== '1' ? 'sorting-header__item--active' : '' || this.entryfeefilter== '0' ? 'sorting-header__item--active' : ''"  (click)="sortoptions1('entryfee','ordertype');">Entry
+								            <div class="sorting-header__icon" *ngIf="this.entryfeefilter== '1' "><i class="fas fa-chevron-up ml-2"></i></div>
+								            <div class="sorting-header__icon" *ngIf="this.entryfeefilter== '0' "><i class="fas fa-chevron-down ml-2"></i></div>
+								        </div> 
+								    </div>
+								</div>  
+								<div class="mt-3"> 
+								    <a class=" contestdefine" *ngFor="let reamincontest of reamincontest">
+								        <div class="me_mainWrapper">
+											<div class="me_contestSpecs">
+												<div class="me_contestSpecWrapper me_contestSpecsLeft">
+													<div class="me_contestSpecsTitle" (click)="singlechallenge(reamincontest.id);">Total Winnings</div>
+													<div class="me_contestSpecsValue" (click)="singlechallenge(reamincontest.id);"><span><span class="d11-icon">₹</span><span class="me_currency_amount">{{reamincontest.win_amount}}</span></span> 
+													</div>
+												</div>
+												<div class="me_contestSpecWrapper me_contestSpecscenter"> 
+													<div class="me_contestSpecsTitle">Winners</div>
+	<!-- 
+													<div class="me_contestSpecsValue color-gray me_contestSpecsCenter" *ngIf="!reamincontest.price_card && !reamincontest.winning_percentage" >
+														<div>1</div>
+														<div ><i class="fas fa-chevron-down" style=" width: 24px; font-size: 15px;"></i>
+														</div>
+													 </div> -->
+													<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="reamincontest.contest_type=='Amount' || reamincontest.contest_type==''">
+														<div (click)="totalwins(reamincontest.id)">{{reamincontest.totalwinners}}</div>
+														<div (click)="totalwins(reamincontest.id)"><i class="fas fa-chevron-down" style=" width: 24px; font-size: 15px;"></i></div>
+
+												<div id="winnner-rank{{reamincontest.id}}" class="closeactive" (click)="totalwinsclose(reamincontest.id)">
+													<div class="em_bottom_sheet">
+														<div class="em_winnerBreakupWrapper">
+															<div class="em_headerContainer contehead d-flex justify-content-space-between ">
+																<div class="color_white -w-100">Winning Breakup</div>
+																<div class="em_tamp " (click)="totalwinsclose(reamincontest.id)">Close</div> 
+															</div>
+															<div class="em_breakupContainer_center">
+																<p>Prize Pool</p>
+																<span><span class="d11-icon">₹</span>{{reamincontest.win_amount}}</span>
+															</div>
+															<div class="em_breakupContainer">
+																<div class="em_scroll">
+																	<div class="em_breakupWrapper">
+																		<div class="em_rankRowWrapper d-flex align-items-center" *ngFor="let pricecards of reamincontest.price_card">
+																			<div class="em_rankRowTitle">Rank {{pricecards.start_position}}</div>
+																			<div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">{{pricecards.price}}</span></span>
+																			</div>
+																		</div> 
+																	</div>
+																	<div class="em_infoTextWrapper text-left align-items-center justify-content-space-around">Note: The actual prize money may be different than the prize money mentioned above if there is a tie for any of the winning positions. Check FAQs for further details . As per government regulations, a tax of 31.2% will be deducted if an individual wins more than Rs.10,000</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+													</div>
+													<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="reamincontest.contest_type=='Percentage'">
+														<div>{{reamincontest.winning_percentage}}%</div> 
+													</div>
+												</div>
+												<div class="me_contestSpecWrapper me_contestSpecsRight" (click)="singlechallenge(reamincontest.id);">
+													<div class="me_contestSpecsTitle">Entry Fee</div>
+													<div class="me_contestSpecsValue"><span><span class="d11-icon">₹</span><span class="currency-amount">{{reamincontest.entryfee}}</span></span>
+													</div>
+												</div>
+											</div>
+											<div class="me_contestsDetailsAndCta">
+												<div class="me_contestDetailAndCtaLeft" (click)="singlechallenge(reamincontest.id);">
+													<div class="me_contestProgressBar">
+														<div class="me_contestProgressInner" [ngStyle]="{width:reamincontest.getjoinedpercentage}"></div>
+													</div>
+													<div class="me_contestTeamSection">
+														<div *ngIf="reamincontest.contest_type=='Percentage'">{{reamincontest.joinedusers}} Teams joined</div>
+														<div *ngIf="reamincontest.contest_type=='Amount' || reamincontest.contest_type==''">{{reamincontest.maximum_user - reamincontest.joinedusers}} Teams Left</div>
+
+	 
+														<div *ngIf="reamincontest.contest_type=='Percentage'"><span *ngIf="reamincontest.joinedusers!=0">{{reamincontest.joinedusers}}/</span>∞ Teams</div> 
+														<div *ngIf="reamincontest.contest_type=='Amount' || reamincontest.contest_type==''"><span *ngIf="reamincontest.joinedusers!=0">{{reamincontest.joinedusers}}/</span>{{reamincontest.maximum_user}} Teams</div>
+													</div>
+												</div>
+												<div>
+													<div>
+														<div class="js--contest-card-join-btn" *ngIf="reamincontest.maximum_user!=0">
+															<button class="me_borderedButton" (click)="firstcheckprofle(reamincontest.entryfee,reamincontest.id);" *ngIf="reamincontest.isselected == false  && reamincontest.joinedusers < reamincontest.maximum_user">Join</button>
+															<button class="me_borderedButton"(click)="invitethischallenge(reamincontest.id,reamincontest.matchkey);" *ngIf="reamincontest.isselected == true  && reamincontest.joinedusers < reamincontest.maximum_user">invite</button> 
+														</div> 
+														<div class="js--contest-card-join-btn" *ngIf="reamincontest.maximum_user==0">
+															<button class="me_borderedButton" (click)="firstcheckprofle(reamincontest.entryfee,reamincontest.id);" *ngIf="reamincontest.isselected == false">Join</button>
+															<button class="me_borderedButton"(click)="invitethischallenge(reamincontest.id,reamincontest.matchkey);" *ngIf="reamincontest.isselected == true">invite</button> 
+														</div>
+													</div>
+												</div>
+											</div>
+								        </div>
+										<div class="me_contestsDetailsAndCta_bootom">  
+											<div class="notificcls">
+												<span class="ml" *ngIf="reamincontest.multi_entry=='1'">M</span>
+												<span class="cm" *ngIf="reamincontest.confirmed_challenge=='1'">C</span>
+												<span class="bo" *ngIf="reamincontest.is_bonus=='1'">B</span>
+											</div> 
+											<div class="">
+												<p class="parsdeck" *ngIf="reamincontest.bonus_percentage != '0'">{{reamincontest.bonus_percentage}}  Bonus</p> 
+											 </div>
+										</div>
+								    </a> 
+
+								</div>
+							</div>
+							<div class="height_main_new remainjoincotext">
+							    <div *ngIf="joinedcontest?.length>0" class="pt-3 mt-5 mb-5 "  [ngClass]="matchdetails[0].matchstatus!='notstarted' ? 'top_class_joined' : ''"> 
+									<div class="topscorecard" *ngIf="matchdetails[0].matchstatus!='notstarted'">
+										<div class="innertopscorecard">
+											<span class="font_12 mb-2"> SCORECARD</span>
+										</div>
+										<div class="innertopscorecard">
+											<div class="w-50">
+												<p class="font-bold">{{current_score.Team1}} &nbsp;&nbsp; {{current_score.Team1_Totalruns}}-{{current_score.Team1_Totalwickets}} <span>({{current_score.Team1_Totalovers}})</span></p>
+											</div>  
+											<div class="w-50">
+												<p class="font-bold">{{current_score.Team2}} &nbsp;&nbsp; {{current_score.Team2_Totalruns}}-{{current_score.Team2_Totalwickets}} <span>({{current_score.Team2_Totalovers}})</span></p>
+											</div> 
+										</div>
+										<div class="innertopscorecard">
+										<p class="font_12" *ngIf="current_score.Winning_Status != ''">{{current_score.Winning_Status}}</p>
+										</div>
+									</div>
+								    <a class="contestdefine" *ngFor="let joinedcontest of joinedcontest" style="height: auto;" >
+
+								          <div class="me_mainWrapper" [ngClass]="matchdetails.matchstatus=='notstarted'? 'active' : 'unactive'">
+											  <div class="me_contestSpecs">
+												<div class="me_contestSpecWrapper me_contestSpecsLeft" (click)="singlechallenge(joinedcontest.challenge_id);">
+													<div class="me_contestSpecsTitle">Total Winnings</div>
+													<div class="me_contestSpecsValue"><span><span class="d11-icon">₹</span><span class="me_currency_amount">{{joinedcontest.winamount}}</span></span> 
+													</div>
+												</div>
+												<div class="me_contestSpecWrapper me_contestSpecscenter"   (click)="singlechallenge(joinedcontest.challenge_id);"> 
+													<div class="me_contestSpecsTitle">Winners</div>
+														<!-- <div class="me_contestSpecsValue color-gray me_contestSpecsCenter" *ngIf="!joinedcontest.price_card && !joinedcontest.winning_percentage" >
+														<div>1</div>
+														<div ><i class="fas fa-chevron-down" style=" width: 24px; font-size: 15px;"></i>
+														</div>
+													 </div> -->
+
+													<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="joinedcontest.contest_type=='Amount' || joinedcontest.contest_type==''">
+														<div style="color: #4982ff">{{joinedcontest.totalwinners}}</div>
+													   
+
+												<div id="winnner-rank{{joinedcontest.id}}" class="closeactive" (click)="totalwinsclose(joinedcontest.id)">
+													<div class="em_bottom_sheet">
+														<div class="em_winnerBreakupWrapper">
+														
+															<div class="em_headerContainer contehead d-flex justify-content-space-between ">
+																<div class="color_white -w-100">Winning Breakup</div>
+																<div class="em_tamp " (click)="totalwinsclose(joinedcontest.id)">Close</div> 
+															</div>
+															<div class="em_breakupContainer_center">
+																<p>Prize Pool</p>
+																<span><span class="d11-icon">₹</span>{{joinedcontest.win_amount}}</span>
+															</div>
+														 
+															<div class="em_breakupContainer">
+																<div class="em_scroll">
+																	<div class="em_breakupWrapper">
+																		<div class="em_rankRowWrapper d-flex align-items-center" *ngFor="let pricecards of joinedcontest.price_card">
+																			<div class="em_rankRowTitle">Rank {{pricecards.start_position}}</div>
+																			<div class="em_rankRowValue"><span><span class="d11-icon">₹</span><span class="em_currency_amount">{{pricecards.price}}</span></span>
+																			</div>
+																		</div> 
+																	</div>
+																	<div class="em_infoTextWrapper text-left align-items-center justify-content-space-around">Note: The actual prize money may be different than the prize money mentioned above if there is a tie for any of the winning positions. Check FAQs for further details . As per government regulations, a tax of 31.2% will be deducted if an individual wins more than Rs.10,000</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+													</div>
+													<div class="me_contestSpecsValue me_contestSpecsCenter" *ngIf="joinedcontest.contest_type=='Percentage'">
+														<div  style="color: #4982ff">{{joinedcontest.winning_percentage}}%</div> 
+													</div>
+												</div>
+												<div class="me_contestSpecWrapper me_contestSpecsRight"   (click)="singlechallenge(joinedcontest.challenge_id);">
+													<div class="me_contestSpecsTitle">Entry Fee</div>
+													<div class="me_contestSpecsValue"><span><span class="d11-icon">₹</span><span class="currency-amount">{{joinedcontest.entryfee}}</span></span>
+													</div>
+												</div>
+											</div>
+											<div class="me_contestsDetailsAndCta"  *ngFor="let matchdetails of matchdetails">
+												<div class="me_contestDetailAndCtaLeft"  *ngIf="matchdetails.matchstatus=='notstarted'"  (click)="singlechallenge(joinedcontest.challenge_id);">
+													<div class="me_contestProgressBar" >
+														<div class="me_contestProgressInner" [ngStyle]="{width:joinedcontest.getjoinedpercentage}"></div>
+													</div>
+													<div class="me_contestTeamSection"  *ngIf="matchdetails.matchstatus=='notstarted'">
+														<div *ngIf="joinedcontest.contest_type=='Percentage'">{{joinedcontest.joinedusers}} Teams joined</div>
+														<div *ngIf="(joinedcontest.contest_type=='Amount' || joinedcontest.contest_type=='y' || !joinedcontest.contest_type) && (joinedcontest.maximum_user > joinedcontest.joinedusers)">{{joinedcontest.maximum_user - joinedcontest.joinedusers}} Teams Left</div>
+														<div *ngIf="joinedcontest.maximum_user == joinedcontest.joinedusers ">Contest Full</div>
+
+
+														<div *ngIf="joinedcontest.contest_type=='Percentage'"><span *ngIf="joinedcontest.joinedusers!=0">{{joinedcontest.joinedusers}}/</span>∞ Teams</div> 
+														<div *ngIf="joinedcontest.contest_type=='Amount' || joinedcontest.contest_type=='' || !joinedcontest.contest_type"><span *ngIf="joinedcontest.joinedusers!=0">{{joinedcontest.joinedusers}}/</span>{{joinedcontest.maximum_user}} Teams</div>
+													</div>
+													<!-- <div class="me_contestTeamSection mt-2 justify-content-space-between"  *ngIf="matchdetails.matchstatus=='pending' || matchdetails.matchstatus=='started' || matchdetails.matchstatus=='IsReviewed' || matchdetails.matchstatus=='completed' || matchdetails.matchstatus=='winnerdeclared'" style="max-width: 100%;min-width: 100%;">  -->
+														<!-- <div>{{joinedcontest.joinedusers}} Teams Joined</div> -->
+														<!-- <div>Joined With: Team ( T{{joinedcontest.userteamnumber}} )</div> -->
+													<!-- </div> -->
+												</div>
+												<div>
+													<div *ngIf="matchdetails.matchstatus=='notstarted'"> 
+
+														<div class="js--contest-card-join-btn" *ngIf="joinedcontest.maximum_user==0"> 
+															<button class="me_borderedButton"  (click)="invitethischallenge(joinedcontest.challenge_id,joinedcontest.matchkey);">Invite</button>
+														</div> 
+														<div class="js--contest-card-join-btn" *ngIf="joinedcontest.maximum_user!=0"> 
+															<button class="me_borderedButton" *ngIf="joinedcontest.joinedusers < joinedcontest.maximum_user"  (click)="invitethischallenge(joinedcontest.challenge_id,joinedcontest.matchkey);">Invite</button>
+														</div> 
+													</div>
+												</div>
+											</div>  
+											<div *ngFor="let matchdetails of matchdetails" (click)="singlechallenge(joinedcontest.challenge_id);">
+												 <div class="w-100 d-flex justify-content-between livetypeScore me_contestSpecs" *ngIf="matchdetails.matchstatus=='pending' || matchdetails.matchstatus=='started' || matchdetails.matchstatus=='IsReviewed' || matchdetails.matchstatus=='completed' || matchdetails.matchstatus=='winnerdeclared'">  
+													<span class="font_12 me_contestSpecWrapper me_contestSpecsLeft text-left"> 
+														 Joined With<br><span *ngIf="joinedcontest.teamcount == 1">{{joinedcontest.teamcount}} Team</span> <span *ngIf="joinedcontest.teamcount != 1">{{joinedcontest.teamcount}} Teams</span> 
+													</span>  
+													<span class="font_12 me_contestSpecWrapper me_contestSpecscenter ">Points<br><span style="color: #4982ff">{{joinedcontest.userpoints}}</span> </span>
+													<span class="font_12 me_contestSpecWrapper me_contestSpecsRight">Rank<br>#{{joinedcontest.userrank}}</span>
+													
+													
+												 </div>
+											</div> 
+											<div *ngFor="let matchdetails of matchdetails" (click)="singlechallenge(joinedcontest.challenge_id);">
+												 <div class="w-100 d-flex justify-content-between livetypeScore me_contestSpecs pb-0" *ngIf="matchdetails.matchstatus=='pending' || matchdetails.matchstatus=='started' || matchdetails.matchstatus=='IsReviewed' || matchdetails.matchstatus=='completed' || matchdetails.matchstatus=='winnerdeclared'">  
+													<span class="text-left"> 
+														 View Leaderboard 
+													</span>   
+													<span style="font-size: 18px"><i class="fa fa-angle-right"></i></span>
+													
+													
+												 </div>
+											</div>
+								       	</div>
+										<div class="me_contestsDetailsAndCta_bootom" *ngIf="matchdetails.matchstatus=='notstarted'">  
+											<div class="notificcls">
+												<span class="ml" *ngIf="joinedcontest.multi_entry=='1'">M</span>
+												<span class="cm" *ngIf="joinedcontest.confirmed_challenge=='1'">C</span>
+												<span class="bo" *ngIf="joinedcontest.is_bonus=='1'">B</span>
+											</div> 
+											<div class="">
+												<p class="parsdeck" *ngIf="joinedcontest.bonus_percentage != '0'">{{joinedcontest.bonus_percentage}}  Bonus</p> 
+											 </div>
+										</div>
+										 
+								    </a> 
+								</div> 
+								</div> 
+							</div>
+						</div> 
+						<app-footer></app-footer> 
+					</div>
+				</div> 
+		</section>
+		
+		
+
+			<div class="modal fade in show" id="addmoney" style="">
+			    <div class="modal-dialog em_model_dialog p-0">
+				    <div class="modal-content em_dialog_content bg_colorWhite">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+				          	<div class=" float-left w-100">
+							    <!-- <div class="em_dialog_header color_darkblue font_14 text-uppercase letter_space font_w600">Add Cash</div>  -->
+							    <div class="em_dialog_body p-0"> 
+							    	<div class="w-100" *ngIf="alloffer?.length"> 
+										<span class="font_10 mb-3 d-block bonusimage">
+											<img src="assets/images/payment-bonus.jpg">
+										</span>
+										<div class="w-100 dib font-12 text "><p class="m-0 em_inviteCodeTip">Enter Amount to Calculate the Welcome Bonus:</p></div>
+										<div class="add_cash_details d-flex align-items-center mb-3">
+											<div class="bonus_section" >
+												<div class="bonus_green d-flex align-items-center justify-content-center">
+													<span class="pl-1">
+
+
+														<span *ngIf="allofferbonusfind?.length>0">₹{{allofferbonusfind[0].bonus}}</span>
+
+
+													</span>
+													<span>Bouns</span>
+												</div>
+											</div>
+											<div class="add_money text-center">
+												<form class="m-0"> 
+													<input class="form-control marginZ w-100 d-inline-block d_flex_align" type="number" name="setchallengesize" required="" [(ngModel)]="allofferbonus.balance" (keypress)="isNumber($event)" (change)="AddAmount(allofferbonus.balance)" (keyup)="setbonus($event)"   placeholder="Enter Amount">
+												</form>
+											</div> 
+										</div>
+									</div>
+							    	<div class="w-100" *ngFor="let balance of balance">
+								        <div class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 font_12 d-flex align-items-center position-relative" >
+								           <span>Current Balance</span>
+								           <span><i class="fas fa-rupee-sign"></i> {{balance.usertotalbalance}}</span>
+								        </div>
+								        <div class="ftc_selectableTextInr ftc_border_bottom color_blue padding_bottom5 font_w600 mt-2 font_12 d-flex align-items-center position-relative">
+								           <span>Usable Balance</span>
+								           <span><i class="fas fa-rupee-sign"></i> {{balance.usablebalance}}</span>
+								        </div>
+							        </div>
+							        <div class="em_inviteCodeTip color_darkblue letter_space pl-0 font_w500 font_14 padding_tb10 ">Add Cash to your account</div>
+							        
+									<div class="w-100 db tc  addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Enter Amount to Add</p></div>
+									   <div class="w-100 db flex items-center b--white-70 position-relative">
+								            <i class="dib fas fa-rupee-sign font-12 position-fainr">
+								            </i>
+										    <input id="amountadd" (keypress)="isNumber($event)"  [(ngModel)]="user.balance"  class="background-transparent  font-12 font-bold height40 w-100  " value="30" maxlength="9" min="0" required>
+										</div>
+									</div>
+									<div class="w-100 db tc f6 addCashinwallet">
+									    <div class="w-100 dib font-12 text "><p class="m-0">Choose Amount to Add</p></div>
+									    <div class="w-100 db flex justify-between items-center mt-1">
+									        <button class="  mr-2 font-12 font-bold  background-transparent p-1" (click)="AddAmount('100');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 100
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmount('200');">
+									            + <i class="dib fas fa-rupee-sign ">
+									            </i> 200
+									        </button>
+									        <button class=" mr-2 font-12 font-bold  background-transparent  p-1" (click)="AddAmount('500');">
+									            + <i class="dib fas fa-rupee-sign">
+									            </i> 500
+									        </button> 
+									    </div>
+									</div>
+
+
+							        <div class="ftc_add_cashSe align-items-center padding_top20 mt-4">
+									<div class="w-100 dib font-12 text "><p class="m-0 em_inviteCodeTip">Select A Payment Method</p></div>
+							        <div class="ftc_add_cashSe d-flex align-items-center padding_top20 mt-2">
+										
+							        	<button class="background-white walletbtn" (click)="payumoneyadd('paytm');"><img src="assets/images/paytm.png" class="img-fluid"></button>
+							        	<button class="background-white walletbtn"(click)="payumoneyadd('razorpay');"><img src="assets/images/razorpay.jpg" class="img-fluid"></button>
+							        </div>
+ 
+							    </div>
+							</div>    
+				        </div>
+				    </div>
+			    </div>
+		  	</div>
+		  	</div>
+			
+
+
+
+
+
+<div id="confirmation" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog col-sm-4 modal-dialog-centered" style="background: transparent;">
+		      	<div class="modal-content moderceterMain moderceterMainconfirmation">
+
+       					 <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+			          	<div id="teamselector" class=" float-left w-100">
+						    <div class="row marginZ w-100">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-12 p-3">
+									<div class="w-100 heightteams">
+										<div class="ftc_team_2 w-100" *ngFor="let jointeamlists of jointeamlists" [ngClass]="jointeamlists.isSelected==true ? 'nonevent' : ''">
+													<label for="teamse{{jointeamlists.teamid}}" class="checkbox-inline check-dom-dh2 marginZ w-100">
+											<div class="ftc_topSection2 d-flex align-items-center ">
+												<p class="checkTerm marginZ">
+														<input type="radio"  [checked]="jointeamlists.isSelected==true" id="teamse{{jointeamlists.teamid}}" (click)="newteamsect(jointeamlists.teamid)"  name="teamselect" class="red"> 
+														<span class="schedule2">Team {{jointeamlists.teamnumber}}  <span class="alraedy_section" *ngIf="jointeamlists.isSelected==true">(Already Joined)</span> 
+														</span>
+												</p>
+											</div>
+											<div>
+												<div class="ftc_teams_bottomsection2 d-flex align-items-center">
+													<div class="ftc_teams_roleentity2 d-flex text-left width50">
+														<span class="ftc_teams_roleentity_title2">Captain</span>
+														<span class="name_section">{{jointeamlists.captain}}</span>
+													</div>
+													<div class="ftc_teams_roleentity2 width50">
+														<div class="ftc_teams_roleentity_title2 team_vicec">Vice Captain</div>
+														<div class="name_section">{{jointeamlists.vicecaptain}}</div>
+													</div>
+												</div>
+											</div> 
+
+													</label>
+										</div>
+									</div>
+ 
+
+						        	<div class="row marginZ w-100 d-flex mt-3 justify-content-between"  >
+						        		<div class="flex-fill  challenge_cancel text-center" *ngIf="jointeamlists?.length<=9">
+											<button class="border_none cencelbtn btnsbmit   m-0" (click)="joinwithnewteam()">Create New Team</button> 
+										</div>
+										<div class="flex-fill  m-0 challenge_join text-center" (click)="joinconteam();">
+											<button class="border_none color_white btnsbmit">Join</button> 
+										</div>
+						        	</div>  
+
+						    	</div>
+						    </div>
+						</div>  
+	      			<div id="confirmwin_balance" class="modal-body modalbodyW pt-2 pr-3 pl-3 pb-4 display-none" *ngFor="let balance of balance">
+ 
+			        	<div class="row marginZ w-100 p-4">
+			        		<h3 class="text-uppercase w-100 m-auto text-center">Confirmation</h3>
+			        	</div> 
+						<div class="row marginZ w-100 d-flex pt-2 pb-1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="">Current Balance</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="">₹ {{balance.usertotalbalance}}</span>
+			        		</div>
+			        	</div>
+			        	<div class="row marginZ w-100 d-flex pt-2 pb-1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="">Total usable balance</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="">₹ {{balance.usablebalance}}</span>
+			        		</div>
+			        	</div>
+
+			        	<div class="row marginZ w-100 d-flex pt-2 pb-1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="font-bold">Entry Fee</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="font-bold">₹ {{entryfee}}</span>
+			        		</div>
+			        	</div>
+			        <!-- 	<div class="row marginZ w-100 d-flex pt-2 pb-1 border-bottom1">
+			        		<div class="flex-fill  ml-0 mr-auto">
+			        			<span class="font-bold">Usable cash Bonus</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class="font-bold">₹ {{balance.usablebalance}}</span>
+			        		</div>
+			        	</div> -->
+			        	<div class="row marginZ w-100 d-flex pt-2 pb-1 border-top1" >
+			        		<div class="flex-fill  ml-0 mr-auto color-green">
+			        			<span class="">To pay</span>
+			        		</div>
+			        		<div class="flex-fill  ml-auto mr-0">
+			        			<span class=" color-green">₹ {{entryfee}}</span>
+			        		</div>
+			        	</div>
+  
+						<div class="row marginZ w-100 d-flex mt-3 mb-3"   > 
+							<div class="flex-fill m-auto challenge_join text-center" (click)="joinleaguematch(entryfee,balance.myusablebalance)">
+								<button class="border_none color_white btnsbmit">Join Contest</button> 
+							</div>
+			        	</div>  
+			        </div>
+		       	</div>
+		    </div>
+  		</div> 
+
+
+<div id="sharemodal" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+        <div id="my_team">
+
+           <div class="w-90 margin-auto">
+			    <div class="w-100">
+			        <p class="text-center font-14 font-bold w-100 tc p-2 borderbottomlightblack">Invite your friends to complete with them </p>
+			        <div class="pb-3 w-100 db center tc text-center"> 			    
+		            
+	        			<h3 class="font-17 tc mt-3 text-center ">Your  Invite Code Is : <span class="p-2 theme-background white font-bold">{{invitecode}}</span> </h3>
+ 
+	       			    <h4 class="text-center ">
+	       		    	<a  class="inviteviaemail font-14 font-bold dib mt-2  themecolor" data-target="#shareviaemailmodal" data-toggle="modal" data-dismiss="modal">Invite via Email</a>
+	       		    </h4>
+					</div> 
+		        </div>
+		    </div> 
+		</div>
+    </div>
+</div> 
+
+<div id="shareviaemailmodal" class="modal fade my_team_view " role="dialog">
+    <div class="modal-dialog col-sm-4">
+        <button type="button" class="closeviewteam" data-dismiss="modal"><img src="/assets/images/icons/close.png" class="img-fluid"></button>
+
+        <div id="my_team">
+
+           <div class="w-90 margin-auto">
+			    <div class="w-100">
+			        <p class=" font-14 font-bold w-100 tc p-2 borderbottomlightblack">Invite Friends Via Email </p>
+			        <div class="pb-3 w-100 db center"> 			    
+		            
+	        		<h3 class="font-17 tc mt-3">Your  Invite Code Is : <span class="p-2 theme-background white font-bold">{{invitecode}}</span> </h3>
+
+
+		          	<form  [formGroup]="rForm" (ngSubmit)="sendinvite(rForm.value)">
+		          		<div class="input-field form-group"> 
+							<input id="user_email" class="font-12 background-transparent w-100 dib   height40 inputininvite" placeholder="Enter email here" formControlName="email" [ngClass]="{'errorclass': !rForm.controls['email'].valid && rForm.controls['email'].touched}"  type="text" required>
+						</div>
+
+	                       <div class="text-center">
+								<button type="submit" class="joinleauge background-green" [disabled]="!rForm.valid">Send Code</button>
+							</div> 
+		          	</form>
+					</div> 
+		        </div>
+		    </div> 
+		</div>
+    </div>
+</div> 
+
+
+
+<div id="pointSystem" class="pointSystem">
+    <div class="fantasy-scorecard__match-card "  *ngFor="let matchdetails of matchdetails">
+        <div class="fantasy-scorecard__teams">
+			<i class="fa fa-arrow-left" (click)="closecompletescore()"></i>
+            <div class="fantasy-scorecard__team-detail"><span><img class="fantasy-scorecard__team-flag" src="{{matchdetails.team1logo}}"></span><span>{{matchdetails.team1name}}</span></div>
+            <div class="fantasy-scorecard__team-detail"><span><img class="fantasy-scorecard__team-flag" src="{{matchdetails.team2logo}}"></span><span>{{matchdetails.team2name}}</span></div>
+        </div>
+        <!-- <div class="fantasy-scorecard__match-status">COMPLETED</div> -->
+    </div>
+    <div class="fantasy-scorecard__table-container">
+        <table class="fantasy-scorecard__table">
+            <thead class="fantasy-scorecard__table-header">
+                <td class="fantasy-scorecard__header-cell">Players</td>
+                <td class="fantasy-scorecard__header-cell">Starting 11</td>
+                <td class="fantasy-scorecard__header-cell">Runs</td>
+                <td class="fantasy-scorecard__header-cell">4's</td>
+                <td class="fantasy-scorecard__header-cell">6's</td>
+                <td class="fantasy-scorecard__header-cell">S/R</td>
+                <td class="fantasy-scorecard__header-cell">50/100</td>
+                <td class="fantasy-scorecard__header-cell">Duck</td>
+                <td class="fantasy-scorecard__header-cell">Wkts</td>
+                <td class="fantasy-scorecard__header-cell">Maiden Over</td>
+                <td class="fantasy-scorecard__header-cell">E/R</td>
+                <td class="fantasy-scorecard__header-cell">Bonus</td>
+                <td class="fantasy-scorecard__header-cell">Catch</td>
+                <td class="fantasy-scorecard__header-cell">Run Out/Stumping</td>
+                <td class="fantasy-scorecard__header-cell">Total</td>
+            </thead>
+            <tbody>
+                <tr class="fantasy-scorecard__row" *ngFor="let scorecard of scorecard">
+                    <td class="fantasy-scorecard__cell">{{scorecard.playername}}</td>
+                    <td class="fantasy-scorecard__cell">{{scorecard.startingpoints}}</td>
+                    <td class="fantasy-scorecard__cell">{{scorecard.runs}}</td>
+                    <td class="fantasy-scorecard__cell">{{scorecard.fours}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.sixs}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.strike_rate}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.century}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.duck}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.wickets}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.maidens}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.economy_rate}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.bonus}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.catch}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.stumping}}</td> 
+                    <td class="fantasy-scorecard__cell">{{scorecard.total}}</td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>	

@@ -1,0 +1,23 @@
+.oneicon{	 
+}
+.oneicon a i{	
+	font-size: 20px;
+	padding: 0px !important;
+	margin-right: 10px;
+    background: transparent;
+}
+.oneicon a i.youtube{	 
+    color: #FF0000;
+}
+.oneicon a i.facebook{	 
+    color: #3B5998;
+}
+.oneicon a i.twitter{	 
+    color: #55ACEE;
+}
+.oneicon a i.envelope{	 
+    color: #DC4E41;
+}
+.oneicon a i.instagram{	 
+    color: #B2368A;
+}

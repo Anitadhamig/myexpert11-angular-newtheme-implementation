@@ -1,0 +1,7 @@
+.commonPages p i{ 
+    -webkit-text-stroke: 0.2px white;
+    font-size: 11px;
+    position: relative;
+    top: 0px;
+    left: 2px;
+}

@@ -1,0 +1,20 @@
+.me_contestTeamSection > div:last-child {
+
+    text-align: right;
+    min-width: auto;
+    max-width: 100%;
+
+}
+.rightBox-inner{
+	background: #e6e0d5 !important;
+}
+.main_header{
+	top: 0px;
+}
+
+.topscorecard { 
+    top: 60px; 
+}
+.pt-3.mt-5.mb-5.top_class_joined {
+    margin-top: 150px !important;
+}

@@ -1,0 +1,126 @@
+
+	<section class="body-section-home">     
+		<div class="body-section-home-inner">
+			
+			<app-left-side></app-left-side>
+			<div class="rightBox">
+				<div class="w-100">
+					<div class="rightBox-inner bg_gray db">						
+						<div class="flex-wth w-100"> 
+							<header class="main_header main_header_2 pt-0" id="header1">
+								<div class="mobile_nav">
+									<div class="" id="fixHead">
+
+										<app-header></app-header>
+										<div class="info-bar w-100 col-lg-12 col-md-12 cl-sm-12 col-12 p-0">
+										    <div class="infobarContent">
+										        <div class="infobarContentRow w-100 d-flex justify-space-between"  >
+  
+							           					 <p class="userBal m-0"><i class="fas fa-wallet"></i> Rs.{{userdatass.totalamount}}</p>
+
+							         					   <p class="vrLink  m-0" *ngIf="userdetailse.verified == '1'"><a class="nayab" routerLink="/verify-account">Account Verified</a></p> 
+							         					   <p class="vrLink  m-0" *ngIf="userdetailse.verified == '0'"><a routerLink="/verify-account">Verify Account<span class="ques_link">?</span></a></p> 
+										        </div>
+										    </div>
+ 
+										</div>
+									</div>
+								</div>
+							</header>
+							<div class="tabs-sec-me tran_tb "> 
+								<div class="rec_content mt-4">
+									<div class="rec_conts">
+										<div class="tra_his" data-toggle="collapse" data-target="#won">
+											<span>Total cash Won</span>
+											<i class="fas fa-chevron-down"></i>
+										</div>
+										<div id="won" class="collapse show_tra_nse">Rs. {{userdatass.totalamountwon}}</div>
+									</div>
+									<div class="rec_conts">
+										<div class="tra_his" data-toggle="collapse" data-target="#won1">
+											<span>Total contest Won</span>
+											<i class="fas fa-chevron-down"></i>
+										</div>
+										<div id="won1" class="collapse show_tra_nse">{{userdatass.totalwoncontest}}</div>
+									</div>
+									<!-- <div class="rec_conts">
+										<div class="tra_his pd_right">
+											<p>Amount to Expire - Cash Bonus<span class="helpIcon tp5" data-tooltip="Below table show the amount and date of expirty.This data syncs every 24 hours">?</span></p>
+											<span>Rs.0</span>
+										</div>
+									</div>
+									<div class="rec_conts">
+										<div class="tra_his pd_right">
+											<p>Amount to Expire - Unutilized<span class="helpIcon tp5" data-tooltip="Below table show the amount and date of expirty.This data syncs every 24 hours">?</span></p>
+											<p>Rs.0</p>
+										</div>
+									</div> -->
+									<div class="rec_conts">
+										<div class="tra_his" data-toggle="collapse" data-target="#won2">
+											<span>Recent Transactions</span>
+											<i class="fas fa-chevron-down"></i>
+										</div>
+										<div id="won2" class="collapse" *ngIf="history?.length==0"> 
+											<a > 
+								 				<div class="tra_his">
+													<div class="transct_his_t"> 
+														<span class="ft_10">No Recent Transation</span>
+													</div> 
+												</div>
+											</a> 
+										</div>
+										<div id="won2" class="collapse" *ngIf="history?.length>0">
+											<a *ngFor="let history of history" (click)="transactionhistory(history.id)"> 
+												<div class="tra_his">
+													<div class="transct_his_t">
+														<small>{{history.type}}</small>
+														<span class="ft_10">{{history.date_time}}</span>
+													</div>
+													<span class="black">Rs.{{history.amount}}</span>
+													<i class="fas fa-chevron-right rig_gr"></i>
+												</div>
+											</a> 
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ 	</section>
+
+
+	<div  class="modal fade" id="transactionhistory" role="dialog"> 
+		<div  class="modal-dialog modaldialog">
+			<div  id="createTeamPopUp">
+				<button  class="close btncloses" data-dismiss="modal" type="button">×</button>
+				<h3  class="popupTitle">Transaction Details</h3>
+
+				<div  class="col-md-12 col-sm-12 col-xs-12 popupInner login_formM ">
+					<div  class="accountBalance">
+						<div class="trDetailTbl" *ngFor="let trhistory of trhistory">
+						    <div class="trTblHead">
+						        <div class="trCell">{{trhistory.type}}</div>
+						        <div class="trCell pl-3">₹ {{trhistory.amount}}</div>
+						    </div>
+						    <div class="trRow pb-3">
+						        <div class="trCell">Transaction Date</div>
+						        <div class="trCell pl-3">{{trhistory.date_time}}</div>
+						    </div> 
+						    <div class="trRow pb-3">
+						        <div class="trCell">Team Name</div>
+						        <div class="trCell pl-3">{{trhistory.team}}</div>
+						    </div>
+						    <div class="trRow">
+						        <div class="trCell">Transaction ID</div>
+						        <div class="trCell pl-3">{{trhistory.txnid}}</div>
+						    </div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
